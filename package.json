@@ -1,0 +1,38 @@
+{
+  "name": "blurhash-as",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@assemblyscript/loader": "^0.19.4",
+    "image-pixels": "^2.2.2"
+  },
+  "devDependencies": {
+    "assemblyscript": "^0.19.4",
+    "blurhash": "^1.1.3",
+    "eslint": "^7.29.0",
+    "eslint-config-lxsmnsyc": "^0.2.3",
+    "image-encode": "^1.3.1",
+    "typescript": "^4.3.4"
+  },
+  "scripts": {
+    "asbuild:untouched": "asc assembly/index.ts --target debug -O3 --runtime stub --noAssert --exportRuntime",
+    "asbuild:optimized": "asc assembly/index.ts --target release -O3 --runtime stub --noAssert --exportRuntime",
+    "asbuild": "yarn asbuild:untouched && yarn asbuild:optimized",
+    "test": "node tests"
+  },
+  "description": "Blurhash algorithm implementation in AssemblyScript",
+  "repository": {
+    "url": "https://github.com/lxsmnsyc/ecmason.git",
+    "type": "git"
+  },
+  "homepage": "https://github.com/lxsmnsyc/ecmason",
+  "bugs": {
+    "url": "https://github.com/lxsmnsyc/ecmason/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Alexis Munsayac",
+  "private": false
+}
