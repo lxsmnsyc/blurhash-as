@@ -37,4 +37,3 @@ runTest('example');
 runTest('example-2');
 runTest('example-3');
 runTest('example-4');
-runTest('example-5', 'webp');
