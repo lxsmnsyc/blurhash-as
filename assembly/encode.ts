@@ -23,14 +23,14 @@ function multiplyBasisFunction(
     for (let y = 0; y < height; y += 1) {
       const xBasis = NativeMathf.cos((NativeMathf.PI * <f32>(xComponent * x)) / <f32>width);
       const yBasis = NativeMathf.cos((NativeMathf.PI * <f32>(yComponent * y)) / <f32>height);
-      const basis = normalization * xBasis * yBasis;
+      const basis = xBasis * yBasis;
       r += basis * SRGBToLinear(pixels[bytesPerPixel * x + 0 + y * bytesPerRow]);
       g += basis * SRGBToLinear(pixels[bytesPerPixel * x + 1 + y * bytesPerRow]);
       b += basis * SRGBToLinear(pixels[bytesPerPixel * x + 2 + y * bytesPerRow]);
     }
   }
 
-  const scale: f32 = 1.0 / <f32>(width * height);
+  const scale: f32 = normalization / <f32>(width * height);
 
   return StaticArray.fromArray([
     r * scale,
@@ -83,19 +83,18 @@ export default function encode(
   const factors: StaticArray<StaticArray<f32>> = new StaticArray(componentX * componentY);
   for (let y = 0; y < componentY; y += 1) {
     for (let x = 0; x < componentX; x += 1) {
-      const factor = multiplyBasisFunction(
+      factors[y * componentX + x] = multiplyBasisFunction(
         pixels,
         x,
         y,
         width,
         height,
       );
-      factors[y * componentX + x] = factor;
     }
   }
 
   const dc = factors[0];
-  const ac = factors.slice(1);
+  const ac = StaticArray.slice(factors, 1);
 
   const sizeFlag = componentX - 1 + (componentY - 1) * 9;
   let hash = encode83(sizeFlag, 1);

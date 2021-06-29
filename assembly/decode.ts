@@ -62,7 +62,7 @@ export function decode(
   const quantisedMaximumValue = decode83(blurhash.charAt(1));
   const maximumValue: f32 = <f32>(quantisedMaximumValue + 1) / 166;
 
-  const colors = new Array<StaticArray<f32>>(numX * numY);
+  const colors = new StaticArray<StaticArray<f32>>(numX * numY);
 
   for (let i = 0; i < colors.length; i += 1) {
     if (i === 0) {

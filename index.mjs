@@ -1,9 +1,9 @@
-const fs = require('fs/promises');
-const loader = require('@assemblyscript/loader');
+import fs from 'fs/promises';
+import loader from '@assemblyscript/loader';
 
 let BLURHASH;
 
-async function initialize() {
+export async function initialize() {
   if (BLURHASH) {
     return;
   }
@@ -14,22 +14,16 @@ async function initialize() {
   BLURHASH = wasmModule.exports;
 }
 
-async function encode(pixels, width, height, x, y) {
+export async function encode(pixels, width, height, x, y) {
   await initialize();
   const pixelsData = BLURHASH.__newArray(BLURHASH.Uint8ClampedArrayID, pixels);
   const result = BLURHASH.encode(pixelsData, width, height, x, y);
   return BLURHASH.__getString(result);
 }
 
-async function decode(string, width, height, punch) {
+export function decode(string, width, height, punch) {
   await initialize();
   const stringPointer = BLURHASH.__newString(string);
   const result = BLURHASH.decode(stringPointer, width, height, punch);
   return BLURHASH.__getUint8ClampedArray(result);
 }
-
-module.exports = {
-  decode,
-  encode,
-  initialize,
-};
