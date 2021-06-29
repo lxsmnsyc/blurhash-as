@@ -25,8 +25,8 @@ function runTest(name, extension = 'jpg') {
     const decodedData = blurhash_wasm.decode(result, width, height);
   
     return fs.writeFile(
-      `./tests/${name}.blurhash.png`,
-      Buffer.from(imageEncode(decodedData, [width, height], 'png'))
+      `./tests/${name}.blurhash.jpg`,
+      Buffer.from(imageEncode(decodedData, [width, height], 'jpg'))
     );
   }).catch((error) => {
     console.log(error);
