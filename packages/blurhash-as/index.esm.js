@@ -3,7 +3,7 @@ import loader from '@assemblyscript/loader';
 
 let BLURHASH;
 
-export async function initialize() {
+export async function init() {
   if (BLURHASH) {
     return;
   }
@@ -15,15 +15,29 @@ export async function initialize() {
 }
 
 export async function encode(pixels, width, height, x, y) {
-  await initialize();
+  await init();
   const pixelsData = BLURHASH.__newArray(BLURHASH.Uint8ClampedArrayID, pixels);
   const result = BLURHASH.encode(pixelsData, width, height, x, y);
   return BLURHASH.__getString(result);
 }
 
-export function decode(string, width, height, punch) {
-  await initialize();
+export async function decode(string, width, height, punch) {
+  await init();
   const stringPointer = BLURHASH.__newString(string);
   const result = BLURHASH.decode(stringPointer, width, height, punch);
   return BLURHASH.__getUint8ClampedArray(result);
+}
+
+export async function toCSSSheet(string, width, height, punch) {
+  await init();
+  const stringPointer = BLURHASH.__newString(string);
+  const result = BLURHASH.toCSSSheet(stringPointer, width, height, punch);
+  return BLURHASH.__getString(result);
+}
+
+export async function toCSSObject(string, width, height, punch) {
+  await init();
+  const stringPointer = BLURHASH.__newString(string);
+  const result = BLURHASH.toCSSObject(stringPointer, width, height, punch);
+  return JSON.parse(BLURHASH.__getString(result));
 }
