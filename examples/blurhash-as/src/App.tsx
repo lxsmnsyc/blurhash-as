@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect, useState } from 'react';
+import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import * as blurhash from 'blurhash-as/browser';
 import wasmURL from 'blurhash-as/build/optimized.wasm?url';
 
@@ -12,6 +12,7 @@ export default function App(): JSX.Element {
   const [imageSrc, setImageSrc] = useState('');
   const [svgSrc, setSVGSrc] = useState('');
   const [cssObject, setCSSObject] = useState<CSSProperties>();
+  const [buffer, setBuffer] = useState<Uint8ClampedArray>();
 
   const [refresh, setRefresh] = useState(0);
 
@@ -21,6 +22,7 @@ export default function App(): JSX.Element {
     setImageSrc('');
     setSVGSrc('');
     setCSSObject(undefined);
+    setBuffer(undefined);
 
     let mounted = true;
 
@@ -56,6 +58,16 @@ export default function App(): JSX.Element {
           const encodedSVG = encodeURIComponent(svg);
           const dataUri = `data:image/svg+xml,${encodedSVG}`;
           setSVGSrc(dataUri);
+        }
+
+        const decoded = await blurhash.decode(
+          encoded,
+          1024,
+          768,
+        );
+
+        if (decoded && mounted) {
+          setBuffer(decoded);
         }
 
         setSkeleton(false);
@@ -106,6 +118,21 @@ export default function App(): JSX.Element {
     message = 'Preparing image...';
   }
 
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    const { current } = canvasRef;
+    if (current && buffer) {
+      const ctx = current.getContext('2d');
+      if (!ctx) {
+        return;
+      }
+      const imageData = ctx.createImageData(1024, 768);
+      imageData.data.set(buffer);
+      ctx.putImageData(imageData, 0, 0);
+    }
+  }, [buffer]);
+
   return (
     <div className="page">
       <div className="container">
@@ -140,6 +167,18 @@ export default function App(): JSX.Element {
                 <div className="image-container">
                   <img className={`src ${(skeleton || placeholder) ? 'hidden' : ''}`} src={imageSrc} alt="" />
                   <img className={`placeholder ${(skeleton || !placeholder) ? 'hidden' : ''}`} src={svgSrc} alt="" />
+                  <div className={`skeleton ${!skeleton ? 'hidden' : ''}`} />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="showcase-item">
+            <h1>Canvas-based Blurhash</h1>
+            <div className="aspect-ratio-box">
+              <div className="aspect-ratio-content">
+                <div className="image-container">
+                  <img className={`src ${(skeleton || placeholder) ? 'hidden' : ''}`} src={imageSrc} alt="" />
+                  <canvas ref={canvasRef} width="1024" height="768" className={`placeholder ${(skeleton || !placeholder) ? 'hidden' : ''}`} />
                   <div className={`skeleton ${!skeleton ? 'hidden' : ''}`} />
                 </div>
               </div>
