@@ -153,8 +153,8 @@ export default function App(): JSX.Element {
             <div className="aspect-ratio-box">
               <div className="aspect-ratio-content">
                 <div className="image-container">
-                  <img className={`src ${(skeleton || placeholder) ? 'hidden' : ''}`} src={imageSrc} alt="" />
-                  <div className={`placeholder blurscale ${(skeleton || !placeholder) ? 'hidden' : ''}`} style={cssObject} />
+                  <img className={`src ${skeleton ? 'hidden' : ''}`} src={imageSrc} alt="" />
+                  <div className={`placeholder blurscale ${!placeholder ? 'hidden' : ''}`} style={cssObject} />
                   <div className={`skeleton ${!skeleton ? 'hidden' : ''}`} />
                 </div>
               </div>
@@ -165,8 +165,8 @@ export default function App(): JSX.Element {
             <div className="aspect-ratio-box">
               <div className="aspect-ratio-content">
                 <div className="image-container">
-                  <img className={`src ${(skeleton || placeholder) ? 'hidden' : ''}`} src={imageSrc} alt="" />
-                  <img className={`placeholder blurscale ${(skeleton || !placeholder) ? 'hidden' : ''}`} src={svgSrc} alt="" />
+                  <img className={`src ${skeleton ? 'hidden' : ''}`} src={imageSrc} alt="" />
+                  <img className={`placeholder blurscale ${!placeholder ? 'hidden' : ''}`} src={svgSrc} alt="" />
                   <div className={`skeleton ${!skeleton ? 'hidden' : ''}`} />
                 </div>
               </div>
@@ -177,8 +177,8 @@ export default function App(): JSX.Element {
             <div className="aspect-ratio-box">
               <div className="aspect-ratio-content">
                 <div className="image-container">
-                  <img className={`src ${(skeleton || placeholder) ? 'hidden' : ''}`} src={imageSrc} alt="" />
-                  <canvas ref={canvasRef} width="1024" height="768" className={`placeholder ${(skeleton || !placeholder) ? 'hidden' : ''}`} />
+                  <img className={`src ${skeleton ? 'hidden' : ''}`} src={imageSrc} alt="" />
+                  <canvas ref={canvasRef} width="1024" height="768" className={`placeholder ${!placeholder ? 'hidden' : ''}`} />
                   <div className={`skeleton ${!skeleton ? 'hidden' : ''}`} />
                 </div>
               </div>

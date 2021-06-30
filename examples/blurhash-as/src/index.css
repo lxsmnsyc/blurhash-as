@@ -60,8 +60,6 @@ body {
 .src {
   width: 100%;
   height: auto;
-
-  transition: opacity 200ms;
 }
 
 .placeholder {
@@ -71,12 +69,14 @@ body {
   top: 0;
   left: 0;
 
-  transition: opacity 200ms;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .blurscale {
   filter: blur(24px);
-  transform: scale(1.2);
+  transform: scale(1.5);
 }
 
 .hash-container {
@@ -95,8 +95,10 @@ body {
   left: 0;
   background-color: #111827;
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-
-  transition: opacity 200ms;
+	
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .showcase {
