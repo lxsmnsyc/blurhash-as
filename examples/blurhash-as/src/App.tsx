@@ -1,8 +1,7 @@
 import React, { CSSProperties, useEffect, useState } from 'react';
 import * as blurhash from 'blurhash-as/browser';
-import blurhashWASM from 'blurhash-as/build/optimized.wasm?url';
 
-blurhash.setURL(blurhashWASM);
+blurhash.setURL('https://unpkg.com/blurhash-as/build/optimized.wasm');
 
 export default function App(): JSX.Element {
   const [skeleton, setSkeleton] = useState(true);
