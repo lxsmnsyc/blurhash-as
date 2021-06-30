@@ -1,6 +1,6 @@
 # blurhash-as
 
-> Lazily render components
+> Blurhash implementation in AssemblyScript
 
 ## Packages
 
