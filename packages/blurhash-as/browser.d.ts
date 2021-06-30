@@ -1,0 +1,27 @@
+export function setURL(wasmURL: string): void;
+export function init(): Promise<void>;
+export function encode(
+  pixels: Uint8ClampedArray,
+  width: number,
+  height: number,
+  xComponent: number,
+  yComponent: number,
+): Promise<string | null>;
+export function decode(
+  blurhash: string,
+  width: number,
+  height: number,
+  punch?: number,
+): Promise<Uint8ClampedArray | null>;
+export function toCSSSheet(
+  blurhash: string,
+  width: number,
+  height: number,
+  punch?: number,
+): Promise<string | null>;
+export function toCSSObject(
+  blurhash: string,
+  width: number,
+  height: number,
+  punch?: number,
+): Promise<Record<string, string> | null>;
