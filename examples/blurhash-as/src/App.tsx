@@ -149,7 +149,7 @@ export default function App(): JSX.Element {
             </div>
           </div>
           <div className="showcase-item">
-            <h1>CSS-based Blurhash</h1>
+            <h1>CSS</h1>
             <div className="aspect-ratio-box">
               <div className="aspect-ratio-content">
                 <div className="image-container">
@@ -161,7 +161,7 @@ export default function App(): JSX.Element {
             </div>
           </div>
           <div className="showcase-item">
-            <h1>SVG-based Blurhash</h1>
+            <h1>SVG</h1>
             <div className="aspect-ratio-box">
               <div className="aspect-ratio-content">
                 <div className="image-container">
@@ -173,7 +173,7 @@ export default function App(): JSX.Element {
             </div>
           </div>
           <div className="showcase-item">
-            <h1>Canvas-based Blurhash</h1>
+            <h1>Canvas</h1>
             <div className="aspect-ratio-box">
               <div className="aspect-ratio-content">
                 <div className="image-container">
