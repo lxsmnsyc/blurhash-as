@@ -18,6 +18,9 @@
     "assembly",
     "build"
   ],
+  "engines": {
+    "node": ">=10"
+  },
   "license": "MIT",
   "dependencies": {
     "@assemblyscript/loader": "^0.19.4"
