@@ -43,6 +43,14 @@ const style = await blurhash.toCSSObject(hash, width, height, punch);
 
 For browser context, you'll have to use `blurhash-as/browser`. The API is the same as `blurhash-as` with the inclusion of `setURL` for identifying the target WASM file. `setURL` is required to be called as-early-as-possible before using the provided `blurhash` functions.
 
+Example in Vite:
+
+```ts
+import wasmURL from 'blurhash-as/build/optimized.wasm?url';
+
+blurhash.setURL(wasmURL);
+```
+
 ## License
 
 MIT © [lxsmnsyc](https://github.com/lxsmnsyc)

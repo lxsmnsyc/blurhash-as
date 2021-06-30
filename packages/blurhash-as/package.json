@@ -12,7 +12,8 @@
     "./browser": {
       "require": "./browser.js",
       "import": "./browser.esm.js"
-    }
+    },
+    "./build/*": "./build/*"
   },
   "files": [
     "assembly",
