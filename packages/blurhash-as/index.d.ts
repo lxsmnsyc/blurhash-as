@@ -24,3 +24,9 @@ export function toCSSObject(
   height: number,
   punch?: number,
 ): Promise<Record<string, string> | null>;
+export function toSVG(
+  blurhash: string,
+  width: number,
+  height: number,
+  punch?: number,
+): Promise<string | null>;

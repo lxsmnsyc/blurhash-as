@@ -49,6 +49,13 @@ async function toCSSObject(string, width, height, punch) {
   return JSON.parse(BLURHASH.__getString(result));
 }
 
+async function toSVG(string, width, height, punch) {
+  await init();
+  const stringPointer = BLURHASH.__newString(string);
+  const result = BLURHASH.toSVG(stringPointer, width, height, punch);
+  return BLURHASH.__getString(result);
+}
+
 module.exports = {
   setURL,
   decode,
@@ -56,4 +63,5 @@ module.exports = {
   init,
   toCSSSheet,
   toCSSObject,
+  toSVG,
 };

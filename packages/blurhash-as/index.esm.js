@@ -41,3 +41,10 @@ export async function toCSSObject(string, width, height, punch) {
   const result = BLURHASH.toCSSObject(stringPointer, width, height, punch);
   return JSON.parse(BLURHASH.__getString(result));
 }
+
+export async function toSVG(string, width, height, punch) {
+  await init();
+  const stringPointer = BLURHASH.__newString(string);
+  const result = BLURHASH.toSVG(stringPointer, width, height, punch);
+  return BLURHASH.__getString(result);
+}

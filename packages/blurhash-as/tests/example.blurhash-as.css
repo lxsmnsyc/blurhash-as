@@ -1,0 +1,8 @@
+.blurhash {
+
+background-image: linear-gradient(90deg, rgba(161, 124, 92, 255) 25.0%, rgba(180, 144, 120, 255) 25.0% 50.0%, rgba(176, 147, 131, 255) 50.0% 75.0%, rgba(180, 151, 133, 255) 75.0%), linear-gradient(90deg, rgba(149, 112, 87, 255) 25.0%, rgba(169, 136, 119, 255) 25.0% 50.0%, rgba(175, 149, 135, 255) 50.0% 75.0%, rgba(171, 143, 128, 255) 75.0%), linear-gradient(90deg, rgba(141, 106, 88, 255) 25.0%, rgba(166, 142, 130, 255) 25.0% 50.0%, rgba(178, 153, 138, 255) 50.0% 75.0%, rgba(166, 138, 123, 255) 75.0%);
+background-position: 0 0, 0 50.0%, 0 100.0%;
+background-size: 100% 33.333333333333339;
+background-repeat: no-repeat;
+
+}

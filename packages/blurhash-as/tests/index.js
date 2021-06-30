@@ -6,8 +6,6 @@ const imageEncode = require('image-encode');
 const fs = require('fs/promises');
 const b = require('benny')
 
-require('source-map-support').install();
-
 const RUN_BENCHMARK = false;
 
 function gcd(a, b) {
@@ -57,15 +55,26 @@ async function runBlurhashAS(name, { data, width, height }) {
     3,
   );
   const decodedData = await blurhash_wasm.decode(result, width, height);
-  const sheet = await blurhash_wasm.toCSSSheet(
-    result,
-    4,
-    3,
-  );
-  await fs.writeFile(
-    `./tests/${name}.blurhash-as.css`,
-    `.blurhash {\n${sheet}\n}`,
-  );
+  if (!RUN_BENCHMARK) {
+    const sheet = await blurhash_wasm.toCSSSheet(
+      result,
+      4,
+      3,
+    );
+    await fs.writeFile(
+      `./tests/${name}.blurhash-as.css`,
+      `.blurhash {\n${sheet}\n}`,
+    );
+    const svg = await blurhash_wasm.toSVG(
+      result,
+      4,
+      3,
+    );
+    await fs.writeFile(
+      `./tests/${name}.blurhash-as.svg`,
+      svg,
+    );
+  }
   return fs.writeFile(
     `./tests/${name}.blurhash-as.jpg`,
     Buffer.from(imageEncode(decodedData, [width, height], 'jpg'))
@@ -101,9 +110,9 @@ function runTest(name, extension = 'jpg') {
   });
 }
 
-blurhash_wasm.initialize().then(() => {
+blurhash_wasm.init().then(() => {
   runTest('example');
-  runTest('example-2');
-  runTest('example-3');
-  runTest('example-4');
+  // runTest('example-2');
+  // runTest('example-3');
+  // runTest('example-4');
 });
