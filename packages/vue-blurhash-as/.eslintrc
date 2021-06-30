@@ -1,0 +1,9 @@
+{
+  "root": true,
+  "extends": [
+    "lxsmnsyc/typescript/vue"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.eslint.json"
+  }
+}

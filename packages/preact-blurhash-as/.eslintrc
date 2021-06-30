@@ -1,0 +1,9 @@
+{
+  "root": true,
+  "extends": [
+    "lxsmnsyc/typescript/preact"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.eslint.json"
+  }
+}
