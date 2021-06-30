@@ -23,7 +23,7 @@ export default function toSVG(
         const b = decodedData[4 * x + 2 + y * bytesPerRow];
         const a = 255;
 
-        svg += `<rect x="${x}" y="${y}" width="1" height="1" fill="rgba(${r},${g},${b},${a})" filter="url(#blurMe)" />`;
+        svg += `<rect x="${x}" y="${y}" width="1" height="1" fill="rgba(${r},${g},${b},${a})"/>`;
       }
     }
 
