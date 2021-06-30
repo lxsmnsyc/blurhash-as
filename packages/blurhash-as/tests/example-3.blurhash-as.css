@@ -1,7 +1,7 @@
 .blurhash {
 
 background-image: linear-gradient(90deg, rgba(19, 12, 53, 255) 25.0%, rgba(42, 51, 70, 255) 25.0% 50.0%, rgba(52, 51, 75, 255) 50.0% 75.0%, rgba(40, 22, 73, 255) 75.0%), linear-gradient(90deg, rgba(33, 29, 68, 255) 25.0%, rgba(60, 69, 80, 255) 25.0% 50.0%, rgba(63, 63, 83, 255) 50.0% 75.0%, rgba(42, 26, 74, 255) 75.0%), linear-gradient(90deg, rgba(33, 31, 67, 255) 25.0%, rgba(77, 83, 93, 255) 25.0% 50.0%, rgba(88, 88, 103, 255) 50.0% 75.0%, rgba(58, 49, 77, 255) 75.0%);
-background-position: 0 0 , 0 0%, 0 100%;
+background-position: 0 0, 0 50.0%, 0 100.0%;
 background-size: 100% 33.333333333333339;
 background-repeat: no-repeat;
 

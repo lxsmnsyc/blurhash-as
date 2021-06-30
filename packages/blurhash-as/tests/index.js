@@ -36,10 +36,12 @@ async function runBlurhashTS(name, { data, width, height }) {
     3,
   );
   const decodedData = blurhash.decode(result, width, height);
-  await fs.writeFile(
-    `./tests/${name}.blurhash-ts.jpg`,
-    Buffer.from(imageEncode(decodedData, [width, height], 'jpg')),
-  );
+  if (!RUN_BENCHMARK) {
+    await fs.writeFile(
+      `./tests/${name}.blurhash-ts.jpg`,
+      Buffer.from(imageEncode(decodedData, [width, height], 'jpg')),
+    );
+  }
 }
 
 async function runBlurhashAS(name, { data, width, height }) {
@@ -74,11 +76,11 @@ async function runBlurhashAS(name, { data, width, height }) {
       `./tests/${name}.blurhash-as.svg`,
       svg,
     );
+    await fs.writeFile(
+      `./tests/${name}.blurhash-as.jpg`,
+      Buffer.from(imageEncode(decodedData, [width, height], 'jpg'))
+    );
   }
-  return fs.writeFile(
-    `./tests/${name}.blurhash-as.jpg`,
-    Buffer.from(imageEncode(decodedData, [width, height], 'jpg'))
-  );
 }
 
 function runTest(name, extension = 'jpg') {
@@ -111,7 +113,7 @@ function runTest(name, extension = 'jpg') {
 }
 
 blurhash_wasm.init().then(() => {
-  // runTest('example');
+  runTest('example');
   runTest('example-2');
   runTest('example-3');
   runTest('example-4');
