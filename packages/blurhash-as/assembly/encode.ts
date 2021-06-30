@@ -4,8 +4,6 @@ import {
   linearToSRGB, signPow, SRGBToLinear,
 } from './utils';
 
-const bytesPerPixel = 4;
-
 function multiplyBasisFunction(
   pixels: Uint8ClampedArray,
   xComponent: i32,
@@ -16,7 +14,7 @@ function multiplyBasisFunction(
   let r: f32 = 0;
   let g: f32 = 0;
   let b: f32 = 0;
-  const bytesPerRow = width * bytesPerPixel;
+  const bytesPerRow = width * 4;
   const normalization: f32 = (xComponent === 0 && yComponent === 0) ? 1 : 2;
 
   for (let x = 0; x < width; x += 1) {
@@ -24,9 +22,9 @@ function multiplyBasisFunction(
       const xBasis = NativeMathf.cos((NativeMathf.PI * <f32>(xComponent * x)) / <f32>width);
       const yBasis = NativeMathf.cos((NativeMathf.PI * <f32>(yComponent * y)) / <f32>height);
       const basis = xBasis * yBasis;
-      r += basis * SRGBToLinear(pixels[bytesPerPixel * x + 0 + y * bytesPerRow]);
-      g += basis * SRGBToLinear(pixels[bytesPerPixel * x + 1 + y * bytesPerRow]);
-      b += basis * SRGBToLinear(pixels[bytesPerPixel * x + 2 + y * bytesPerRow]);
+      r += basis * SRGBToLinear(pixels[4 * x + 0 + y * bytesPerRow]);
+      g += basis * SRGBToLinear(pixels[4 * x + 1 + y * bytesPerRow]);
+      b += basis * SRGBToLinear(pixels[4 * x + 2 + y * bytesPerRow]);
     }
   }
 
