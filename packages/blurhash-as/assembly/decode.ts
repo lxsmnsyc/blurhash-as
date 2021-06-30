@@ -13,7 +13,7 @@ export function isBlurhashValid(
     return false;
   }
   const sizeFlag = decode83(blurhash.charAt(0));
-  const numY = floor(sizeFlag / 9) + 1;
+  const numY = <i32>NativeMathf.floor(<f32>sizeFlag / 9.0) + 1;
   const numX = (sizeFlag % 9) + 1;
   return blurhash.length !== 4 + 2 * numX + numY;
 }
@@ -32,14 +32,14 @@ function decodeAC(
   value: i32,
   maximumValue: f32,
 ): StaticArray<f32> {
-  const quantR: i32 = <i32>NativeMathf.floor(<f32>value / (19 * 19));
-  const quantG: i32 = <i32>NativeMathf.floor(<f32>value / 19) % 19;
+  const quantR: i32 = <i32>NativeMathf.floor(<f32>value / (19.0 * 19.0));
+  const quantG: i32 = <i32>NativeMathf.floor(<f32>value / 19.0) % 19;
   const quantB: i32 = value % 19;
 
   return StaticArray.fromArray([
-    signPow((<f32>quantR - 9) / 9, 2) * maximumValue,
-    signPow((<f32>quantG - 9) / 9, 2) * maximumValue,
-    signPow((<f32>quantB - 9) / 9, 2) * maximumValue,
+    signPow((<f32>quantR - 9.0) / 9.0, 2.0) * maximumValue,
+    signPow((<f32>quantG - 9.0) / 9.0, 2.0) * maximumValue,
+    signPow((<f32>quantB - 9.0) / 9.0, 2.0) * maximumValue,
   ]);
 }
 
@@ -56,11 +56,11 @@ export function decode(
   punch = punch | 1;
 
   const sizeFlag = decode83(blurhash.charAt(0));
-  const numY: i32 = <i32>NativeMathf.floor(<f32>sizeFlag / 9) + 1;
+  const numY: i32 = <i32>NativeMathf.floor(<f32>sizeFlag / 9.0) + 1;
   const numX: i32 = (sizeFlag % 9) + 1;
 
   const quantisedMaximumValue = decode83(blurhash.charAt(1));
-  const maximumValue: f32 = <f32>(quantisedMaximumValue + 1) / 166;
+  const maximumValue: f32 = <f32>(quantisedMaximumValue + 1) / 166.0;
 
   const colors = new StaticArray<StaticArray<f32>>(numX * numY);
 
@@ -79,9 +79,9 @@ export function decode(
 
   for (let y = 0; y < height; y += 1) {
     for (let x = 0; x < width; x += 1) {
-      let r: f32 = 0;
-      let g: f32 = 0;
-      let b: f32 = 0;
+      let r: f32 = 0.0;
+      let g: f32 = 0.0;
+      let b: f32 = 0.0;
 
       for (let j = 0; j < numY; j += 1) {
         for (let i = 0; i < numX; i += 1) {
