@@ -16,7 +16,12 @@
   },
   "files": [
     "assembly",
-    "build"
+    "build",
+    "browser.d.ts",
+    "browser.esm.js",
+    "browser.js",
+    "index.d.ts",
+    "index.esm.js"
   ],
   "engines": {
     "node": ">=10"
