@@ -6,19 +6,66 @@ const imageEncode = require('image-encode');
 const fs = require('fs/promises');
 const b = require('benny')
 
-function runBlurhashTS(name, { data, width, height }) {
-  const result = blurhash.encode(data, width, height, 4, 3);
-  const decodedData = blurhash.decode(result, width, height)
+require('source-map-support').install();
 
-  return fs.writeFile(
+const RUN_BENCHMARK = false;
+
+function gcd(a, b) {
+  if (b === 0) {
+    return a;
+  }
+  return gcd(b, a % b);
+}
+
+function getAspectRatio(width, height) {
+  const r = gcd(width, height);
+  return {
+    width: width / r,
+    height: height / r,
+  }
+}
+
+async function runBlurhashTS(name, { data, width, height }) {
+  const aspectRatio = getAspectRatio(width, height);
+  if (!RUN_BENCHMARK) {
+    console.log(name, `${aspectRatio.width}:${aspectRatio.height}`);
+  }
+  const result = blurhash.encode(
+    data,
+    width,
+    height,
+    4,
+    3,
+  );
+  const decodedData = blurhash.decode(result, width, height);
+  await fs.writeFile(
     `./tests/${name}.blurhash-ts.jpg`,
-    Buffer.from(imageEncode(decodedData, [width, height], 'jpg'))
+    Buffer.from(imageEncode(decodedData, [width, height], 'jpg')),
   );
 }
 
 async function runBlurhashAS(name, { data, width, height }) {
-  const result = await blurhash_wasm.encode(data, width, height, 4, 3);
-  const decodedData = await blurhash_wasm.decode(result, width, height)
+  const aspectRatio = getAspectRatio(width, height);
+  if (!RUN_BENCHMARK) {
+    console.log(name, `${aspectRatio.width}:${aspectRatio.height}`);
+  }
+  const result = await blurhash_wasm.encode(
+    data,
+    width,
+    height,
+    4,
+    3,
+  );
+  const decodedData = await blurhash_wasm.decode(result, width, height);
+  const sheet = await blurhash_wasm.toCSSSheet(
+    result,
+    4,
+    3,
+  );
+  await fs.writeFile(
+    `./tests/${name}.blurhash-as.css`,
+    `.blurhash {\n${sheet}\n}`,
+  );
   return fs.writeFile(
     `./tests/${name}.blurhash-as.jpg`,
     Buffer.from(imageEncode(decodedData, [width, height], 'jpg'))
@@ -27,22 +74,28 @@ async function runBlurhashAS(name, { data, width, height }) {
 
 function runTest(name, extension = 'jpg') {
   pixels(`./tests/${name}.${extension}`).then((result) => {
-    return b.suite(
-      name,
-     
-      b.add('blurhash-as', async () => {
-        await runBlurhashAS(name, result);
-      }),
-     
-      b.add('blurhash-ts', async () => {
-        await runBlurhashTS(name, result);
-      }),
-     
-      b.cycle(),
-      b.complete(),
-      b.save({ file: name, version: '1.0.0' }),
-      b.save({ file: name, format: 'chart.html' }),
-    );
+    if (RUN_BENCHMARK) {
+      return b.suite(
+        name,
+       
+        b.add('blurhash-as', async () => {
+          await runBlurhashAS(name, result);
+        }),
+       
+        b.add('blurhash-ts', async () => {
+          await runBlurhashTS(name, result);
+        }),
+       
+        b.cycle(),
+        b.complete(),
+        b.save({ file: name, version: '1.0.0' }),
+        b.save({ file: name, format: 'chart.html' }),
+      );
+    }
+    return Promise.all([
+      runBlurhashAS(name, result),
+      runBlurhashTS(name, result),
+    ]);
   }).catch((error) => {
     console.log(error);
   });
