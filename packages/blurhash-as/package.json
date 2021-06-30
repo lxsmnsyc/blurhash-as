@@ -21,6 +21,12 @@
   "engines": {
     "node": ">=10"
   },
+  "keywords": [
+    "blurhash",
+    "wasm",
+    "webassembly",
+    "assemblyscript"
+  ],
   "license": "MIT",
   "dependencies": {
     "@assemblyscript/loader": "^0.19.4"
