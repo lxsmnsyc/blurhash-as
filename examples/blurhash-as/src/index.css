@@ -72,7 +72,9 @@ body {
   left: 0;
 
   transition: opacity 200ms;
+}
 
+.blurscale {
   filter: blur(24px);
   transform: scale(1.5);
 }

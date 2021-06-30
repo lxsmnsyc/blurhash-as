@@ -154,7 +154,7 @@ export default function App(): JSX.Element {
               <div className="aspect-ratio-content">
                 <div className="image-container">
                   <img className={`src ${(skeleton || placeholder) ? 'hidden' : ''}`} src={imageSrc} alt="" />
-                  <div className={`placeholder ${(skeleton || !placeholder) ? 'hidden' : ''}`} style={cssObject} />
+                  <div className={`placeholder blurscale ${(skeleton || !placeholder) ? 'hidden' : ''}`} style={cssObject} />
                   <div className={`skeleton ${!skeleton ? 'hidden' : ''}`} />
                 </div>
               </div>
@@ -166,7 +166,7 @@ export default function App(): JSX.Element {
               <div className="aspect-ratio-content">
                 <div className="image-container">
                   <img className={`src ${(skeleton || placeholder) ? 'hidden' : ''}`} src={imageSrc} alt="" />
-                  <img className={`placeholder ${(skeleton || !placeholder) ? 'hidden' : ''}`} src={svgSrc} alt="" />
+                  <img className={`placeholder blurscale ${(skeleton || !placeholder) ? 'hidden' : ''}`} src={svgSrc} alt="" />
                   <div className={`skeleton ${!skeleton ? 'hidden' : ''}`} />
                 </div>
               </div>
