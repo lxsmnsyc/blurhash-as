@@ -33,10 +33,10 @@ const imageData = await blurhash.decode(hash, width, height, punch);
 // to use a dimension with the same aspect ratio as your component dimensions.
 
 // Generate a CSS sheet
-const sheet = await blurhash.toCSSSheet(hash, width, height, punch);
+const sheet = await blurhash.toCSSSheet(hash, xComponent, yComponent, punch);
 
 // Or generate a Style Object
-const style = await blurhash.toCSSObject(hash, width, height, punch);
+const style = await blurhash.toCSSObject(hash, xComponent, yComponent, punch);
 ```
 
 ### Browser

@@ -61,6 +61,9 @@ export function toCSSSheet(
   const decodedData = decode(blurhash, width, height, punch);
 
   if (decodedData) {
+    if (width * height * 4 !== decodedData.length) {
+      return null;
+    }
     return `
 background-image: ${getGradients(decodedData, width, height)};
 background-position: ${getPosition(height)};
@@ -81,6 +84,9 @@ export function toCSSObject(
   const decodedData = decode(blurhash, width, height, punch);
 
   if (decodedData) {
+    if (width * height * 4 !== decodedData.length) {
+      return null;
+    }
     return `{
 "backgroundImage": "${getGradients(decodedData, width, height)}",
 "backgroundPosition": "${getPosition(height)}",
