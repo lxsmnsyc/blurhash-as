@@ -111,8 +111,8 @@ function runTest(name, extension = 'jpg') {
 }
 
 blurhash_wasm.init().then(() => {
-  runTest('example');
-  // runTest('example-2');
-  // runTest('example-3');
-  // runTest('example-4');
+  // runTest('example');
+  runTest('example-2');
+  runTest('example-3');
+  runTest('example-4');
 });

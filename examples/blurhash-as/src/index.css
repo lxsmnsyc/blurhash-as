@@ -76,7 +76,7 @@ body {
 
 .blurscale {
   filter: blur(24px);
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 
 .hash-container {

@@ -40,8 +40,8 @@ export default function App(): JSX.Element {
 
         const sheet = await blurhash.toCSSObject(
           encoded,
-          4,
-          3,
+          8,
+          6,
         );
 
         if (sheet && mounted) {
@@ -50,8 +50,8 @@ export default function App(): JSX.Element {
 
         const svg = await blurhash.toSVG(
           encoded,
-          4,
-          3,
+          8,
+          6,
         );
 
         if (svg && mounted) {
