@@ -10,6 +10,7 @@ export default function App(): JSX.Element {
 
   const [hash, setHash] = useState<string>();
   const [imageSrc, setImageSrc] = useState('');
+  const [svgSrc, setSVGSrc] = useState('');
   const [cssObject, setCSSObject] = useState<CSSProperties>();
 
   const [refresh, setRefresh] = useState(0);
@@ -18,6 +19,7 @@ export default function App(): JSX.Element {
     setSkeleton(true);
     setHash(undefined);
     setImageSrc('');
+    setSVGSrc('');
     setCSSObject(undefined);
 
     let mounted = true;
@@ -42,8 +44,21 @@ export default function App(): JSX.Element {
 
         if (sheet && mounted) {
           setCSSObject(sheet);
-          setSkeleton(false);
         }
+
+        const svg = await blurhash.toSVG(
+          encoded,
+          4,
+          3,
+        );
+
+        if (svg && mounted) {
+          const encodedSVG = encodeURIComponent(svg);
+          const dataUri = `data:image/svg+xml,${encodedSVG}`;
+          setSVGSrc(dataUri);
+        }
+
+        setSkeleton(false);
       }
     }
 
@@ -81,20 +96,58 @@ export default function App(): JSX.Element {
     };
   }, [refresh]);
 
+  let message: string;
+
+  if (hash) {
+    message = hash;
+  } else if (imageSrc) {
+    message = 'Processing hash...';
+  } else {
+    message = 'Preparing image...';
+  }
+
   return (
     <div className="page">
       <div className="container">
-        <div className="aspect-ratio-box">
-          <div className="aspect-ratio-content">
-            <div className="image-container">
-              <img className={`${(skeleton || placeholder) ? 'hidden' : ''}`} src={imageSrc} alt="" />
-              <div className={`placeholder ${(skeleton || !placeholder) ? 'hidden' : ''}`} style={cssObject} />
-              <div className={`skeleton ${!skeleton ? 'hidden' : ''}`} />
+        <div className="showcase">
+          <div className="showcase-item">
+            <h1>Original Image</h1>
+            <div className="aspect-ratio-box">
+              <div className="aspect-ratio-content">
+                <div className="image-container">
+                  <img className={`src ${(skeleton) ? 'hidden' : ''}`} src={imageSrc} alt="" />
+                  <div className={`skeleton ${!skeleton ? 'hidden' : ''}`} />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="showcase-item">
+            <h1>CSS-based Blurhash</h1>
+            <div className="aspect-ratio-box">
+              <div className="aspect-ratio-content">
+                <div className="image-container">
+                  <img className={`src ${(skeleton || placeholder) ? 'hidden' : ''}`} src={imageSrc} alt="" />
+                  <div className={`placeholder ${(skeleton || !placeholder) ? 'hidden' : ''}`} style={cssObject} />
+                  <div className={`skeleton ${!skeleton ? 'hidden' : ''}`} />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="showcase-item">
+            <h1>SVG-based Blurhash</h1>
+            <div className="aspect-ratio-box">
+              <div className="aspect-ratio-content">
+                <div className="image-container">
+                  <img className={`src ${(skeleton || placeholder) ? 'hidden' : ''}`} src={imageSrc} alt="" />
+                  <img className={`placeholder ${(skeleton || !placeholder) ? 'hidden' : ''}`} src={svgSrc} alt="" />
+                  <div className={`skeleton ${!skeleton ? 'hidden' : ''}`} />
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div className="hash-container">
-          <span className="hash">{hash ?? 'No hash'}</span>
+          <span className="hash">{message}</span>
         </div>
         <div className="">
           <button

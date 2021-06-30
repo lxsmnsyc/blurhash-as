@@ -19,7 +19,9 @@ body {
 
 .container {
   margin: 1rem;
-  width: 100vmin;
+
+  width: 100%;
+  height: 100%;
 
   display: flex;
   align-items: center;
@@ -29,7 +31,7 @@ body {
 }
 
 .aspect-ratio-box {
-  margin: 0.5rem;
+  margin: 0.25rem;
 
   position: relative;
 
@@ -55,7 +57,7 @@ body {
   overflow: hidden;
 }
 
-.image-container img {
+.src {
   width: 100%;
   height: auto;
 
@@ -95,9 +97,30 @@ body {
   transition: opacity 200ms;
 }
 
+.showcase {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.showcase-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  margin: 0.5rem;
+}
+
 .hidden {
   opacity: 0;
   animation: none;
+}
+
+h1 {
+  font-size: 1rem;
 }
 
 button {
@@ -124,5 +147,11 @@ button {
   }
   50% {
     opacity: .5;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .showcase {
+    flex-direction: column;
   }
 }
