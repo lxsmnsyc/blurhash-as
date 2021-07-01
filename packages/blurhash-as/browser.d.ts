@@ -6,28 +6,28 @@ export function encode(
   height: number,
   xComponent: number,
   yComponent: number,
-): Promise<string | null>;
+): Promise<string>;
 export function decode(
   blurhash: string,
   width: number,
   height: number,
   punch?: number,
-): Promise<Uint8ClampedArray | null>;
+): Promise<Uint8ClampedArray>;
 export function toCSSSheet(
   blurhash: string,
   width: number,
   height: number,
   punch?: number,
-): Promise<string | null>;
+): Promise<string>;
 export function toCSSObject(
   blurhash: string,
   width: number,
   height: number,
   punch?: number,
-): Promise<Record<string, string> | null>;
+): Promise<Record<string, string>>;
 export function toSVG(
   blurhash: string,
   width: number,
   height: number,
   punch?: number,
-): Promise<string | null>;
+): Promise<string>;
