@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties } from 'react';
 
 function gcd(a: number, b: number): number {
   if (b === 0) {
