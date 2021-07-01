@@ -27,7 +27,7 @@ export default function BlurhashSVGPlaceholder(
       className="blurhash-as__placeholder"
       style={{
         ...CSS_PLACEHOLDER,
-        filter: `blur(${filter ?? '24px'})`,
+        filter: `blur(${filter ?? '20px'})`,
         transform: `scale(${scale ?? '1.2'})`,
         opacity: visible ? 1 : 0,
       }}

@@ -30,7 +30,7 @@ export default function BlurhashCSSPlaceholder(
       style={{
         ...CSS_PLACEHOLDER,
         ...result,
-        filter: `blur(${filter ?? '24px'})`,
+        filter: `blur(${filter ?? '20px'})`,
         transform: `scale(${scale ?? '1.2'})`,
         opacity: visible ? '1' : '0',
       }}

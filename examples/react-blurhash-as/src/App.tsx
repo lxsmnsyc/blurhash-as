@@ -68,6 +68,7 @@ function ImageShowcase({ src, hash }: ImageShowcaseProps): JSX.Element {
           alt="CSS"
           width={WIDTH}
           height={HEIGHT}
+          format="image/webp"
         />
       </div>
     </div>
