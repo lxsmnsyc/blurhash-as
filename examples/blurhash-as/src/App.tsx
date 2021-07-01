@@ -35,7 +35,7 @@ export default function App(): JSX.Element {
         3,
       );
 
-      if (encoded && mounted) {
+      if (mounted) {
         setHash(encoded);
 
         const sheet = await blurhash.toCSSObject(
@@ -44,7 +44,7 @@ export default function App(): JSX.Element {
           6,
         );
 
-        if (sheet && mounted) {
+        if (mounted) {
           setCSSObject(sheet);
         }
 
@@ -54,7 +54,7 @@ export default function App(): JSX.Element {
           6,
         );
 
-        if (svg && mounted) {
+        if (mounted) {
           const encodedSVG = encodeURIComponent(svg);
           const dataUri = `data:image/svg+xml,${encodedSVG}`;
           setSVGSrc(dataUri);
@@ -66,7 +66,7 @@ export default function App(): JSX.Element {
           768,
         );
 
-        if (decoded && mounted) {
+        if (mounted) {
           setBuffer(decoded);
         }
 
