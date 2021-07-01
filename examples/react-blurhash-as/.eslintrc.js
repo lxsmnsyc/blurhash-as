@@ -8,6 +8,10 @@ module.exports = {
     "tsconfigRootDir": __dirname,
   },
   "rules": {
-    "react/jsx-props-no-spreading": "off"
-  }
+    "import/no-extraneous-dependencies": [
+      "error", {
+        "devDependencies": ["**/*.test.tsx"]
+      }
+    ],
+  },
 };
