@@ -70,14 +70,7 @@ export default function encode(
   height: i32,
   componentX: i32,
   componentY: i32,
-): string | null {
-  if (componentX < 1 || componentX > 9 || componentY < 1 || componentY > 9) {
-    return null;
-  }
-  if (width * height * 4 !== pixels.length) {
-    return null;
-  }
-
+): string {
   const factors: StaticArray<StaticArray<f32>> = new StaticArray(componentX * componentY);
   for (let y = 0; y < componentY; y += 1) {
     for (let x = 0; x < componentX; x += 1) {
