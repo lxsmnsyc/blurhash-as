@@ -59,10 +59,10 @@ body {
 }
 
 
-.blurhash-as__placeholder {
+.blurhash-as__placeholder, .blurhash-as__image {
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+  transition-duration: 400ms;
 }
 
 .image-container > img {

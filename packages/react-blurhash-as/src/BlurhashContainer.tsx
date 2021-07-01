@@ -54,6 +54,7 @@ export default function BlurhashContainer(
             visible && (
               <>
                 <img
+                  className="blurhash-as__image"
                   src={defer ? getEmptyImageURL({ width, height }) : src}
                   alt={alt}
                   onLoad={() => {
@@ -62,7 +63,10 @@ export default function BlurhashContainer(
                       onLoad?.();
                     }
                   }}
-                  style={IMAGE}
+                  style={{
+                    ...IMAGE,
+                    opacity: showPlaceholder ? 0 : 1,
+                  }}
                 />
                 <BlurhashBoundary width={width} height={height}>
                   {children(showPlaceholder, onPlaceholderLoad)}
