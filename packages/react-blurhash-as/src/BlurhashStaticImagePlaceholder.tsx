@@ -4,19 +4,19 @@ import { CSS_PLACEHOLDER } from './utils';
 
 export interface BlurhashStaticImagePlaceholderProps extends BlurhashStaticOptions {
   visible: boolean;
-  src: string;
+  placeholder: string;
 }
 
 export default function BlurhashStaticImagePlaceholder(
   {
     visible,
     onLoad,
-    src,
+    placeholder,
   }: BlurhashStaticImagePlaceholderProps,
 ): JSX.Element {
   return (
     <img
-      src={src}
+      src={placeholder}
       alt="Blurhash Placeholder"
       className="blurhash-as__placeholder"
       style={{

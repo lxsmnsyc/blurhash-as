@@ -6,7 +6,7 @@ export interface BlurhashStaticSVGPlaceholderProps extends BlurhashStaticOptions
   visible: boolean;
   filter?: string;
   scale?: number;
-  code: string;
+  placeholder: string;
 }
 
 export default function BlurhashStaticSVGPlaceholder(
@@ -15,12 +15,12 @@ export default function BlurhashStaticSVGPlaceholder(
     filter,
     scale,
     onLoad,
-    code,
+    placeholder,
   }: BlurhashStaticSVGPlaceholderProps,
 ): JSX.Element {
   return (
     <img
-      src={getEncodedSVG(code)}
+      src={getEncodedSVG(placeholder)}
       alt="Blurhash Placeholder"
       className="blurhash-as__placeholder"
       style={{

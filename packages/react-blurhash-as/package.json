@@ -16,7 +16,10 @@
   },
   "license": "MIT",
   "keywords": [
-    "pridepack"
+    "pridepack",
+    "react",
+    "blurhash",
+    "blurhash-as"
   ],
   "name": "react-blurhash-as",
   "devDependencies": {
@@ -27,6 +30,7 @@
     "pridepack": "^0.10.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "rollup-plugin-blurhash-as": "^0.3.0",
     "tslib": "^2.3.0",
     "typescript": "^4.3.4"
   },
@@ -59,6 +63,7 @@
   "author": "Alexis Munsayac",
   "private": false,
   "dependencies": {
+    "blurhash-as": "^0.3.0",
     "react-laze": "^0.2.0"
   }
 }

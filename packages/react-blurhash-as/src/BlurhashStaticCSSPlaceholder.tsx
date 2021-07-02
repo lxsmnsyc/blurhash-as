@@ -6,7 +6,7 @@ export interface BlurhashStaticCSSPlaceholderProps extends BlurhashStaticOptions
   filter?: string;
   scale?: number;
   visible: boolean;
-  style: CSSProperties;
+  placeholder: CSSProperties;
 }
 
 export default function BlurhashStaticCSSPlaceholder(
@@ -15,7 +15,7 @@ export default function BlurhashStaticCSSPlaceholder(
     filter,
     scale,
     onLoad,
-    style,
+    placeholder,
   }: BlurhashStaticCSSPlaceholderProps,
 ): JSX.Element {
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function BlurhashStaticCSSPlaceholder(
       className="blurhash-as__placeholder"
       style={{
         ...CSS_PLACEHOLDER,
-        ...style,
+        ...placeholder,
         filter: `blur(${filter ?? '20px'})`,
         transform: `scale(${scale ?? '1.2'})`,
         opacity: visible ? '1' : '0',

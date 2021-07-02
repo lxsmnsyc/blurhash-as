@@ -35,7 +35,6 @@ function getResult(
 ): Promise<CSSProperties | string | Uint8ClampedArray> {
   const originalAspectRatio = getAspectRatio(options);
   const correctedAspectRatio = getNearestAspectRatio(originalAspectRatio);
-  console.log(originalAspectRatio, correctedAspectRatio);
   switch (mode) {
     case 'css':
       return toCSSObject(
