@@ -1,4 +1,4 @@
-import { Plugin } from 'esbuild';
+import { OnLoadArgs, OnLoadResult, Plugin } from 'esbuild';
 import * as blurhash from 'blurhash-as';
 import pixels from 'image-pixels';
 import encodeImage from 'image-encode';
@@ -7,6 +7,39 @@ import { getAspectRatio, getNearestAspectRatio, getScaledComponentRatio } from '
 
 interface BlurhashConfig {
   rasterScale?: number;
+}
+
+function getLoad(
+  decode: (hash: string, width: number, height: number) => Promise<string | Record<string, string>>,
+): (args: OnLoadArgs) => Promise<OnLoadResult> {
+  return async (args) => {
+    const { dir, name, ext } = path.parse(args.path);
+    const originalPath = `${dir}/${name}${ext.split('?')[0]}`;
+    const imageData = await pixels(originalPath);
+    const aspectRatio = getAspectRatio(imageData);
+    const correctRatio = getNearestAspectRatio(aspectRatio);
+    const component = getScaledComponentRatio(correctRatio);
+    const encodedHash = await blurhash.encode(
+      imageData.data,
+      imageData.width,
+      imageData.height,
+      component.width,
+      component.height,
+    );
+    const result = await decode(
+      encodedHash,
+      component.width,
+      component.height,
+    );
+    return {
+      contents: `
+export const hash = ${JSON.stringify(encodedHash)};
+export const placeholder = ${JSON.stringify(result, null, 2)};
+export { default as source } from ${JSON.stringify(originalPath)};
+      `,
+      resolveDir: dir,
+    };
+  };
 }
 
 export default function blurhashASPlugin(
@@ -41,137 +74,58 @@ export default function blurhashASPlugin(
         namespace: 'blurhash-as-png',
       }));
 
-      // CSS Handler
-      build.onLoad({ filter: /.*/, namespace: 'blurhash-as-css' }, async (args) => {
-        const { dir, name, ext } = path.parse(args.path);
-        const originalPath = `${dir}/${name}${ext.split('?')[0]}`;
-        const imageData = await pixels(originalPath);
-        const aspectRatio = getAspectRatio(imageData);
-        const correctRatio = getNearestAspectRatio(aspectRatio);
-        const component = getScaledComponentRatio(correctRatio);
-        const encodedHash = await blurhash.encode(
-          imageData.data,
-          imageData.width,
-          imageData.height,
-          component.width,
-          component.height,
-        );
-        const decodedStyle = await blurhash.toCSSObject(
-          encodedHash,
-          correctRatio.width,
-          correctRatio.height,
-        );
-        return {
-          contents: `
-export const hash = ${JSON.stringify(encodedHash)};
-export const style = ${JSON.stringify(decodedStyle, null, 2)};
-export { default as source } from ${JSON.stringify(originalPath)};
-          `,
-          resolveDir: dir,
-        };
-      });
-
-      // SVG Handler
-      build.onLoad({ filter: /.*/, namespace: 'blurhash-as-svg' }, async (args) => {
-        const { dir, name, ext } = path.parse(args.path);
-        const originalPath = `${dir}/${name}${ext.split('?')[0]}`;
-        const imageData = await pixels(originalPath);
-        const aspectRatio = getAspectRatio(imageData);
-        const correctRatio = getNearestAspectRatio(aspectRatio);
-        const component = getScaledComponentRatio(correctRatio);
-        const encodedHash = await blurhash.encode(
-          imageData.data,
-          imageData.width,
-          imageData.height,
-          component.width,
-          component.height,
-        );
-        const decodedStyle = await blurhash.toSVG(
-          encodedHash,
-          correctRatio.width,
-          correctRatio.height,
-        );
-        return {
-          contents: `
-export const hash = ${JSON.stringify(encodedHash)};
-export const svg = ${JSON.stringify(decodedStyle, null, 2)};
-export { default as source } from ${JSON.stringify(originalPath)};
-          `,
-          resolveDir: dir,
-        };
-      });
-      // JPG
-      build.onLoad({ filter: /.*/, namespace: 'blurhash-as-jpeg' }, async (args) => {
-        const { dir, name, ext } = path.parse(args.path);
-        const originalPath = `${dir}/${name}${ext.split('?')[0]}`;
-        const imageData = await pixels(originalPath);
-        const aspectRatio = getAspectRatio(imageData);
-        const correctRatio = getNearestAspectRatio(aspectRatio);
-        const component = getScaledComponentRatio(correctRatio);
-        const encodedHash = await blurhash.encode(
-          imageData.data,
-          imageData.width,
-          imageData.height,
-          component.width,
-          component.height,
-        );
-        const decodedBytes = await blurhash.decode(
-          encodedHash,
-          correctRatio.width * rasterScale,
-          correctRatio.height * rasterScale,
-        );
-        const encodedData = encodeImage(
-          decodedBytes,
-          [correctRatio.width * rasterScale, correctRatio.height * rasterScale],
-          'jpg',
-        );
-        const encodedBuffer = Buffer.from(encodedData);
-        const b64 = encodedBuffer.toString('base64');
-        return {
-          contents: `
-export const hash = ${JSON.stringify(encodedHash)};
-export const image = ${JSON.stringify(`data:image/jpeg;base64,${b64}`, null, 2)};
-export { default as source } from ${JSON.stringify(originalPath)};
-          `,
-          resolveDir: dir,
-        };
-      });
-      // PNG
-      build.onLoad({ filter: /.*/, namespace: 'blurhash-as-png' }, async (args) => {
-        const { dir, name, ext } = path.parse(args.path);
-        const originalPath = `${dir}/${name}${ext.split('?')[0]}`;
-        const imageData = await pixels(originalPath);
-        const aspectRatio = getAspectRatio(imageData);
-        const correctRatio = getNearestAspectRatio(aspectRatio);
-        const component = getScaledComponentRatio(correctRatio);
-        const encodedHash = await blurhash.encode(
-          imageData.data,
-          imageData.width,
-          imageData.height,
-          component.width,
-          component.height,
-        );
-        const decodedBytes = await blurhash.decode(
-          encodedHash,
-          correctRatio.width * rasterScale,
-          correctRatio.height * rasterScale,
-        );
-        const encodedData = encodeImage(
-          decodedBytes,
-          [correctRatio.width * rasterScale, correctRatio.height * rasterScale],
-          'png',
-        );
-        const encodedBuffer = Buffer.from(encodedData);
-        const b64 = encodedBuffer.toString('base64');
-        return {
-          contents: `
-export const hash = ${JSON.stringify(encodedHash)};
-export const image = ${JSON.stringify(`data:image/png;base64,${b64}`, null, 2)};
-export { default as source } from ${JSON.stringify(originalPath)};
-          `,
-          resolveDir: dir,
-        };
-      });
+      build.onLoad(
+        { filter: /.*/, namespace: 'blurhash-as-css' },
+        getLoad(
+          (hash, width, height) => blurhash.toCSSObject(hash, width, height),
+        ),
+      );
+      build.onLoad(
+        { filter: /.*/, namespace: 'blurhash-as-svg' },
+        getLoad(
+          (hash, width, height) => blurhash.toCSSObject(hash, width, height),
+        ),
+      );
+      build.onLoad(
+        { filter: /.*/, namespace: 'blurhash-as-jpeg' },
+        getLoad(
+          async (hash, width, height) => {
+            const decodedBytes = await blurhash.decode(
+              hash,
+              width * rasterScale,
+              height * rasterScale,
+            );
+            const encodedData = encodeImage(
+              decodedBytes,
+              [width * rasterScale, height * rasterScale],
+              'jpg',
+            );
+            const encodedBuffer = Buffer.from(encodedData);
+            const b64 = encodedBuffer.toString('base64');
+            return `data:image/jpeg;base64,${b64}`;
+          },
+        ),
+      );
+      build.onLoad(
+        { filter: /.*/, namespace: 'blurhash-as-png' },
+        getLoad(
+          async (hash, width, height) => {
+            const decodedBytes = await blurhash.decode(
+              hash,
+              width * rasterScale,
+              height * rasterScale,
+            );
+            const encodedData = encodeImage(
+              decodedBytes,
+              [width * rasterScale, height * rasterScale],
+              'png',
+            );
+            const encodedBuffer = Buffer.from(encodedData);
+            const b64 = encodedBuffer.toString('base64');
+            return `data:image/png;base64,${b64}`;
+          },
+        ),
+      );
     },
   };
 }

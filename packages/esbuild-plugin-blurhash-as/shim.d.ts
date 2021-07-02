@@ -1,4 +1,3 @@
-
 declare module '*?blurhash=css' {
   export interface BlurhashStyle {
     backgroundImage: string;
@@ -9,29 +8,29 @@ declare module '*?blurhash=css' {
 
   export const hash: string;
   export const source: string;
-  export const style: BlurhashStyle;
+  export const placeholder: BlurhashStyle;
 }
 
 declare module '*?blurhash=svg' {
   export const hash: string;
   export const source: string;
-  export const svg: string;
+  export const placeholder: string;
 }
 
 declare module '*?blurhash=png' {
   export const hash: string;
   export const source: string;
-  export const image: string;
+  export const placeholder: string;
 }
 
 declare module '*?blurhash=jpg' {
   export const hash: string;
   export const source: string;
-  export const image: string;
+  export const placeholder: string;
 }
 
 declare module '*?blurhash=webp' {
   export const hash: string;
   export const source: string;
-  export const image: string;
+  export const placeholder: string;
 }
