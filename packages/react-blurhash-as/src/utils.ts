@@ -60,7 +60,7 @@ export function getNearestAspectRatio(ratio: AspectRatio): AspectRatio {
 
     if (i === 0) {
       nearest = distance;
-    } else if (nearest < distance) {
+    } else if (distance < nearest) {
       id = i;
       nearest = distance;
     }
