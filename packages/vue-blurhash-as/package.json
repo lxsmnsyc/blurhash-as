@@ -42,5 +42,8 @@
     "test": "pridepack test --passWithNoTests",
     "clean": "pridepack clean",
     "watch": "pridepack watch"
+  },
+  "dependencies": {
+    "blurhash-as": "^0.3.0"
   }
 }
