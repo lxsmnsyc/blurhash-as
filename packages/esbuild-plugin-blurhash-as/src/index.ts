@@ -3,7 +3,11 @@ import * as blurhash from 'blurhash-as';
 import pixels from 'image-pixels';
 import encodeImage from 'image-encode';
 import path from 'path';
-import { getAspectRatio, getNearestAspectRatio, getScaledComponentRatio } from './utils';
+import {
+  getAspectRatio,
+  getNearestAspectRatio,
+  getScaledComponentRatio,
+} from './utils';
 
 interface BlurhashConfig {
   rasterScale?: number;
@@ -33,9 +37,12 @@ function getLoad(
     );
     return {
       contents: `
-export const hash = ${JSON.stringify(encodedHash)};
-export const placeholder = ${JSON.stringify(result, null, 2)};
-export { default as source } from ${JSON.stringify(originalPath)};
+import source from ${JSON.stringify(originalPath)};
+export default {
+  hash: ${JSON.stringify(encodedHash)},
+  placeholder: ${JSON.stringify(result, null, 2)},
+  source,
+};
       `,
       resolveDir: dir,
     };
@@ -83,7 +90,7 @@ export default function blurhashASPlugin(
       build.onLoad(
         { filter: /.*/, namespace: 'blurhash-as-svg' },
         getLoad(
-          (hash, width, height) => blurhash.toCSSObject(hash, width, height),
+          (hash, width, height) => blurhash.toSVG(hash, width, height),
         ),
       );
       build.onLoad(

@@ -5,32 +5,51 @@ declare module '*?blurhash=css' {
     backgroundSize: string;
     backgroundRepeat: 'no-repeat';
   }
-
-  export const hash: string;
-  export const source: string;
-  export const placeholder: BlurhashStyle;
+  interface BlurhashModule {
+    hash: string;
+    source: string;
+    placeholder: BlurhashStyle;
+  }
+  const mod: BlurhashModule;
+  export default mod;
 }
 
 declare module '*?blurhash=svg' {
-  export const hash: string;
-  export const source: string;
-  export const placeholder: string;
+  interface BlurhashModule {
+    hash: string;
+    source: string;
+    placeholder: string;
+  }
+  const mod: BlurhashModule;
+  export default mod;
 }
 
 declare module '*?blurhash=png' {
-  export const hash: string;
-  export const source: string;
-  export const placeholder: string;
+  interface BlurhashModule {
+    hash: string;
+    source: string;
+    placeholder: string;
+  }
+  const mod: BlurhashModule;
+  export default mod;
 }
 
 declare module '*?blurhash=jpg' {
-  export const hash: string;
-  export const source: string;
-  export const placeholder: string;
+  interface BlurhashModule {
+    hash: string;
+    source: string;
+    placeholder: string;
+  }
+  const mod: BlurhashModule;
+  export default mod;
 }
 
 declare module '*?blurhash=webp' {
-  export const hash: string;
-  export const source: string;
-  export const placeholder: string;
+  interface BlurhashModule {
+    hash: string;
+    source: string;
+    placeholder: string;
+  }
+  const mod: BlurhashModule;
+  export default mod;
 }
