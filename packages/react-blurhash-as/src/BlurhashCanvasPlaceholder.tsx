@@ -1,7 +1,7 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 import { BlurhashOptions } from './types';
 import useBlurhashData from './useBlurhashData';
-import { CSS_PLACEHOLDER } from './utils';
+import { CSS_PLACEHOLDER, getAspectRatio, getNearestAspectRatio } from './utils';
 
 export interface BlurhashCanvasPlaceholderProps extends BlurhashOptions {
   visible: boolean;
@@ -24,6 +24,18 @@ export default function BlurhashCanvasPlaceholder(
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
+  const ratio = useMemo(() => {
+    const originalAspectRatio = getAspectRatio({
+      width,
+      height,
+    });
+    const corrected = getNearestAspectRatio(originalAspectRatio);
+    return {
+      width: corrected.width * 5,
+      height: corrected.height * 5,
+    };
+  }, [width, height]);
+
   useEffect(() => {
     const { current } = canvasRef;
     if (current) {
@@ -32,23 +44,27 @@ export default function BlurhashCanvasPlaceholder(
         return;
       }
 
-      current.width = width;
-      current.height = height;
+      current.width = ratio.width;
+      current.height = ratio.height;
 
-      ctx.clearRect(0, 0, width, height);
-      const imageData = ctx.createImageData(width, height);
+      ctx.clearRect(0, 0, ratio.width, ratio.height);
+      const imageData = ctx.createImageData(
+        ratio.width,
+        ratio.height,
+      );
+
       imageData.data.set(result);
       ctx.putImageData(imageData, 0, 0);
 
       onLoad?.();
     }
-  }, [result, width, height, onLoad]);
+  }, [result, ratio, onLoad]);
 
   return (
     <canvas
       ref={canvasRef}
-      width={width}
-      height={height}
+      width={ratio.width}
+      height={ratio.height}
       className="blurhash-as__placeholder"
       style={{
         ...CSS_PLACEHOLDER,

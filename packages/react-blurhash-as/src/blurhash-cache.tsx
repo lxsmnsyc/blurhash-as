@@ -35,6 +35,7 @@ function getResult(
 ): Promise<CSSProperties | string | Uint8ClampedArray> {
   const originalAspectRatio = getAspectRatio(options);
   const correctedAspectRatio = getNearestAspectRatio(originalAspectRatio);
+  console.log(originalAspectRatio, correctedAspectRatio);
   switch (mode) {
     case 'css':
       return toCSSObject(
@@ -53,8 +54,8 @@ function getResult(
     case 'canvas':
       return decode(
         options.hash,
-        options.width,
-        options.height,
+        correctedAspectRatio.width * 5,
+        correctedAspectRatio.height * 5,
         options.punch,
       );
     default:

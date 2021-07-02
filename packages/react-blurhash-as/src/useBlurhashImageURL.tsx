@@ -5,7 +5,7 @@ import {
 } from 'react';
 import { BlurhashOptions } from './types';
 import useBlurhashData from './useBlurhashData';
-import { getEmptyImageURL } from './utils';
+import { getAspectRatio, getEmptyImageURL, getNearestAspectRatio } from './utils';
 
 export type ImageFormat =
   | 'image/png'
@@ -45,9 +45,17 @@ export default function useBlurhashImageURL(
     if (!ctx) {
       return;
     }
-    canvas.width = width;
-    canvas.height = height;
-    const imageData = ctx.createImageData(width, height);
+    const originalAspectRatio = getAspectRatio({
+      width,
+      height,
+    });
+    const correctedAspectRatio = getNearestAspectRatio(originalAspectRatio);
+    canvas.width = correctedAspectRatio.width * 5;
+    canvas.height = correctedAspectRatio.height * 5;
+    const imageData = ctx.createImageData(
+      correctedAspectRatio.width * 5,
+      correctedAspectRatio.height * 5,
+    );
     imageData.data.set(blurhash);
     ctx.putImageData(imageData, 0, 0);
     setState(canvas.toDataURL(format, quality));
