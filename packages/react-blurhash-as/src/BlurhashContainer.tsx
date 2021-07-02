@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import useLaze from 'react-laze';
-import BlurhashBoundary from './BlurhashBoundary';
 import {
   getAspectRatioBoxStyle,
   ASPECT_RATIO_CONTENT,
@@ -68,9 +67,7 @@ export default function BlurhashContainer(
                     opacity: showPlaceholder ? 0 : 1,
                   }}
                 />
-                <BlurhashBoundary width={width} height={height}>
-                  {children(showPlaceholder, onPlaceholderLoad)}
-                </BlurhashBoundary>
+                {children(showPlaceholder, onPlaceholderLoad)}
               </>
             )
           }

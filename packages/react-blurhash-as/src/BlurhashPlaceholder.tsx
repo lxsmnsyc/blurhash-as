@@ -1,4 +1,5 @@
 import React from 'react';
+import BlurhashBoundary from './BlurhashBoundary';
 import BlurhashCanvasPlaceholder, { BlurhashCanvasPlaceholderProps } from './BlurhashCanvasPlaceholder';
 import BlurhashCSSPlaceholder, { BlurhashCSSPlaceholderProps } from './BlurhashCSSPlaceholder';
 import BlurhashImagePlaceholder, { BlurhashImagePlaceholderProps } from './BlurhashImagePlaceholder';
@@ -26,7 +27,7 @@ export type BlurhashPlaceholderProps =
   | BlurhashPlaceholderCanvasMode
   | BlurhashPlaceholderImageMode;
 
-function BlurhashPlaceholder(props: BlurhashPlaceholderProps): JSX.Element {
+function BlurhashPlaceholderInternal(props: BlurhashPlaceholderProps): JSX.Element {
   switch (props.mode) {
     case 'canvas':
       return <BlurhashCanvasPlaceholder {...props} />;
@@ -41,4 +42,19 @@ function BlurhashPlaceholder(props: BlurhashPlaceholderProps): JSX.Element {
   }
 }
 
-export default BlurhashPlaceholder;
+export default function BlurhashPlaceholder(
+  { width, height, ...props }: BlurhashPlaceholderProps,
+): JSX.Element {
+  return (
+    <BlurhashBoundary
+      width={width}
+      height={height}
+    >
+      <BlurhashPlaceholderInternal
+        width={width}
+        height={height}
+        {...props}
+      />
+    </BlurhashBoundary>
+  );
+}
