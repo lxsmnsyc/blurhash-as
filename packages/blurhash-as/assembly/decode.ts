@@ -60,18 +60,16 @@ export function decode(
   const numX: i32 = (sizeFlag % 9) + 1;
 
   const quantisedMaximumValue = decode83(blurhash.charAt(1));
-  const maximumValue: f32 = <f32>(quantisedMaximumValue + 1) / 166.0;
+  const maximumValue: f32 = (<f32>(quantisedMaximumValue + 1) / 166.0) * <f32>punch;
 
   const colors = new StaticArray<StaticArray<f32>>(numX * numY);
 
-  for (let i = 0; i < colors.length; i += 1) {
-    if (i === 0) {
-      const value = decode83(blurhash.substring(2, 6));
-      colors[i] = decodeDC(value);
-    } else {
-      const value = decode83(blurhash.substring(4 + i * 2, 6 + i * 2));
-      colors[i] = decodeAC(value, maximumValue * <f32>punch);
-    }
+  const value = decode83(blurhash.substring(2, 6));
+  colors[0] = decodeDC(value);
+
+  for (let i = 1; i < colors.length; i += 1) {
+    const value = decode83(blurhash.substring(4 + i * 2, 6 + i * 2));
+    colors[i] = decodeAC(value, maximumValue);
   }
 
   const bytesPerRow = width * 4;
@@ -84,11 +82,10 @@ export function decode(
       let b: f32 = 0.0;
 
       for (let j = 0; j < numY; j += 1) {
+        const yBasis = NativeMathf.cos((NativeMathf.PI * <f32>(y * j)) / <f32>height);
         for (let i = 0; i < numX; i += 1) {
-          const basis = (
-            NativeMathf.cos((NativeMathf.PI * <f32>(x * i)) / <f32>width)
-            * NativeMathf.cos((NativeMathf.PI * <f32>(y * j)) / <f32>height)
-          );
+          const xBasis = NativeMathf.cos((NativeMathf.PI * <f32>(x * i)) / <f32>width);
+          const basis = xBasis * yBasis;
           const color = colors[i + j * numX];
           r += color[0] * basis;
           g += color[1] * basis;

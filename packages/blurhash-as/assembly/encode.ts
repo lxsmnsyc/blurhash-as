@@ -18,8 +18,8 @@ function multiplyBasisFunction(
   const normalization: f32 = (xComponent === 0 && yComponent === 0) ? 1 : 2;
 
   for (let x = 0; x < width; x += 1) {
+    const xBasis = NativeMathf.cos((NativeMathf.PI * <f32>(xComponent * x)) / <f32>width);
     for (let y = 0; y < height; y += 1) {
-      const xBasis = NativeMathf.cos((NativeMathf.PI * <f32>(xComponent * x)) / <f32>width);
       const yBasis = NativeMathf.cos((NativeMathf.PI * <f32>(yComponent * y)) / <f32>height);
       const basis = xBasis * yBasis;
       r += basis * SRGBToLinear(pixels[4 * x + 0 + y * bytesPerRow]);
