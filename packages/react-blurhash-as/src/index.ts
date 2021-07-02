@@ -12,3 +12,4 @@ export * from './types';
 
 export * from './BlurhashContainer';
 export * from './BlurhashPlaceholder';
+export * from './BlurhashStaticPlaceholder';

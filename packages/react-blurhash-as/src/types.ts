@@ -7,3 +7,7 @@ export interface BlurhashOptions {
   punch?: number;
   onLoad?: () => void;
 }
+
+export interface BlurhashStaticOptions {
+  onLoad?: () => void;
+}
