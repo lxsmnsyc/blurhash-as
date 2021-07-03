@@ -28,8 +28,8 @@ function getLoad(
     );
     const result = await decode(
       encodedHash,
-      component.width,
-      component.height,
+      correctRatio.width,
+      correctRatio.height,
     );
     return `
 import source from ${JSON.stringify(originalPath)};
