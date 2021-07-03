@@ -1,5 +1,5 @@
 import React from 'react';
-import BlurhashContainer from './BlurhashContainer';
+import BlurhashStaticContainer from './BlurhashStaticContainer';
 import BlurhashStaticPlaceholder, {
   BlurhashStaticPlaceholderCSSMode,
   BlurhashStaticPlaceholderImageMode,
@@ -40,7 +40,7 @@ function BlurhashStatic(
   }: BlurhashStaticProps,
 ): JSX.Element {
   return (
-    <BlurhashContainer
+    <BlurhashStaticContainer
       src={src}
       alt={alt}
       width={width}
@@ -56,7 +56,7 @@ function BlurhashStatic(
           {...props}
         />
       )}
-    </BlurhashContainer>
+    </BlurhashStaticContainer>
   );
 }
 
