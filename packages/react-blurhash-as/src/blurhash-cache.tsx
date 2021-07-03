@@ -33,28 +33,26 @@ function getResult(
   mode: 'css' | 'svg' | 'canvas',
   options: BlurhashOptions,
 ): Promise<CSSProperties | string | Uint8ClampedArray> {
-  const originalAspectRatio = getAspectRatio(options);
-  const correctedAspectRatio = getNearestAspectRatio(originalAspectRatio);
   switch (mode) {
     case 'css':
       return toCSSObject(
         options.hash,
-        correctedAspectRatio.width,
-        correctedAspectRatio.height,
+        options.width,
+        options.height,
         options.punch,
       );
     case 'svg':
       return toSVG(
         options.hash,
-        correctedAspectRatio.width,
-        correctedAspectRatio.height,
+        options.width,
+        options.height,
         options.punch,
       );
     case 'canvas':
       return decode(
         options.hash,
-        correctedAspectRatio.width * 5,
-        correctedAspectRatio.height * 5,
+        options.width * 5,
+        options.height * 5,
         options.punch,
       );
     default:
@@ -78,8 +76,10 @@ function getBlurhashCache(
   mode: 'css' | 'svg' | 'canvas',
   options: BlurhashOptions,
 ): Resource<CSSProperties | string | Uint8ClampedArray> {
+  const originalAspectRatio = getAspectRatio(options);
+  const { width, height } = getNearestAspectRatio(originalAspectRatio);
   const encodedHash = encodeURIComponent(options.hash);
-  const key = `?hash=${encodedHash}&mode=${mode}&width=${options.width}&height=${options.height}`;
+  const key = `?hash=${encodedHash}&mode=${mode}&width=${width}&height=${height}`;
   const resource = CACHE.get(key);
 
   if (resource) {
@@ -98,7 +98,11 @@ function getBlurhashCache(
       }
       state = {
         status: 'pending',
-        value: getResult(mode, options).then(
+        value: getResult(mode, {
+          ...options,
+          width,
+          height,
+        }).then(
           (value) => {
             state = {
               status: 'success',
