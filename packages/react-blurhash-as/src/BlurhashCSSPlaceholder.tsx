@@ -4,7 +4,7 @@ import useBlurhashCSS from './useBlurhashCSS';
 import { CSS_PLACEHOLDER } from './utils';
 
 export interface BlurhashCSSPlaceholderProps extends BlurhashOptions {
-  filter?: string;
+  blur?: string;
   scale?: number;
   visible: boolean;
 }
@@ -12,7 +12,7 @@ export interface BlurhashCSSPlaceholderProps extends BlurhashOptions {
 export default function BlurhashCSSPlaceholder(
   {
     visible,
-    filter,
+    blur,
     scale,
     onLoad,
     ...props
@@ -30,7 +30,7 @@ export default function BlurhashCSSPlaceholder(
       style={{
         ...CSS_PLACEHOLDER,
         ...result,
-        filter: `blur(${filter ?? '20px'})`,
+        filter: `blur(${blur ?? '20px'})`,
         transform: `scale(${scale ?? '1.2'})`,
         opacity: visible ? '1' : '0',
       }}

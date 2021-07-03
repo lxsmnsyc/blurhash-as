@@ -4,7 +4,7 @@ import { CSS_PLACEHOLDER, getEncodedSVG } from './utils';
 
 export interface BlurhashStaticSVGPlaceholderProps extends BlurhashStaticOptions {
   visible: boolean;
-  filter?: string;
+  blur?: string;
   scale?: number;
   placeholder: string;
 }
@@ -12,7 +12,7 @@ export interface BlurhashStaticSVGPlaceholderProps extends BlurhashStaticOptions
 export default function BlurhashStaticSVGPlaceholder(
   {
     visible,
-    filter,
+    blur,
     scale,
     onLoad,
     placeholder,
@@ -25,7 +25,7 @@ export default function BlurhashStaticSVGPlaceholder(
       className="blurhash-as__placeholder"
       style={{
         ...CSS_PLACEHOLDER,
-        filter: `blur(${filter ?? '20px'})`,
+        filter: `blur(${blur ?? '20px'})`,
         transform: `scale(${scale ?? '1.2'})`,
         opacity: visible ? 1 : 0,
       }}

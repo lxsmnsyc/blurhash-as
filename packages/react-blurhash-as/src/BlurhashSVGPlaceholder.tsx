@@ -5,14 +5,14 @@ import { CSS_PLACEHOLDER, getEncodedSVG } from './utils';
 
 export interface BlurhashSVGPlaceholderProps extends BlurhashOptions {
   visible: boolean;
-  filter?: string;
+  blur?: string;
   scale?: number;
 }
 
 export default function BlurhashSVGPlaceholder(
   {
     visible,
-    filter,
+    blur,
     scale,
     onLoad,
     ...props
@@ -27,7 +27,7 @@ export default function BlurhashSVGPlaceholder(
       className="blurhash-as__placeholder"
       style={{
         ...CSS_PLACEHOLDER,
-        filter: `blur(${filter ?? '20px'})`,
+        filter: `blur(${blur ?? '20px'})`,
         transform: `scale(${scale ?? '1.2'})`,
         opacity: visible ? 1 : 0,
       }}
