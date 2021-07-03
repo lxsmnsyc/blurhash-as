@@ -9,6 +9,8 @@ declare module '*?blurhash=css' {
     hash: string;
     source: string;
     placeholder: BlurhashStyle;
+    width: number;
+    height: number;
   }
   const mod: BlurhashModule;
   export default mod;
@@ -19,6 +21,8 @@ declare module '*?blurhash=svg' {
     hash: string;
     source: string;
     placeholder: string;
+    width: number;
+    height: number;
   }
   const mod: BlurhashModule;
   export default mod;
@@ -29,6 +33,8 @@ declare module '*?blurhash=png' {
     hash: string;
     source: string;
     placeholder: string;
+    width: number;
+    height: number;
   }
   const mod: BlurhashModule;
   export default mod;
@@ -39,6 +45,8 @@ declare module '*?blurhash=jpg' {
     hash: string;
     source: string;
     placeholder: string;
+    width: number;
+    height: number;
   }
   const mod: BlurhashModule;
   export default mod;
@@ -49,6 +57,8 @@ declare module '*?blurhash=webp' {
     hash: string;
     source: string;
     placeholder: string;
+    width: number;
+    height: number;
   }
   const mod: BlurhashModule;
   export default mod;

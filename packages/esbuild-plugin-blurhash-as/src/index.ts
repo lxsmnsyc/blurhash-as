@@ -42,6 +42,8 @@ export default {
   hash: ${JSON.stringify(encodedHash)},
   placeholder: ${JSON.stringify(result, null, 2)},
   source,
+  width: ${JSON.stringify(imageData.width)},
+  height: ${JSON.stringify(imageData.height)}
 };
       `,
       resolveDir: dir,
