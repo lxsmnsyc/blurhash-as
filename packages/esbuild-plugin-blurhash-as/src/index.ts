@@ -68,7 +68,7 @@ export default function blurhashASPlugin(
         path: args.path,
         namespace: 'blurhash-as-jpeg',
       }));
-      build.onResolve({ filter: /\.(png|jpg)\?blurhash=png/ }, (args) => ({
+      build.onResolve({ filter: /\.(png|jpg)\?blurhash(=png)?/ }, (args) => ({
         path: args.path,
         namespace: 'blurhash-as-png',
       }));
@@ -76,10 +76,6 @@ export default function blurhashASPlugin(
       //   path: args.path,
       //   namespace: 'blurhash-as-webp',
       // }));
-      build.onResolve({ filter: /\.(png|jpg)\?blurhash/ }, (args) => ({
-        path: args.path,
-        namespace: 'blurhash-as-png',
-      }));
 
       build.onLoad(
         { filter: /.*/, namespace: 'blurhash-as-css' },
