@@ -9,9 +9,6 @@ import svg from './example.jpg?blurhash=svg';
 import jpg from './example.jpg?blurhash=jpg';
 import png from './example.jpg?blurhash=png';
 
-const WIDTH = 1280;
-const HEIGHT = 720;
-
 export default function StaticDemo(): JSX.Element {
   return (
     <div className="showcase">
@@ -33,8 +30,8 @@ export default function StaticDemo(): JSX.Element {
             src={css.source}
             placeholder={css.placeholder}
             alt="CSS"
-            width={WIDTH}
-            height={HEIGHT}
+            width={css.width}
+            height={css.height}
           />
           <div className="aspect-ratio-box">
             <div className="aspect-ratio-content">
@@ -43,8 +40,8 @@ export default function StaticDemo(): JSX.Element {
                   visible
                   mode="css"
                   placeholder={css.placeholder}
-                  width={WIDTH}
-                  height={HEIGHT}
+                  width={css.width}
+                  height={css.height}
                 />
               </div>
             </div>
@@ -58,9 +55,9 @@ export default function StaticDemo(): JSX.Element {
             mode="svg"
             src={svg.source}
             placeholder={svg.placeholder}
-            alt="CSS"
-            width={WIDTH}
-            height={HEIGHT}
+            alt="SVG"
+            width={svg.width}
+            height={svg.height}
           />
           <div className="aspect-ratio-box">
             <div className="aspect-ratio-content">
@@ -69,8 +66,8 @@ export default function StaticDemo(): JSX.Element {
                   visible
                   mode="svg"
                   placeholder={svg.placeholder}
-                  width={WIDTH}
-                  height={HEIGHT}
+                  width={svg.width}
+                  height={svg.height}
                 />
               </div>
             </div>
@@ -84,9 +81,9 @@ export default function StaticDemo(): JSX.Element {
             mode="image"
             src={jpg.source}
             placeholder={jpg.placeholder}
-            alt="CSS"
-            width={WIDTH}
-            height={HEIGHT}
+            alt="JPEG"
+            width={jpg.width}
+            height={jpg.height}
           />
           <div className="aspect-ratio-box">
             <div className="aspect-ratio-content">
@@ -95,8 +92,8 @@ export default function StaticDemo(): JSX.Element {
                   visible
                   mode="image"
                   placeholder={jpg.placeholder}
-                  width={WIDTH}
-                  height={HEIGHT}
+                  width={jpg.width}
+                  height={jpg.height}
                 />
               </div>
             </div>
@@ -110,9 +107,9 @@ export default function StaticDemo(): JSX.Element {
             mode="image"
             src={png.source}
             placeholder={png.placeholder}
-            alt="CSS"
-            width={WIDTH}
-            height={HEIGHT}
+            alt="PNG"
+            width={png.width}
+            height={png.height}
           />
           <div className="aspect-ratio-box">
             <div className="aspect-ratio-content">
@@ -121,8 +118,8 @@ export default function StaticDemo(): JSX.Element {
                   visible
                   mode="image"
                   placeholder={png.placeholder}
-                  width={WIDTH}
-                  height={HEIGHT}
+                  width={png.width}
+                  height={png.height}
                 />
               </div>
             </div>
