@@ -62,7 +62,6 @@
   "author": "Alexis Munsayac",
   "private": false,
   "dependencies": {
-    "blurhash-as": "^0.3.0",
     "react-laze": "^0.2.0"
   }
 }
