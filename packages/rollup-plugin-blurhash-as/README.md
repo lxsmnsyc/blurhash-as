@@ -52,7 +52,7 @@ export default defineConfig({
 ```ts
 // Allows importing both JPG and PNG files
 // Valid blurhash values includes "css", "svg", "jpg" and "png"
-import image from './example.jpg?blurhash=css';
+import * as image from './example.jpg?blurhash=css';
 
 console.log(image);
 // {
@@ -76,7 +76,7 @@ Basic Rendering
 
 ```tsx
 import { Blurhash } from 'react-blurhash-as';
-import image from './example.jpg?blurhash=css';
+import * as image from './example.jpg?blurhash=css';
 
 <Blurhash
   mode="css" // "svg", "canvas" or "image
@@ -92,7 +92,7 @@ Static Rendering
 
 ```tsx
 import { BlurhashStatic } from 'react-blurhash-as';
-import image from './example.jpg?blurhash=css';
+import * as image from './example.jpg?blurhash=css';
 
 <BlurhashStatic
   mode="css" // "svg" or "image"
