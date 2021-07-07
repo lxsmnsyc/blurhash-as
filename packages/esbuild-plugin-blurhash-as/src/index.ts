@@ -37,14 +37,11 @@ function getLoad(
     );
     return {
       contents: `
-import source from ${JSON.stringify(originalPath)};
-export default {
-  hash: ${JSON.stringify(encodedHash)},
-  placeholder: ${JSON.stringify(result, null, 2)},
-  source,
-  width: ${JSON.stringify(imageData.width)},
-  height: ${JSON.stringify(imageData.height)}
-};
+export const hash = ${JSON.stringify(encodedHash)};
+export const width = ${JSON.stringify(imageData.width)};
+export const height = ${JSON.stringify(imageData.height)};
+export const placeholder = ${JSON.stringify(result, null, 2)};
+export { default as source } from ${JSON.stringify(originalPath)};
       `,
       resolveDir: dir,
     };

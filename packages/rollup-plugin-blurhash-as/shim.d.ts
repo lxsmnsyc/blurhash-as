@@ -5,61 +5,41 @@ declare module '*?blurhash=css' {
     backgroundSize: string;
     backgroundRepeat: 'no-repeat';
   }
-  interface BlurhashModule {
-    hash: string;
-    source: string;
-    placeholder: BlurhashStyle;
-    width: number;
-    height: number;
-  }
-  const mod: BlurhashModule;
-  export default mod;
+  export const hash: string;
+  export const source: string;
+  export const width: number;
+  export const height: number;
+  export const placeholder: BlurhashStyle;
 }
 
 declare module '*?blurhash=svg' {
-  interface BlurhashModule {
-    hash: string;
-    source: string;
-    placeholder: string;
-    width: number;
-    height: number;
-  }
-  const mod: BlurhashModule;
-  export default mod;
+  export const hash: string;
+  export const source: string;
+  export const width: number;
+  export const height: number;
+  export const placeholder: string;
 }
 
 declare module '*?blurhash=png' {
-  interface BlurhashModule {
-    hash: string;
-    source: string;
-    placeholder: string;
-    width: number;
-    height: number;
-  }
-  const mod: BlurhashModule;
-  export default mod;
+  export const hash: string;
+  export const source: string;
+  export const width: number;
+  export const height: number;
+  export const placeholder: string;
 }
 
 declare module '*?blurhash=jpg' {
-  interface BlurhashModule {
-    hash: string;
-    source: string;
-    placeholder: string;
-    width: number;
-    height: number;
-  }
-  const mod: BlurhashModule;
-  export default mod;
+  export const hash: string;
+  export const source: string;
+  export const width: number;
+  export const height: number;
+  export const placeholder: string;
 }
 
-declare module '*?blurhash=webp' {
-  interface BlurhashModule {
-    hash: string;
-    source: string;
-    placeholder: string;
-    width: number;
-    height: number;
-  }
-  const mod: BlurhashModule;
-  export default mod;
-}
+// declare module '*?blurhash=webp' {
+//   export const hash: string;
+//   export const source: string;
+//   export const width: number;
+//   export const height: number;
+//   export const placeholder: string;
+// }
