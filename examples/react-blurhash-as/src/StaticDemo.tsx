@@ -4,10 +4,10 @@ import {
   BlurhashStaticPlaceholder,
 } from 'react-blurhash-as';
 import SRC from './example.jpg';
-import css from './example.jpg?blurhash=css';
-import svg from './example.jpg?blurhash=svg';
-import jpg from './example.jpg?blurhash=jpg';
-import png from './example.jpg?blurhash=png';
+import * as css from './example.jpg?blurhash=css';
+import * as svg from './example.jpg?blurhash=svg';
+import * as jpg from './example.jpg?blurhash=jpg';
+import * as png from './example.jpg?blurhash=png';
 
 export default function StaticDemo(): JSX.Element {
   return (
