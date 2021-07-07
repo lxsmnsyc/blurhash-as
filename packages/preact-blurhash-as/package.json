@@ -16,7 +16,10 @@
   },
   "license": "MIT",
   "keywords": [
-    "pridepack"
+    "pridepack",
+    "preact",
+    "blurhash",
+    "blurhash-as"
   ],
   "name": "preact-blurhash-as",
   "devDependencies": {
@@ -33,6 +36,7 @@
     "typescript": "^4.3.4"
   },
   "peerDependencies": {
+    "blurhash-as": "^0.3.0",
     "preact": "^10.0.0"
   },
   "scripts": {
@@ -45,6 +49,20 @@
     "watch": "pridepack watch"
   },
   "dependencies": {
-    "blurhash-as": "^0.3.0"
-  }
+    "preact-laze": "^0.2.0"
+  },
+  "description": "Preact bindings for blurhash-as",
+  "repository": {
+    "url": "https://github.com/lxsmnsyc/blurhash-as.git",
+    "type": "git"
+  },
+  "homepage": "https://github.com/lxsmnsyc/blurhash-as/tree/main/packages/preact-blurhash-as",
+  "bugs": {
+    "url": "https://github.com/lxsmnsyc/blurhash-as/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Alexis Munsayac",
+  "private": false
 }

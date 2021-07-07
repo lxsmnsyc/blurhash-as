@@ -1251,6 +1251,11 @@
     npmlog "^4.1.2"
     write-file-atomic "^3.0.3"
 
+"@lyonph/preact-hooks@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@lyonph/preact-hooks/-/preact-hooks-0.5.1.tgz#f79fe53c563193405312fee013f927444463d388"
+  integrity sha512-NCn/nZEg/NyZ3O4912rcETzGsFU8Nd8dXR62oO9W22cAgo9wewq85+YR57PmarkWHgP1YZx/VU1hpsw3+2TzTg==
+
 "@lyonph/react-hooks@^0.5.0", "@lyonph/react-hooks@^0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@lyonph/react-hooks/-/react-hooks-0.5.1.tgz#1ed564bf5948edcfa2f762cd62996f4aa1d7ca8b"
@@ -7067,6 +7072,13 @@ postcss@^8.3.4:
     colorette "^1.2.2"
     nanoid "^3.1.23"
     source-map-js "^0.6.2"
+
+preact-laze@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/preact-laze/-/preact-laze-0.2.0.tgz#805c38eec81d60f55787556475170c842f632603"
+  integrity sha512-OAp4sQlzIKo+y0lwly3WYHd54WQuAShg+4qfhlF4Wn8isfXSWk6Aa9BCjAxtM3Y0a1J7SfB6IAAAWuyNQIw5yw==
+  dependencies:
+    "@lyonph/preact-hooks" "^0.5.1"
 
 preact@^10.5.13:
   version "10.5.13"
