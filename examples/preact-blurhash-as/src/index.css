@@ -1,0 +1,111 @@
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  margin: 1rem 10%;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+}
+
+.aspect-ratio-box {
+  position: relative;
+
+  padding-top: calc(9 / 16 * 100%);
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+}
+
+.aspect-ratio-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image-container,
+.blurhash-as__image-container {
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.blurhash-as__placeholder, .blurhash-as__image {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 400ms;
+}
+
+.blurhash-as__image, .image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.showcase {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.showcase-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  margin: 0.5rem;
+}
+
+.showcase-gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 1rem;
+}
+
+@media screen and (orientation: portrait) {
+  .showcase {
+    flex-direction: column;
+  }
+}
+
+input {
+  padding: 0.25rem;
+  margin: 0.25rem;
+  border-radius: 0.5rem;
+  outline: none;
+  border-color: black;
+}
+
+h1 {
+  font-size: 1rem;
+}
