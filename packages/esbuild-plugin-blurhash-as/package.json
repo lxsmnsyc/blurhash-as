@@ -9,7 +9,8 @@
   },
   "files": [
     "dist",
-    "src"
+    "src",
+    "shim.d.ts"
   ],
   "engines": {
     "node": ">=10"
