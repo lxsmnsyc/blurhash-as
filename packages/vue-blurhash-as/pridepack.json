@@ -1,8 +1,0 @@
-{
-  "jsxFactory": "h",
-  "jsxFragment": "Fragment",
-  "jest": {
-    "testEnvironment": "jsdom"
-  },
-  "target": "es2017"
-}
