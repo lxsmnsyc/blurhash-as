@@ -33,10 +33,13 @@ const imageData = await blurhash.decode(hash, width, height, punch);
 // to use a dimension with the same aspect ratio as your component dimensions.
 
 // Generate a CSS sheet
-const sheet = await blurhash.toCSSSheet(hash, xComponent, yComponent, punch);
+const sheet = await blurhash.toCSSSheet(hash, displayWidth, displayHeight, punch);
 
 // Or generate a Style Object
-const style = await blurhash.toCSSObject(hash, xComponent, yComponent, punch);
+const style = await blurhash.toCSSObject(hash, displayWidth, displayHeight, punch);
+
+// Or generate an SVG string
+const svg = await blurhash.toSVG(hash, displayWidth, displayHeight, punch);
 ```
 
 ### Browser
@@ -46,6 +49,7 @@ For browser context, you'll have to use `blurhash-as/browser`. The API is the sa
 Example in Vite:
 
 ```ts
+import * as blurhash from 'blurhash-as/browser';
 import wasmURL from 'blurhash-as/build/optimized.wasm?url';
 
 blurhash.setURL(wasmURL);
