@@ -1,13 +1,13 @@
 {
   "name": "blurhash-as-vite",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "serve": "vite preview"
   },
   "dependencies": {
-    "blurhash-as": "0.3.0",
+    "blurhash-as": "0.4.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },

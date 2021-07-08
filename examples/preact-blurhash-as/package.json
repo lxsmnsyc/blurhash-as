@@ -1,5 +1,5 @@
 {
-  "version": "0.0.0",
+  "version": "0.4.0",
   "name": "preact-blurhash-as-vite",
   "license": "MIT",
   "scripts": {
@@ -8,9 +8,9 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "blurhash-as": "0.3.0",
-    "preact-blurhash-as": "0.3.0",
-    "preact": "^10.5.13"
+    "blurhash-as": "0.4.0",
+    "preact": "^10.5.13",
+    "preact-blurhash-as": "0.4.0"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.0.0",
