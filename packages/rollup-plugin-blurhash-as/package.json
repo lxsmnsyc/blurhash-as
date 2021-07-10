@@ -17,7 +17,9 @@
   },
   "license": "MIT",
   "keywords": [
-    "pridepack"
+    "pridepack",
+    "rollup",
+    "blurhash-as"
   ],
   "name": "rollup-plugin-blurhash-as",
   "devDependencies": {
@@ -47,5 +49,19 @@
     "blurhash-as": "0.4.0",
     "image-encode": "^1.3.1",
     "image-pixels": "^2.2.2"
-  }
+  },
+  "description": "Rollup plugin for generating static Blurhash output",
+  "repository": {
+    "url": "https://github.com/lxsmnsyc/blurhash-as.git",
+    "type": "git"
+  },
+  "homepage": "https://github.com/lxsmnsyc/blurhash-as/tree/main/packages/rollup-plugin-blurhash-as",
+  "bugs": {
+    "url": "https://github.com/lxsmnsyc/blurhash-as/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Alexis Munsayac",
+  "private": false
 }
