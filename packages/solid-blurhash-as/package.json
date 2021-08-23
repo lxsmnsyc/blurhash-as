@@ -2,10 +2,10 @@
   "version": "0.4.0",
   "types": "dist/types/index.d.ts",
   "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "module": "dist/esm/index.jsx",
   "exports": {
     "require": "./dist/cjs/index.js",
-    "import": "./dist/esm/index.js"
+    "import": "./dist/esm/index.jsx"
   },
   "files": [
     "dist",
@@ -17,27 +17,23 @@
   "license": "MIT",
   "keywords": [
     "pridepack",
-    "preact",
+    "solid",
     "blurhash",
     "blurhash-as"
   ],
-  "name": "preact-blurhash-as",
+  "name": "solid-blurhash-as",
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/preact": "^2.0.1",
-    "@testing-library/preact-hooks": "^1.1.0",
-    "@types/jest": "^26.0.23",
     "@types/node": "^15.12.5",
     "eslint": "^7.29.0",
     "eslint-config-lxsmnsyc": "^0.2.3",
-    "preact": "^10.5.13",
-    "pridepack": "^0.10.0",
+    "pridepack": "^0.12.2",
+    "solid-js": "^1.1.1",
     "tslib": "^2.3.0",
     "typescript": "^4.3.4"
   },
   "peerDependencies": {
     "blurhash-as": "^0.3.0",
-    "preact": "^10.0.0"
+    "solid-js": "^1.1.1"
   },
   "scripts": {
     "prepublish": "pridepack clean && pridepack build",
@@ -48,15 +44,12 @@
     "clean": "pridepack clean",
     "watch": "pridepack watch"
   },
-  "dependencies": {
-    "preact-laze": "^0.3.0"
-  },
-  "description": "Preact bindings for blurhash-as",
+  "description": "SolidJS bindings for blurhash-as",
   "repository": {
     "url": "https://github.com/lxsmnsyc/blurhash-as.git",
     "type": "git"
   },
-  "homepage": "https://github.com/lxsmnsyc/blurhash-as/tree/main/packages/preact-blurhash-as",
+  "homepage": "https://github.com/lxsmnsyc/blurhash-as/tree/main/packages/solid-blurhash-as",
   "bugs": {
     "url": "https://github.com/lxsmnsyc/blurhash-as/issues"
   },
@@ -64,5 +57,8 @@
     "access": "public"
   },
   "author": "Alexis Munsayac",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "solid-laze": "^0.3.0"
+  }
 }
