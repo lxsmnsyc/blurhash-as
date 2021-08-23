@@ -17,5 +17,9 @@
     "blurhash-as": "0.4.0",
     "solid-blurhash-as": "0.4.0",
     "solid-js": "^1.1.1"
+  },
+  "private": true,
+  "publishConfig": {
+    "access": "restricted"
   }
 }
