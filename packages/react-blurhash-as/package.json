@@ -34,7 +34,7 @@
     "typescript": "^4.3.4"
   },
   "peerDependencies": {
-    "blurhash-as": "^0.3.0",
+    "blurhash-as": "0.4.0",
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0"
   },
