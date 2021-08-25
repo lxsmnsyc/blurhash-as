@@ -36,10 +36,10 @@ declare module '*?blurhash=jpg' {
   export const placeholder: string;
 }
 
-// declare module '*?blurhash=webp' {
-//   export const hash: string;
-//   export const source: string;
-//   export const width: number;
-//   export const height: number;
-//   export const placeholder: string;
-// }
+declare module '*?blurhash=webp' {
+  export const hash: string;
+  export const source: string;
+  export const width: number;
+  export const height: number;
+  export const placeholder: string;
+}
