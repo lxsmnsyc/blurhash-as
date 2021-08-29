@@ -1,19 +1,19 @@
 {
   "name": "example-4",
-  "date": "2021-08-29T08:19:37.107Z",
+  "date": "2021-08-29T08:38:21.821Z",
   "version": "1.0.0",
   "results": [
     {
       "name": "blurhash-as",
-      "ops": 83,
-      "margin": 1.78,
+      "ops": 77,
+      "margin": 5.61,
       "percentSlower": 0
     },
     {
       "name": "blurhash-ts",
       "ops": 23,
-      "margin": 7.31,
-      "percentSlower": 72.29
+      "margin": 1.74,
+      "percentSlower": 70.13
     }
   ],
   "fastest": {

@@ -24,7 +24,9 @@ async function encode(pixels, width, height, x, y) {
   }
   const pixelsData = BLURHASH.__newArray(BLURHASH.Uint8ClampedArrayID, pixels);
   const result = BLURHASH.encode(pixelsData, width, height, x, y);
-  return BLURHASH.__getString(result);
+  const encoded = BLURHASH.__getString(result);
+  BLURHASH.__collect();
+  return encoded;
 }
 
 async function decode(string, width, height, punch) {
@@ -32,6 +34,7 @@ async function decode(string, width, height, punch) {
   const stringPointer = BLURHASH.__newString(string);
   const result = BLURHASH.decode(stringPointer, width, height, punch);
   const parsed = BLURHASH.__getUint8ClampedArray(result);
+  BLURHASH.__collect();
   if (parsed) {
     return parsed;
   }
@@ -43,6 +46,7 @@ async function toCSSSheet(string, width, height, punch) {
   const stringPointer = BLURHASH.__newString(string);
   const result = BLURHASH.toCSSSheet(stringPointer, width, height, punch);
   const parsed = BLURHASH.__getString(result);
+  BLURHASH.__collect();
   if (parsed) {
     return parsed;
   }
@@ -54,6 +58,7 @@ async function toCSSObject(string, width, height, punch) {
   const stringPointer = BLURHASH.__newString(string);
   const result = BLURHASH.toCSSObject(stringPointer, width, height, punch);
   const parsed = BLURHASH.__getString(result);
+  BLURHASH.__collect();
   if (parsed) {
     return JSON.parse(parsed);
   }
@@ -65,6 +70,7 @@ async function toSVG(string, width, height, punch) {
   const stringPointer = BLURHASH.__newString(string);
   const result = BLURHASH.toSVG(stringPointer, width, height, punch);
   const parsed = BLURHASH.__getString(result);
+  BLURHASH.__collect();
   if (parsed) {
     return parsed;
   }

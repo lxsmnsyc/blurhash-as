@@ -16,7 +16,7 @@
   </head>
   <body>
     <div style="max-width: 800px">
-      <canvas id="chart1630225177107" width="16" height="9"></canvas>
+      <canvas id="chart1630226301821" width="16" height="9"></canvas>
     </div>
     <script>
       const format = (num) => {
@@ -34,16 +34,16 @@
 
         return chunked.map((chunk) => chunk.join("")).join(" ");
       };
-      const ctx1630225177107 = document
-        .getElementById("chart1630225177107")
+      const ctx1630226301821 = document
+        .getElementById("chart1630226301821")
         .getContext("2d");
-      const chart1630225177107 = new Chart(ctx1630225177107, {
+      const chart1630226301821 = new Chart(ctx1630226301821, {
         type: "bar",
         data: {
           labels: ["blurhash-as", "blurhash-ts"],
           datasets: [
             {
-              data: [83, 23],
+              data: [77, 23],
               backgroundColor: [
                 "rgba(63, 142, 252, 0.8)",
                 "rgba(116, 165, 127, 0.8)",
