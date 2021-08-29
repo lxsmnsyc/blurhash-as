@@ -49,12 +49,14 @@ export function getNearestAspectRatio(ratio: AspectRatio): AspectRatio {
   let nearest = Number.MAX_VALUE;
   let id = 0;
 
+  const originalRatio = ratio.width / ratio.height;
+
   for (let i = 0; i < ASPECT_RATIO.length; i += 1) {
     const target = ASPECT_RATIO[i];
 
-    const x = target.width - ratio.width;
-    const y = target.height - ratio.height;
-    const distance = Math.sqrt(x * x + y * y);
+    const tRatio = target.width / target.height;
+    const squared = tRatio - originalRatio;
+    const distance = Math.sqrt(squared * squared);
 
     if (i === 0) {
       nearest = distance;
