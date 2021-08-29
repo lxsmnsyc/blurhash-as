@@ -14,7 +14,7 @@ export async function init() {
   if (!WASM_URL) {
     throw new Error('`blurhash.setURL` has not yet been called to setup the WASM url.')
   }
-  const wasmModule = await loader.instantiate(
+  const wasmModule = await loader.instantiateStreaming(
     fetch(WASM_URL),
     {},
   );
