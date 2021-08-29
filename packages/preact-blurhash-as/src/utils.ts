@@ -12,8 +12,7 @@ interface AspectRatio {
   height: number;
 }
 
-const ASPECT_RATIO: AspectRatio[] = [
-  { width: 9, height: 16 }, // Vertical
+const HORIZONTAL_ASPECT_RATIO = [
   { width: 4, height: 4 }, // Square
   { width: 4, height: 3 }, // Standard Fullscreen
   { width: 16, height: 10 }, // Standard LCD
@@ -36,6 +35,16 @@ const ASPECT_RATIO: AspectRatio[] = [
   { width: 8, height: 3 }, // Super 16
   { width: 18, height: 5 }, // IMAX
   { width: 12, height: 3 }, // Polyvision
+];
+
+const VERTICAL_ASPECT_RATIO = HORIZONTAL_ASPECT_RATIO.map((item) => ({
+  width: item.height,
+  height: item.width,
+}));
+
+const ASPECT_RATIO = [
+  ...HORIZONTAL_ASPECT_RATIO,
+  ...VERTICAL_ASPECT_RATIO,
 ];
 
 export function getAspectRatio({ width, height }: AspectRatio): AspectRatio {
