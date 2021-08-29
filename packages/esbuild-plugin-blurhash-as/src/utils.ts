@@ -12,7 +12,7 @@ interface AspectRatio {
 
 const ASPECT_RATIO: AspectRatio[] = [
   { width: 9, height: 16 }, // Vertical
-  { width: 3, height: 3 }, // Square
+  { width: 4, height: 4 }, // Square
   { width: 4, height: 3 }, // Standard Fullscreen
   { width: 16, height: 10 }, // Standard LCD
   { width: 16, height: 9 }, // HD
