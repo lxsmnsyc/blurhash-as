@@ -2,7 +2,7 @@ const CHARSET = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#
 
 export function decode83(string: string): i32 {
   let value: i32 = 0;
-  for (let i = 0; i < string.length; i += 1) {
+  for (let i = 0, len = string.length; i < len; i += 1) {
     const c = string.charAt(i);
     const digit = CHARSET.indexOf(c);
     value = value * 83 + digit;

@@ -6,7 +6,7 @@ const imageEncode = require('image-encode');
 const fs = require('fs/promises');
 const b = require('benny')
 
-const RUN_BENCHMARK = false;
+const RUN_BENCHMARK = true;
 
 function gcd(a, b) {
   if (b === 0) {

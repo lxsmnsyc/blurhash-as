@@ -93,7 +93,7 @@ export default function encode(
   let maximumValue: f32;
   if (ac.length > 0) {
     let actualMaximumValue: f32 = 0;
-    for (let i = 0; i < ac.length; i += 1) {
+    for (let i = 0, len = ac.length; i < len; i += 1) {
       actualMaximumValue = NativeMathf.max(ac[i][0], actualMaximumValue);
       actualMaximumValue = NativeMathf.max(ac[i][1], actualMaximumValue);
       actualMaximumValue = NativeMathf.max(ac[i][2], actualMaximumValue);
@@ -117,7 +117,7 @@ export default function encode(
 
   hash += encode83(encodeDC(dc[0], dc[1], dc[2]), 4);
 
-  for (let i = 0; i < ac.length; i += 1) {
+  for (let i = 0, len = ac.length; i < len; i += 1) {
     hash += encode83(encodeAC(ac[i][0], ac[i][1], ac[i][2], maximumValue), 2);
   }
 

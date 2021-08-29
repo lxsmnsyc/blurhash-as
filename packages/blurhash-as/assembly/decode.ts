@@ -67,7 +67,7 @@ export function decode(
   const value = decode83(blurhash.substring(2, 6));
   colors[0] = decodeDC(value);
 
-  for (let i = 1; i < colors.length; i += 1) {
+  for (let i = 1, len = colors.length; i < len; i += 1) {
     const value = decode83(blurhash.substring(4 + i * 2, 6 + i * 2));
     colors[i] = decodeAC(value, maximumValue);
   }
