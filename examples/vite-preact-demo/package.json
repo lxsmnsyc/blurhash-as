@@ -1,22 +1,22 @@
 {
-  "name": "solid-blurhash-as-vite",
   "version": "0.8.0",
+  "name": "vite-preact-demo",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
-  "devDependencies": {
-    "babel-preset-solid": "^1.1.1",
-    "rollup-plugin-blurhash-as": "0.8.0",
-    "typescript": "^4.3.2",
-    "vite": "^2.4.4",
-    "vite-plugin-solid": "^2.0.1"
-  },
   "dependencies": {
     "blurhash-as": "0.8.0",
-    "solid-blurhash-as": "0.8.0",
-    "solid-js": "^1.1.1"
+    "preact": "^10.5.13",
+    "preact-blurhash-as": "0.8.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.0.0",
+    "rollup-plugin-blurhash-as": "0.8.0",
+    "typescript": "^4.3.2",
+    "vite": "^2.4.0"
   },
   "private": true,
   "publishConfig": {

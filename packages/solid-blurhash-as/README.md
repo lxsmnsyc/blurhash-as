@@ -2,7 +2,7 @@
 
 > SolidJS bindings for `blurhash-as`
 
-[![NPM](https://img.shields.io/npm/v/solid-blurhash-as.svg)](https://www.npmjs.com/package/solid-blurhash-as) [![JavaScript Style Guide](https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript) [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://codesandbox.io/s/github/lxsmnsyc/blurhash-as/tree/main/examples/solid-blurhash-as)
+[![NPM](https://img.shields.io/npm/v/solid-blurhash-as.svg)](https://www.npmjs.com/package/solid-blurhash-as) [![JavaScript Style Guide](https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript) [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://codesandbox.io/s/github/lxsmnsyc/blurhash-as/tree/main/examples/vite-solid-demo)
 
 ## Install
 
