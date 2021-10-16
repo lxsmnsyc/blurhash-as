@@ -51,17 +51,17 @@
   ],
   "name": "solid-blurhash-as",
   "devDependencies": {
-    "@types/node": "^16.10.1",
+    "@types/node": "^16.11.0",
     "eslint": "^7.29.0",
     "eslint-config-lxsmnsyc": "^0.3.0",
-    "pridepack": "^0.12.2",
-    "solid-js": "^1.1.1",
+    "pridepack": "^1.0.2",
+    "solid-js": "^1.1.6",
     "tslib": "^2.3.0",
-    "typescript": "^4.3.4"
+    "typescript": "^4.4.4"
   },
   "peerDependencies": {
     "blurhash-as": "^0.8.0",
-    "solid-js": "^1.1.1"
+    "solid-js": "^1.1.6"
   },
   "scripts": {
     "prepublish": "pridepack clean && pridepack build",
