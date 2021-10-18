@@ -17,7 +17,8 @@
     "type-check": "lerna run type-check",
     "test": "lerna run test",
     "test:coverage": "lerna run test -- --coverage",
-    "lerna": "lerna"
+    "lerna": "lerna",
+    "publish-all": "lerna publish"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^4.26.1",
