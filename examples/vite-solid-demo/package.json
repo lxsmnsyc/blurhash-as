@@ -1,6 +1,6 @@
 {
   "name": "vite-solid-demo",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -8,14 +8,14 @@
   },
   "devDependencies": {
     "babel-preset-solid": "^1.1.1",
-    "rollup-plugin-blurhash-as": "0.8.0",
+    "rollup-plugin-blurhash-as": "0.9.0",
     "typescript": "^4.4.4",
     "vite": "^2.6.7",
     "vite-plugin-solid": "^2.1.1"
   },
   "dependencies": {
-    "blurhash-as": "0.8.0",
-    "solid-blurhash-as": "0.8.0",
+    "blurhash-as": "0.9.0",
+    "solid-blurhash-as": "0.9.0",
     "solid-js": "^1.1.6"
   },
   "private": true,
