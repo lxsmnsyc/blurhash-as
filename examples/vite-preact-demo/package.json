@@ -13,10 +13,10 @@
     "preact-blurhash-as": "0.9.0"
   },
   "devDependencies": {
-    "@preact/preset-vite": "^2.0.0",
+    "@preact/preset-vite": "^2.1.7",
     "rollup-plugin-blurhash-as": "0.9.0",
-    "typescript": "^4.4.4",
-    "vite": "^2.6.7"
+    "typescript": "^4.5.4",
+    "vite": "^2.7.13"
   },
   "private": true,
   "publishConfig": {

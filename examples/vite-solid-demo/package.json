@@ -7,16 +7,16 @@
     "serve": "vite preview"
   },
   "devDependencies": {
-    "babel-preset-solid": "^1.1.1",
+    "babel-preset-solid": "^1.3.2",
     "rollup-plugin-blurhash-as": "0.9.0",
-    "typescript": "^4.4.4",
-    "vite": "^2.6.7",
-    "vite-plugin-solid": "^2.1.1"
+    "typescript": "^4.5.4",
+    "vite": "^2.7.13",
+    "vite-plugin-solid": "^2.2.4"
   },
   "dependencies": {
     "blurhash-as": "0.9.0",
     "solid-blurhash-as": "0.9.0",
-    "solid-js": "^1.1.6"
+    "solid-js": "^1.3.3"
   },
   "private": true,
   "publishConfig": {

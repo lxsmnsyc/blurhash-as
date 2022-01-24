@@ -1,7 +1,4 @@
 {
-  "jest": {
-    "testEnvironment": "jsdom"
-  },
   "target": "es2017",
   "jsx": "preserve"
 }
