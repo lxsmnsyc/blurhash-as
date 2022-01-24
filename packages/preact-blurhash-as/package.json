@@ -77,7 +77,7 @@
     "watch": "pridepack watch"
   },
   "dependencies": {
-    "preact-laze": "^0.3.0"
+    "preact-laze": "^0.3.1"
   },
   "description": "Preact bindings for blurhash-as",
   "repository": {

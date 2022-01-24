@@ -90,6 +90,6 @@
   "author": "Alexis Munsayac",
   "private": false,
   "dependencies": {
-    "react-laze": "^0.3.0"
+    "react-laze": "^0.3.1"
   }
 }

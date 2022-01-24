@@ -166,12 +166,12 @@ importers:
       eslint: ^8.7.0
       eslint-config-lxsmnsyc: ^0.4.0
       preact: ^10.5.15
-      preact-laze: ^0.3.0
+      preact-laze: ^0.3.1
       pridepack: ^1.0.4
       tslib: ^2.3.1
       typescript: ^4.5.4
     dependencies:
-      preact-laze: 0.3.0_preact@10.6.4
+      preact-laze: 0.3.1_preact@10.6.4
     devDependencies:
       '@testing-library/jest-dom': 5.16.1
       '@testing-library/preact': 2.0.1_preact@10.6.4
@@ -194,11 +194,11 @@ importers:
       pridepack: ^1.0.4
       react: ^17.0.2
       react-dom: ^17.0.2
-      react-laze: ^0.3.0
+      react-laze: ^0.3.1
       tslib: ^2.3.1
       typescript: ^4.5.4
     dependencies:
-      react-laze: 0.3.0_react-dom@17.0.2+react@17.0.2
+      react-laze: 0.3.1_react-dom@17.0.2+react@17.0.2
     devDependencies:
       '@types/node': 17.0.10
       '@types/react': 17.0.38
@@ -244,11 +244,11 @@ importers:
       eslint-config-lxsmnsyc: ^0.4.0
       pridepack: ^1.0.4
       solid-js: ^1.3.3
-      solid-laze: ^0.3.0
+      solid-laze: ^0.3.1
       tslib: ^2.3.1
       typescript: ^4.5.4
     dependencies:
-      solid-laze: 0.3.0_solid-js@1.3.3
+      solid-laze: 0.3.1_solid-js@1.3.3
     devDependencies:
       '@types/node': 17.0.10
       eslint: 8.7.0
@@ -1782,13 +1782,6 @@ packages:
       preact: ^10.0.0
     dependencies:
       preact: 10.6.4
-    dev: false
-
-  /@lyonph/react-hooks/0.5.1:
-    resolution: {integrity: sha512-Rh7z7DfYzoox9MOFK7lznBHp0ZUnwdlnFiVwe+KWPijkDVcJMFqZgxzJVISWjLAFToAFgwoOzXmeL+zMfZzf2Q==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0
     dev: false
 
   /@lyonph/react-hooks/0.5.1_react@17.0.2:
@@ -7657,8 +7650,8 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /preact-laze/0.3.0_preact@10.6.4:
-    resolution: {integrity: sha512-0xEX4QNw7NVQoJ7FRxumvqp+cTblxuJ4zYMIpeBGpnZo0LXMfpYJXc2PjCWWULJgwMuYmebbT16MQHsKwXVYdg==}
+  /preact-laze/0.3.1_preact@10.6.4:
+    resolution: {integrity: sha512-DiAB6AYWipfQT0myOZxnElq+illJlrg7R+FWHxOpkTnL1fsLdqAuWGQE4BDJJf0q+TiYalO4fquHiq+d8uB5Ug==}
     engines: {node: '>=10'}
     peerDependencies:
       preact: ^10.0.0
@@ -7899,8 +7892,8 @@ packages:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
     dev: true
 
-  /react-laze/0.3.0_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-Rg9baWw/9g7Nwgfclmm0oQUAfsN0kPmDLK8srFIOmQUXZENNzq4DbS3HJQpujbxQo4eCgirE1wtcl/XprjL2sg==}
+  /react-laze/0.3.1_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-wl+bX7ZQe4qWmqvzUlzh4VERUbgRcHc6rFtazhv3qUA8LWU36JV32Dlcf8xr+RKj5B9X3ql9Yo++Yqu6muDRQw==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0
@@ -8384,16 +8377,13 @@ packages:
   /solid-js/1.3.3:
     resolution: {integrity: sha512-0pyHpLZIgQDI1Z+MgxXQRPY10dhXfKJdptb4UCJQ9ArQOLq2gtFA1acEsvSAtPMVdqQ8bqj68FOTXLpz6hm2Mg==}
 
-  /solid-laze/0.3.0_solid-js@1.3.3:
-    resolution: {integrity: sha512-+5K58WKCgQAp/JbcdQJmXTF14wpOAkLSrDwDP4mlKYbbCfkRJt9oltw8QiAn78KpDeSIzhtkDAEOUXeShikkAQ==}
+  /solid-laze/0.3.1_solid-js@1.3.3:
+    resolution: {integrity: sha512-SW708MBZq0ovzVUu9CzhptPvWXsdC3OSceYZzlHtVFmW2xErL37DE2Eko1pEwMmmvDOzxAFD3xkccaDj0uTkPw==}
     engines: {node: '>=10'}
     peerDependencies:
-      solid-js: ^1.1.0
+      solid-js: ^1.1
     dependencies:
-      '@lyonph/react-hooks': 0.5.1
       solid-js: 1.3.3
-    transitivePeerDependencies:
-      - react
     dev: false
 
   /solid-refresh/0.4.0_solid-js@1.3.3:

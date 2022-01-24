@@ -87,6 +87,6 @@
   "author": "Alexis Munsayac",
   "private": false,
   "dependencies": {
-    "solid-laze": "^0.3.0"
+    "solid-laze": "^0.3.1"
   }
 }
