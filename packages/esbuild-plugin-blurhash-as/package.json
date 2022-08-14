@@ -1,5 +1,6 @@
 {
   "version": "0.9.1",
+  "type": "module",
   "types": "dist/types/index.d.ts",
   "main": "dist/cjs/production/index.js",
   "module": "dist/esm/production/index.js",
@@ -52,14 +53,14 @@
   ],
   "name": "esbuild-plugin-blurhash-as",
   "devDependencies": {
-    "@types/node": "^17.0.0",
-    "@types/sharp": "^0.29.2",
-    "esbuild": "^0.13.2",
-    "eslint": "^8.7.0",
-    "eslint-config-lxsmnsyc": "^0.4.0",
-    "pridepack": "^1.0.4",
+    "@types/node": "^18.7.3",
+    "@types/sharp": "^0.30.5",
+    "esbuild": "^0.15.2",
+    "eslint": "^8.22.0",
+    "eslint-config-lxsmnsyc": "^0.4.8",
+    "pridepack": "^2.2.1",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.4"
+    "typescript": "^4.7.4"
   },
   "peerDependencies": {
     "esbuild": "^0.13"

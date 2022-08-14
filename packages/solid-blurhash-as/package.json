@@ -1,5 +1,6 @@
 {
   "version": "0.9.1",
+  "type": "module",
   "types": "dist/types/index.d.ts",
   "main": "dist/cjs/production/index.jsx",
   "module": "dist/esm/production/index.jsx",
@@ -51,13 +52,13 @@
   ],
   "name": "solid-blurhash-as",
   "devDependencies": {
-    "@types/node": "^17.0.0",
-    "eslint": "^8.7.0",
-    "eslint-config-lxsmnsyc": "^0.4.0",
-    "pridepack": "^1.0.4",
-    "solid-js": "^1.3.3",
+    "@types/node": "^18.7.3",
+    "eslint": "^8.22.0",
+    "eslint-config-lxsmnsyc": "^0.4.8",
+    "pridepack": "^2.2.1",
+    "solid-js": "^1.4.8",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.4"
+    "typescript": "^4.7.4"
   },
   "peerDependencies": {
     "blurhash-as": "^0.8",
@@ -87,6 +88,6 @@
   "author": "Alexis Munsayac",
   "private": false,
   "dependencies": {
-    "solid-laze": "^0.3.1"
+    "solid-laze": "^0.4.0"
   }
 }
