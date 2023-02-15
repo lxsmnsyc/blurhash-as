@@ -1,9 +1,9 @@
 {
   "version": "0.9.1",
   "type": "module",
-  "types": "dist/types/index.d.ts",
-  "main": "dist/cjs/production/index.jsx",
-  "module": "dist/esm/production/index.jsx",
+  "types": "./dist/types/index.d.ts",
+  "main": "./dist/cjs/production/index.jsx",
+  "module": "./dist/esm/production/index.jsx",
   "exports": {
     ".": {
       "development": {
@@ -12,27 +12,6 @@
       },
       "require": "./dist/cjs/production/index.jsx",
       "import": "./dist/esm/production/index.jsx",
-      "types": "./dist/types/index.d.ts"
-    },
-    "./dev": {
-      "production": {
-        "require": "./dist/cjs/production/index.jsx",
-        "import": "./dist/esm/production/index.jsx"
-      },
-      "require": "./dist/cjs/development/index.jsx",
-      "import": "./dist/esm/development/index.jsx",
-      "types": "./dist/types/index.d.ts"
-    },
-    "./esm": {
-      "development": "./dist/esm/development/index.jsx",
-      "production": "./dist/esm/production/index.jsx",
-      "default": "./dist/esm/production/index.jsx",
-      "types": "./dist/types/index.d.ts"
-    },
-    "./cjs": {
-      "development": "./dist/cjs/development/index.jsx",
-      "production": "./dist/cjs/production/index.jsx",
-      "default": "./dist/cjs/production/index.jsx",
       "types": "./dist/types/index.d.ts"
     }
   },
@@ -55,7 +34,7 @@
     "@types/node": "^18.7.3",
     "eslint": "^8.22.0",
     "eslint-config-lxsmnsyc": "^0.4.8",
-    "pridepack": "^2.2.1",
+    "pridepack": "^2.3.0",
     "solid-js": "^1.4.8",
     "tslib": "^2.3.1",
     "typescript": "^4.7.4"
@@ -89,5 +68,8 @@
   "private": false,
   "dependencies": {
     "solid-laze": "^0.4.0"
+  },
+  "typesVersions": {
+    "*": {}
   }
 }
