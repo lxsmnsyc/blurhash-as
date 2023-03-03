@@ -1,9 +1,10 @@
-import React, { FC, Suspense } from 'react';
+import React, { ReactNode, Suspense } from 'react';
 import { getEmptyImageURL } from './utils';
 
 export interface BlurhashBoundaryProps {
   width: number;
   height: number;
+  children?: ReactNode;
 }
 
 export function BlurhashEmpty(props: BlurhashBoundaryProps): JSX.Element {
@@ -16,7 +17,9 @@ export function BlurhashEmpty(props: BlurhashBoundaryProps): JSX.Element {
   );
 }
 
-const BlurhashBoundary: FC<BlurhashBoundaryProps> = ({ width, height, children }) => {
+export default function BlurhashBoundary(
+  { width, height, children }: BlurhashBoundaryProps,
+): JSX.Element {
   const placeholder = <BlurhashEmpty width={width} height={height} />;
   if (typeof window === 'undefined') {
     return placeholder;
@@ -26,6 +29,4 @@ const BlurhashBoundary: FC<BlurhashBoundaryProps> = ({ width, height, children }
       {children}
     </Suspense>
   );
-};
-
-export default BlurhashBoundary;
+}
