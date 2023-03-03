@@ -1,5 +1,5 @@
 {
-  "version": "0.9.1",
+  "version": "0.10.0",
   "type": "module",
   "types": "./dist/types/index.d.ts",
   "main": "./dist/cjs/production/index.cjs",
@@ -32,7 +32,7 @@
   "name": "preact-blurhash-as",
   "devDependencies": {
     "@types/node": "^18.14.5",
-    "blurhash-as": "0.9.1",
+    "blurhash-as": "0.10.0",
     "eslint": "^8.35.0",
     "eslint-config-lxsmnsyc": "^0.4.8",
     "preact": "^10.13.0",
@@ -45,7 +45,7 @@
     "preact": "^10.0.0"
   },
   "dependencies": {
-    "blurhash-as-helper": "0.9.1",
+    "blurhash-as-helper": "0.10.0",
     "preact-laze": "^0.4.0"
   },
   "scripts": {

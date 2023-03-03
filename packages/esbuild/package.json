@@ -1,5 +1,5 @@
 {
-  "version": "0.9.1",
+  "version": "0.10.0",
   "type": "module",
   "types": "./dist/types/index.d.ts",
   "main": "./dist/cjs/production/index.cjs",
@@ -53,8 +53,8 @@
     "watch": "pridepack watch"
   },
   "dependencies": {
-    "blurhash-as-helper": "0.9.1",
-    "blurhash-as": "0.9.1"
+    "blurhash-as": "0.10.0",
+    "blurhash-as-helper": "0.10.0"
   },
   "description": "ESBuild plugin for blurhash-as",
   "repository": {

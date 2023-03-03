@@ -1,5 +1,5 @@
 {
-  "version": "0.9.1",
+  "version": "0.10.0",
   "type": "module",
   "types": "./dist/types/index.d.ts",
   "main": "./dist/cjs/production/index.jsx",
@@ -32,7 +32,7 @@
   "name": "solid-blurhash-as",
   "devDependencies": {
     "@types/node": "^18.14.5",
-    "blurhash-as": "0.9.1",
+    "blurhash-as": "0.10.0",
     "eslint": "^8.35.0",
     "eslint-config-lxsmnsyc": "^0.4.8",
     "pridepack": "^2.4.1",
@@ -45,7 +45,7 @@
     "solid-js": "^1.2"
   },
   "dependencies": {
-    "blurhash-as-helper": "0.9.1",
+    "blurhash-as-helper": "0.10.0",
     "solid-laze": "^0.4.0"
   },
   "scripts": {

@@ -1,6 +1,6 @@
 {
   "name": "blurhash-as-helper",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "files": [
     "dist",
     "src"
@@ -15,7 +15,7 @@
   "devDependencies": {
     "@types/node": "^18.14.5",
     "@types/sharp": "^0.31.1",
-    "blurhash-as": "0.9.1",
+    "blurhash-as": "0.10.0",
     "eslint": "^8.35.0",
     "eslint-config-lxsmnsyc": "^0.4.8",
     "pridepack": "2.4.1",

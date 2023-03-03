@@ -1,5 +1,5 @@
 {
-  "version": "0.9.1",
+  "version": "0.10.0",
   "type": "module",
   "types": "./dist/types/index.d.ts",
   "main": "./dist/cjs/production/index.cjs",
@@ -33,7 +33,7 @@
   "devDependencies": {
     "@types/node": "^18.14.5",
     "@types/react": "^18.0.17",
-    "blurhash-as": "0.9.1",
+    "blurhash-as": "0.10.0",
     "eslint": "^8.35.0",
     "eslint-config-lxsmnsyc": "^0.4.8",
     "pridepack": "^2.4.1",
@@ -43,7 +43,7 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "blurhash-as-helper": "0.9.1",
+    "blurhash-as-helper": "0.10.0",
     "react-laze": "^0.4.0"
   },
   "peerDependencies": {
