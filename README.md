@@ -13,6 +13,10 @@
 | [`rollup-plugin-blurhash-as`](https://github.com/lxsmnsyc/blurhash-as/tree/main/packages/rollup-plugin-blurhash-as) | [![NPM](https://img.shields.io/npm/v/blurhash-as.svg)](https://www.npmjs.com/package/rollup-plugin-blurhash-as) | | See React and Preact Demos |
 | [`esbuild-plugin-blurhash-as`](https://github.com/lxsmnsyc/blurhash-as/tree/main/packages/esbuild-plugin-blurhash-as) | [![NPM](https://img.shields.io/npm/v/blurhash-as.svg)](https://www.npmjs.com/package/esbuild-plugin-blurhash-as) | | |
 
+## Sponsors
+
+![Sponsors](https://github.com/lxsmnsyc/sponsors/blob/main/sponsors.svg?raw=true)
+
 ## License
 
 MIT © [lxsmnsyc](https://github.com/lxsmnsyc)

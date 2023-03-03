@@ -55,6 +55,10 @@ import wasmURL from 'blurhash-as/build/optimized.wasm?url';
 blurhash.setURL(wasmURL);
 ```
 
+## Sponsors
+
+![Sponsors](https://github.com/lxsmnsyc/sponsors/blob/main/sponsors.svg?raw=true)
+
 ## License
 
 MIT © [lxsmnsyc](https://github.com/lxsmnsyc)
