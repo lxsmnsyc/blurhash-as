@@ -1,56 +1,17 @@
 import { LoadResult, Plugin } from 'rollup';
 import * as blurhash from 'blurhash-as';
 import path from 'path';
-import fs from 'fs';
-import sharp from 'sharp';
-import { getAspectRatio, getNearestAspectRatio, getScaledComponentRatio } from './utils';
+import {
+  getImageDataFromFile, toJPEG, toPNG, toWebP,
+} from 'blurhash-as-helper';
+import {
+  getAspectRatio,
+  getNearestAspectRatio,
+  getScaledComponentRatio,
+} from 'blurhash-as-helper/utils';
 
-interface BlurhashConfig {
+export interface BlurhashConfig {
   rasterScale?: number;
-}
-
-interface ImageData {
-  width: number;
-  height: number;
-  data: Uint8ClampedArray;
-}
-
-async function getImageDataFromFile(originalPath: string): Promise<ImageData> {
-  const stream = fs.createReadStream(originalPath);
-  if (originalPath.endsWith('.png')) {
-    const result = await stream.pipe(sharp().png())
-      .ensureAlpha()
-      .raw()
-      .toBuffer({ resolveWithObject: true });
-    return {
-      width: result.info.width,
-      height: result.info.height,
-      data: result.data as unknown as Uint8ClampedArray,
-    };
-  }
-  if (originalPath.endsWith('.webp')) {
-    const result = await stream.pipe(sharp().webp())
-      .ensureAlpha()
-      .raw()
-      .toBuffer({ resolveWithObject: true });
-    return {
-      width: result.info.width,
-      height: result.info.height,
-      data: result.data as unknown as Uint8ClampedArray,
-    };
-  }
-  if (originalPath.endsWith('.jpg')) {
-    const result = await stream.pipe(sharp().jpeg())
-      .ensureAlpha()
-      .raw()
-      .toBuffer({ resolveWithObject: true });
-    return {
-      width: result.info.width,
-      height: result.info.height,
-      data: result.data as unknown as Uint8ClampedArray,
-    };
-  }
-  throw new Error('unsupported format');
 }
 
 function getLoad(
@@ -113,65 +74,17 @@ export default function blurhashASPlugin(
       }
       if (/\.(png|jpg|webp)\?blurhash=jpe?g/.test(id)) {
         return getLoad(
-          async (hash, width, height) => {
-            const decodedBytes = await blurhash.decode(
-              hash,
-              width * rasterScale,
-              height * rasterScale,
-            );
-            const stream = sharp(Buffer.from(decodedBytes), {
-              raw: {
-                width: width * rasterScale,
-                height: height * rasterScale,
-                channels: 4,
-              },
-            }).jpeg({ quality: 100 });
-            const encodedBuffer = await stream.toBuffer();
-            const b64 = encodedBuffer.toString('base64');
-            return `data:image/jpeg;base64,${b64}`;
-          },
+          (hash, width, height) => toJPEG(hash, width, height, rasterScale),
         )(id);
       }
       if (/\.(png|jpg|webp)\?blurhash=webp/.test(id)) {
         return getLoad(
-          async (hash, width, height) => {
-            const decodedBytes = await blurhash.decode(
-              hash,
-              width * rasterScale,
-              height * rasterScale,
-            );
-            const stream = sharp(Buffer.from(decodedBytes), {
-              raw: {
-                width: width * rasterScale,
-                height: height * rasterScale,
-                channels: 4,
-              },
-            }).webp({ quality: 100 });
-            const encodedBuffer = await stream.toBuffer();
-            const b64 = encodedBuffer.toString('base64');
-            return `data:image/webp;base64,${b64}`;
-          },
+          (hash, width, height) => toWebP(hash, width, height, rasterScale),
         )(id);
       }
       if (/\.(png|jpg|webp)\?blurhash(=png)?/.test(id)) {
         return getLoad(
-          async (hash, width, height) => {
-            const decodedBytes = await blurhash.decode(
-              hash,
-              width * rasterScale,
-              height * rasterScale,
-            );
-            const stream = sharp(Buffer.from(decodedBytes), {
-              raw: {
-                width: width * rasterScale,
-                height: height * rasterScale,
-                channels: 4,
-              },
-            }).png();
-            const encodedBuffer = await stream.toBuffer();
-            const b64 = encodedBuffer.toString('base64');
-            return `data:image/png;base64,${b64}`;
-          },
+          (hash, width, height) => toPNG(hash, width, height, rasterScale),
         )(id);
       }
       return null;
