@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h } from 'preact';
+import { h, JSX } from 'preact';
 import { FC, Suspense } from 'preact/compat';
 import { getEmptyImageURL } from './utils';
 

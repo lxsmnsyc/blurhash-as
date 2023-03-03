@@ -1,9 +1,10 @@
 /** @jsx h */
-import { h } from 'preact';
+import { getAspectRatio, getNearestAspectRatio } from 'blurhash-as-helper/utils';
+import { h, JSX } from 'preact';
 import { useRef, useEffect, useMemo } from 'preact/hooks';
 import { BlurhashOptions } from './types';
 import useBlurhashData from './useBlurhashData';
-import { CSS_PLACEHOLDER, getAspectRatio, getNearestAspectRatio } from './utils';
+import { CSS_PLACEHOLDER } from './utils';
 
 export interface BlurhashCanvasPlaceholderProps extends BlurhashOptions {
   visible: boolean;

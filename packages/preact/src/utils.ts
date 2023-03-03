@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import { AspectRatio } from 'blurhash-as-helper/utils';
 
 export function getAspectRatioBoxStyle(ratio: AspectRatio): h.JSX.CSSProperties {
   return {

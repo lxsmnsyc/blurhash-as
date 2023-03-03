@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h } from 'preact';
+import { h, JSX } from 'preact';
 import useLaze from 'preact-laze';
 import { useState } from 'preact/hooks';
 import {

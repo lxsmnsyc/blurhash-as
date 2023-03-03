@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h } from 'preact';
+import { h, JSX } from 'preact';
 import BlurhashBoundary from './BlurhashBoundary';
 import BlurhashCanvasPlaceholder, { BlurhashCanvasPlaceholderProps } from './BlurhashCanvasPlaceholder';
 import BlurhashCSSPlaceholder, { BlurhashCSSPlaceholderProps } from './BlurhashCSSPlaceholder';

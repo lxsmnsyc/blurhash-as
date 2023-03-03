@@ -32,9 +32,10 @@
   "name": "preact-blurhash-as",
   "devDependencies": {
     "@types/node": "^18.14.5",
+    "blurhash-as": "0.9.1",
     "eslint": "^8.35.0",
     "eslint-config-lxsmnsyc": "^0.4.8",
-    "preact": "^10.5.15",
+    "preact": "^10.13.0",
     "pridepack": "^2.4.1",
     "tslib": "^2.5.0",
     "typescript": "^4.9.5"
@@ -42,6 +43,10 @@
   "peerDependencies": {
     "blurhash-as": "^0.8",
     "preact": "^10.0.0"
+  },
+  "dependencies": {
+    "blurhash-as-helper": "0.9.1",
+    "preact-laze": "^0.4.0"
   },
   "scripts": {
     "prepublish": "pridepack clean && pridepack build",
@@ -51,9 +56,6 @@
     "test": "pridepack test --passWithNoTests",
     "clean": "pridepack clean",
     "watch": "pridepack watch"
-  },
-  "dependencies": {
-    "preact-laze": "^0.4.0"
   },
   "description": "Preact bindings for blurhash-as",
   "repository": {

@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h } from 'preact';
+import { h, JSX } from 'preact';
 import useBlurhashImageURL, { BlurhashImageOptions } from './useBlurhashImageURL';
 import { CSS_PLACEHOLDER } from './utils';
 

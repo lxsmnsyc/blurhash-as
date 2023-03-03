@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h } from 'preact';
+import { h, JSX } from 'preact';
 import { BlurhashOptions } from './types';
 import useBlurhashSVG from './useBlurhashSVG';
 import { CSS_PLACEHOLDER, getEncodedSVG } from './utils';

@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h } from 'preact';
+import { h, JSX } from 'preact';
 import { useEffect } from 'preact/hooks';
 import { BlurhashStaticOptions } from './types';
 import { CSS_PLACEHOLDER } from './utils';

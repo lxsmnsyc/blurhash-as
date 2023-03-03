@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h } from 'preact';
+import { h, JSX } from 'preact';
 import BlurhashStaticContainer from './BlurhashStaticContainer';
 import BlurhashStaticPlaceholder, {
   BlurhashStaticPlaceholderCSSMode,

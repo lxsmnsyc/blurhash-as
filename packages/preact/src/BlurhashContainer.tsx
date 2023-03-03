@@ -1,7 +1,7 @@
 /** @jsx h */
 import { useState } from 'preact/hooks';
 import useLaze from 'preact-laze';
-import { h, Fragment } from 'preact';
+import { h, Fragment, JSX } from 'preact';
 import {
   getAspectRatioBoxStyle,
   ASPECT_RATIO_CONTENT,
