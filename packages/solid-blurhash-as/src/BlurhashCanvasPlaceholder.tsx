@@ -1,7 +1,8 @@
+import { getAspectRatio, getNearestAspectRatio } from 'blurhash-as-helper/utils';
 import { createEffect, createMemo, JSX } from 'solid-js';
 import { BlurhashOptions } from './types';
 import useBlurhashData from './useBlurhashData';
-import { CSS_PLACEHOLDER, getAspectRatio, getNearestAspectRatio, shimStyle } from './utils';
+import { CSS_PLACEHOLDER } from './utils';
 
 export interface BlurhashCanvasPlaceholderProps extends BlurhashOptions {
   visible: boolean;
@@ -59,10 +60,10 @@ export default function BlurhashCanvasPlaceholder(
       width={getRatio().width}
       height={getRatio().height}
       class="blurhash-as__placeholder"
-      style={shimStyle({
+      style={{
         ...CSS_PLACEHOLDER,
         opacity: props.visible ? 1 : 0,
-      })}
+      }}
     />
   );
 }

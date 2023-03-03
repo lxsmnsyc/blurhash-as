@@ -6,7 +6,6 @@ import {
   IMAGE_CONTAINER,
   IMAGE,
   getEmptyImageURL,
-  shimStyle,
 } from './utils';
 
 export interface BlurhashStaticContainerProps {
@@ -55,10 +54,10 @@ export default function BlurhashStaticContainer(
                     props.onLoad?.();
                   }
                 }}
-                style={shimStyle({
+                style={{
                   ...IMAGE,
                   opacity: showPlaceholder() ? 0 : 1,
-                })}
+                }}
               />
             )
           }

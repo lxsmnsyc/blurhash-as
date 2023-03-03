@@ -1,6 +1,6 @@
 import { JSX } from 'solid-js';
 import { BlurhashStaticOptions } from './types';
-import { CSS_PLACEHOLDER, shimStyle } from './utils';
+import { CSS_PLACEHOLDER } from './utils';
 
 export interface BlurhashStaticImagePlaceholderProps extends BlurhashStaticOptions {
   visible: boolean;
@@ -15,10 +15,10 @@ export default function BlurhashStaticImagePlaceholder(
       src={props.placeholder}
       alt="Blurhash Placeholder"
       class="blurhash-as__placeholder"
-      style={shimStyle({
+      style={{
         ...CSS_PLACEHOLDER,
         opacity: props.visible ? 1 : 0,
-      })}
+      }}
       onLoad={props.onLoad}
     />
   );

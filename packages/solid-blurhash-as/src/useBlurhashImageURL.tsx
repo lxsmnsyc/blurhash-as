@@ -1,7 +1,8 @@
+import { getAspectRatio, getNearestAspectRatio } from 'blurhash-as-helper/utils';
 import { createEffect, createSignal, untrack } from 'solid-js';
 import { BlurhashOptions } from './types';
 import useBlurhashData from './useBlurhashData';
-import { getAspectRatio, getEmptyImageURL, getNearestAspectRatio } from './utils';
+import { getEmptyImageURL } from './utils';
 
 export type ImageFormat =
   | 'image/png'

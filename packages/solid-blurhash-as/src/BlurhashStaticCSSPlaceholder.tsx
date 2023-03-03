@@ -1,6 +1,6 @@
 import { createEffect, JSX } from 'solid-js';
 import { BlurhashStaticOptions } from './types';
-import { CSS_PLACEHOLDER, shimStyle } from './utils';
+import { CSS_PLACEHOLDER } from './utils';
 
 export interface BlurhashStaticCSSPlaceholderProps extends BlurhashStaticOptions {
   blur?: string;
@@ -19,13 +19,13 @@ export default function BlurhashStaticCSSPlaceholder(
   return (
     <div
       class="blurhash-as__placeholder"
-      style={shimStyle({
+      style={{
         ...CSS_PLACEHOLDER,
         ...props.placeholder,
         filter: `blur(${props.blur ?? '20px'})`,
         transform: `scale(${props.scale ?? '1.2'})`,
         opacity: props.visible ? 1 : 0,
-      })}
+      }}
     />
   );
 }

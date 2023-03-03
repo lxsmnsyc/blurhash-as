@@ -1,7 +1,7 @@
+import { getAspectRatio, getNearestAspectRatio } from 'blurhash-as-helper/utils';
 import { toSVG, toCSSObject, decode } from 'blurhash-as/browser';
 import { JSX } from 'solid-js';
 import { BlurhashOptions } from './types';
-import { getAspectRatio, getNearestAspectRatio } from './utils';
 
 interface Resource<T> {
   read: () => Result<T>;

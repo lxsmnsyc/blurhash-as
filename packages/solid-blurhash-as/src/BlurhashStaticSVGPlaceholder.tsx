@@ -1,6 +1,6 @@
 import { JSX } from 'solid-js';
 import { BlurhashStaticOptions } from './types';
-import { CSS_PLACEHOLDER, getEncodedSVG, shimStyle } from './utils';
+import { CSS_PLACEHOLDER, getEncodedSVG } from './utils';
 
 export interface BlurhashStaticSVGPlaceholderProps extends BlurhashStaticOptions {
   visible: boolean;
@@ -17,12 +17,12 @@ export default function BlurhashStaticSVGPlaceholder(
       src={getEncodedSVG(props.placeholder)}
       alt="Blurhash Placeholder"
       class="blurhash-as__placeholder"
-      style={shimStyle({
+      style={{
         ...CSS_PLACEHOLDER,
         filter: `blur(${props.blur ?? '20px'})`,
         transform: `scale(${props.scale ?? '1.2'})`,
         opacity: props.visible ? 1 : 0,
-      })}
+      }}
       onLoad={props.onLoad}
     />
   );

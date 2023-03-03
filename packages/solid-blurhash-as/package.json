@@ -31,17 +31,22 @@
   ],
   "name": "solid-blurhash-as",
   "devDependencies": {
-    "@types/node": "^18.7.3",
-    "eslint": "^8.22.0",
+    "@types/node": "^18.14.5",
+    "blurhash-as": "0.9.1",
+    "eslint": "^8.35.0",
     "eslint-config-lxsmnsyc": "^0.4.8",
-    "pridepack": "^2.3.0",
-    "solid-js": "^1.4.8",
-    "tslib": "^2.3.1",
-    "typescript": "^4.7.4"
+    "pridepack": "^2.4.1",
+    "solid-js": "^1.6.11",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5"
   },
   "peerDependencies": {
-    "blurhash-as": "^0.8",
+    "blurhash-as": "^0.9",
     "solid-js": "^1.2"
+  },
+  "dependencies": {
+    "blurhash-as-helper": "0.9.1",
+    "solid-laze": "^0.4.0"
   },
   "scripts": {
     "prepublish": "pridepack clean && pridepack build",
@@ -66,9 +71,6 @@
   },
   "author": "Alexis Munsayac",
   "private": false,
-  "dependencies": {
-    "solid-laze": "^0.4.0"
-  },
   "typesVersions": {
     "*": {}
   }

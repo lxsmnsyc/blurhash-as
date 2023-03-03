@@ -1,7 +1,7 @@
 import { JSX } from 'solid-js';
 import { BlurhashOptions } from './types';
 import useBlurhashSVG from './useBlurhashSVG';
-import { CSS_PLACEHOLDER, getEncodedOptionalSVG, shimStyle } from './utils';
+import { CSS_PLACEHOLDER, getEncodedOptionalSVG } from './utils';
 
 export interface BlurhashSVGPlaceholderProps extends BlurhashOptions {
   visible: boolean;
@@ -19,12 +19,12 @@ export default function BlurhashSVGPlaceholder(
       src={getEncodedOptionalSVG({ width: props.width, height: props.height }, result())}
       alt="Blurhash Placeholder"
       class="blurhash-as__placeholder"
-      style={shimStyle({
+      style={{
         ...CSS_PLACEHOLDER,
         filter: `blur(${props.blur ?? '20px'})`,
         transform: `scale(${props.scale ?? '1.2'})`,
         opacity: props.visible ? 1 : 0,
-      })}
+      }}
       onLoad={props.onLoad}
     />
   );
