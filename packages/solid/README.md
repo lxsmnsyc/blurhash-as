@@ -171,6 +171,10 @@ Similar to `BlurhashContainer` however, the placeholder is not lazily-rendered.
 
 After the image has loaded, the image and the placeholder changes opacity. This is useful if you want to provide transitions when the image is displayed.
 
+## Sponsors
+
+![Sponsors](https://github.com/lxsmnsyc/sponsors/blob/main/sponsors.svg?raw=true)
+
 ## License
 
 MIT © [lxsmnsyc](https://github.com/lxsmnsyc)

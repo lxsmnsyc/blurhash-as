@@ -112,6 +112,10 @@ You can refer to `rollup-plugin-blurhash-as/shim`:
 /// <reference types="rollup-plugin-blurhash-as/shim" />
 ```
 
+## Sponsors
+
+![Sponsors](https://github.com/lxsmnsyc/sponsors/blob/main/sponsors.svg?raw=true)
+
 ## License
 
 MIT © [lxsmnsyc](https://github.com/lxsmnsyc)
