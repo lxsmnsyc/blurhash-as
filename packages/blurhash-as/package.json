@@ -53,7 +53,7 @@
     "asbuild:untouched": "asc assembly/index.ts --target debug --runtime minimal --exportRuntime",
     "asbuild:optimized": "asc assembly/index.ts --target release --runtime minimal --exportRuntime",
     "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
-    "test": "node tests"
+    "test": "node tests/index.cjs"
   },
   "description": "Blurhash algorithm implementation in AssemblyScript",
   "repository": {
