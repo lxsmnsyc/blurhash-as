@@ -1,6 +1,7 @@
 {
   "name": "blurhash-as-helper",
   "version": "0.10.0",
+  "type": "module",
   "files": [
     "dist",
     "src"
@@ -54,25 +55,25 @@
     "sharp": "^0.31.3"
   },
   "types": "./dist/types/index.d.ts",
-  "main": "./dist/cjs/production/index.js",
-  "module": "./dist/esm/production/index.js",
+  "main": "./dist/cjs/production/index.cjs",
+  "module": "./dist/esm/production/index.mjs",
   "exports": {
     ".": {
       "development": {
-        "require": "./dist/cjs/development/index.js",
-        "import": "./dist/esm/development/index.js"
+        "require": "./dist/cjs/development/index.cjs",
+        "import": "./dist/esm/development/index.mjs"
       },
-      "require": "./dist/cjs/production/index.js",
-      "import": "./dist/esm/production/index.js",
+      "require": "./dist/cjs/production/index.cjs",
+      "import": "./dist/esm/production/index.mjs",
       "types": "./dist/types/index.d.ts"
     },
     "./utils": {
       "development": {
-        "require": "./dist/cjs/development/utils.js",
-        "import": "./dist/esm/development/utils.js"
+        "require": "./dist/cjs/development/utils.cjs",
+        "import": "./dist/esm/development/utils.mjs"
       },
-      "require": "./dist/cjs/production/utils.js",
-      "import": "./dist/esm/production/utils.js",
+      "require": "./dist/cjs/production/utils.cjs",
+      "import": "./dist/esm/production/utils.mjs",
       "types": "./dist/types/utils.d.ts"
     }
   },
