@@ -1,5 +1,5 @@
 {
-  "version": "0.10.0",
+  "version": "0.10.1",
   "type": "module",
   "types": "./dist/types/index.d.ts",
   "main": "./dist/cjs/production/index.cjs",
@@ -45,7 +45,7 @@
     "preact": "^10.0.0"
   },
   "dependencies": {
-    "blurhash-as-helper": "0.10.0",
+    "blurhash-as-helper": "0.10.1",
     "preact-laze": "^0.4.0"
   },
   "scripts": {
