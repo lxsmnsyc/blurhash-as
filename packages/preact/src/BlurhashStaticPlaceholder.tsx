@@ -1,9 +1,11 @@
-/** @jsx h */
-import { h, JSX } from 'preact';
-import BlurhashBoundary from './BlurhashBoundary';
-import BlurhashStaticCSSPlaceholder, { BlurhashStaticCSSPlaceholderProps } from './BlurhashStaticCSSPlaceholder';
-import BlurhashStaticImagePlaceholder, { BlurhashStaticImagePlaceholderProps } from './BlurhashStaticImagePlaceholder';
-import BlurhashStaticSVGPlaceholder, { BlurhashStaticSVGPlaceholderProps } from './BlurhashStaticSVGPlaceholder';
+import type { JSX } from 'preact';
+import { BlurhashBoundary } from './BlurhashBoundary';
+import type { BlurhashStaticCSSPlaceholderProps } from './BlurhashStaticCSSPlaceholder';
+import { BlurhashStaticCSSPlaceholder } from './BlurhashStaticCSSPlaceholder';
+import type { BlurhashStaticImagePlaceholderProps } from './BlurhashStaticImagePlaceholder';
+import { BlurhashStaticImagePlaceholder } from './BlurhashStaticImagePlaceholder';
+import type { BlurhashStaticSVGPlaceholderProps } from './BlurhashStaticSVGPlaceholder';
+import { BlurhashStaticSVGPlaceholder } from './BlurhashStaticSVGPlaceholder';
 
 interface BlurhashStaticPlaceholderBaseProps {
   width: number;
@@ -11,17 +13,20 @@ interface BlurhashStaticPlaceholderBaseProps {
 }
 
 export interface BlurhashStaticPlaceholderCSSMode
-  extends BlurhashStaticCSSPlaceholderProps, BlurhashStaticPlaceholderBaseProps {
+  extends BlurhashStaticCSSPlaceholderProps,
+    BlurhashStaticPlaceholderBaseProps {
   mode: 'css';
 }
 
 export interface BlurhashStaticPlaceholderSVGMode
-  extends BlurhashStaticSVGPlaceholderProps, BlurhashStaticPlaceholderBaseProps {
+  extends BlurhashStaticSVGPlaceholderProps,
+    BlurhashStaticPlaceholderBaseProps {
   mode: 'svg';
 }
 
 export interface BlurhashStaticPlaceholderImageMode
-  extends BlurhashStaticImagePlaceholderProps, BlurhashStaticPlaceholderBaseProps {
+  extends BlurhashStaticImagePlaceholderProps,
+    BlurhashStaticPlaceholderBaseProps {
   mode: 'image';
 }
 
@@ -45,14 +50,13 @@ function BlurhashStaticPlaceholderInternal(
   }
 }
 
-export default function BlurhashStaticPlaceholder(
-  { width, height, ...props }: BlurhashStaticPlaceholderProps,
-): JSX.Element {
+export function BlurhashStaticPlaceholder({
+  width,
+  height,
+  ...props
+}: BlurhashStaticPlaceholderProps): JSX.Element {
   return (
-    <BlurhashBoundary
-      width={width}
-      height={height}
-    >
+    <BlurhashBoundary width={width} height={height}>
       <BlurhashStaticPlaceholderInternal
         width={width}
         height={height}

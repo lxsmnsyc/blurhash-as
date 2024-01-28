@@ -4,6 +4,7 @@ let WASM_URL;
 let BLURHASH;
 
 export async function setURL(wasmURL) {
+  await Promise.resolve();
   WASM_URL = wasmURL;
 }
 
@@ -12,22 +13,25 @@ export async function init() {
     return;
   }
   if (!WASM_URL) {
-    throw new Error('`blurhash.setURL` has not yet been called to setup the WASM url.')
+    throw new Error(
+      '`blurhash.setURL` has not yet been called to setup the WASM url.',
+    );
   }
-  const wasmModule = await loader.instantiateStreaming(
-    fetch(WASM_URL),
-    {},
-  );
+  const wasmModule = await loader.instantiateStreaming(fetch(WASM_URL), {});
   BLURHASH = wasmModule.exports;
 }
 
 export async function encode(pixels, width, height, x, y) {
   await init();
   if (x < 1 || x > 9 || y < 1 || y > 9) {
-    throw new Error(`The given component must have a value between 1 to 9. (Received: ${x}, ${y})`);
+    throw new Error(
+      `The given component must have a value between 1 to 9. (Received: ${x}, ${y})`,
+    );
   }
   if (width * height * 4 !== pixels.length) {
-    throw new Error('The image width and height does not match the pixel data.');
+    throw new Error(
+      'The image width and height does not match the pixel data.',
+    );
   }
   const pixelsData = BLURHASH.__newArray(BLURHASH.Uint8ClampedArrayID, pixels);
   const result = BLURHASH.encode(pixelsData, width, height, x, y);

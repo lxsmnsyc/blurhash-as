@@ -1,12 +1,11 @@
-/** @jsx h */
-import { h, JSX } from 'preact';
+import type { JSX } from 'preact';
 import useLaze from 'preact-laze';
 import { useState } from 'preact/hooks';
 import {
-  getAspectRatioBoxStyle,
   ASPECT_RATIO_CONTENT,
-  IMAGE_CONTAINER,
   IMAGE,
+  IMAGE_CONTAINER,
+  getAspectRatioBoxStyle,
   getEmptyImageURL,
 } from './utils';
 
@@ -19,16 +18,14 @@ export interface BlurhashStaticContainerProps {
   children: (visible: boolean, onLoad: () => void) => JSX.Element;
 }
 
-export default function BlurhashStaticContainer(
-  {
-    src,
-    alt,
-    width,
-    height,
-    children,
-    onLoad,
-  }: BlurhashStaticContainerProps,
-): JSX.Element {
+export function BlurhashStaticContainer({
+  src,
+  alt,
+  width,
+  height,
+  children,
+  onLoad,
+}: BlurhashStaticContainerProps): JSX.Element {
   const [showPlaceholder, setShowPlaceholder] = useState(true);
   const { ref, visible } = useLaze<HTMLDivElement>();
   const [defer, setDefer] = useState(true);
@@ -47,29 +44,24 @@ export default function BlurhashStaticContainer(
         className="blurhash-as__aspect-ratio-content"
         style={ASPECT_RATIO_CONTENT}
       >
-        <div
-          className="blurhash-as__image-container"
-          style={IMAGE_CONTAINER}
-        >
-          {
-            visible && (
-              <img
-                className="blurhash-as__image"
-                src={defer ? getEmptyImageURL({ width, height }) : src}
-                alt={alt}
-                onLoad={() => {
-                  if (!defer) {
-                    setShowPlaceholder(false);
-                    onLoad?.();
-                  }
-                }}
-                style={{
-                  ...IMAGE,
-                  opacity: showPlaceholder ? 0 : 1,
-                }}
-              />
-            )
-          }
+        <div className="blurhash-as__image-container" style={IMAGE_CONTAINER}>
+          {visible && (
+            <img
+              className="blurhash-as__image"
+              src={defer ? getEmptyImageURL({ width, height }) : src}
+              alt={alt}
+              onLoad={() => {
+                if (!defer) {
+                  setShowPlaceholder(false);
+                  onLoad?.();
+                }
+              }}
+              style={{
+                ...IMAGE,
+                opacity: showPlaceholder ? 0 : 1,
+              }}
+            />
+          )}
           {children(showPlaceholder, onPlaceholderLoad)}
         </div>
       </div>

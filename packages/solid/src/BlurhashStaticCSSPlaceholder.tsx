@@ -1,15 +1,17 @@
-import { createEffect, JSX } from 'solid-js';
-import { BlurhashStaticOptions } from './types';
+import type { JSX } from 'solid-js';
+import { createEffect } from 'solid-js';
+import type { BlurhashStaticOptions } from './types';
 import { CSS_PLACEHOLDER, shimStyle } from './utils';
 
-export interface BlurhashStaticCSSPlaceholderProps extends BlurhashStaticOptions {
+export interface BlurhashStaticCSSPlaceholderProps
+  extends BlurhashStaticOptions {
   blur?: string;
   scale?: number;
   visible: boolean;
   placeholder: JSX.CSSProperties;
 }
 
-export default function BlurhashStaticCSSPlaceholder(
+export function BlurhashStaticCSSPlaceholder(
   props: BlurhashStaticCSSPlaceholderProps,
 ): JSX.Element {
   createEffect(() => {

@@ -1,7 +1,7 @@
-import { h } from 'preact';
-import { AspectRatio } from 'blurhash-as-helper/utils';
+import type { AspectRatio } from 'blurhash-as-helper/utils';
+import type { JSX } from 'preact';
 
-export function getAspectRatioBoxStyle(ratio: AspectRatio): h.JSX.CSSProperties {
+export function getAspectRatioBoxStyle(ratio: AspectRatio): JSX.CSSProperties {
   return {
     position: 'relative',
     paddingTop: `${(ratio.height * 100) / ratio.width}%`,
@@ -11,7 +11,7 @@ export function getAspectRatioBoxStyle(ratio: AspectRatio): h.JSX.CSSProperties 
   };
 }
 
-export const ASPECT_RATIO_CONTENT: h.JSX.CSSProperties = {
+export const ASPECT_RATIO_CONTENT: JSX.CSSProperties = {
   position: 'absolute',
   top: '0',
   left: '0',
@@ -19,18 +19,18 @@ export const ASPECT_RATIO_CONTENT: h.JSX.CSSProperties = {
   height: '100%',
 };
 
-export const IMAGE_CONTAINER: h.JSX.CSSProperties = {
+export const IMAGE_CONTAINER: JSX.CSSProperties = {
   width: '100%',
   height: '100%',
   position: 'relative',
 };
 
-export const CSS_PLACEHOLDER: h.JSX.CSSProperties = {
+export const CSS_PLACEHOLDER: JSX.CSSProperties = {
   ...ASPECT_RATIO_CONTENT,
   pointerEvents: 'none',
 };
 
-export const IMAGE: h.JSX.CSSProperties = {
+export const IMAGE: JSX.CSSProperties = {
   width: '100%',
   height: '100%',
   objectFit: 'contain',

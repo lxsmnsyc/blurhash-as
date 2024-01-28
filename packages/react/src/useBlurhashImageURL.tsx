@@ -1,33 +1,27 @@
-import { getAspectRatio, getNearestAspectRatio } from 'blurhash-as-helper/utils';
 import {
-  useDebugValue,
-  useEffect,
-  useState,
-} from 'react';
-import { BlurhashOptions } from './types';
-import useBlurhashData from './useBlurhashData';
+  getAspectRatio,
+  getNearestAspectRatio,
+} from 'blurhash-as-helper/utils';
+import { useDebugValue, useEffect, useState } from 'react';
+import type { BlurhashOptions } from './types';
+import { useBlurhashData } from './useBlurhashData';
 import { getEmptyImageURL } from './utils';
 
-export type ImageFormat =
-  | 'image/png'
-  | 'image/jpeg'
-  | 'image/webp';
+export type ImageFormat = 'image/png' | 'image/jpeg' | 'image/webp';
 
 export interface BlurhashImageOptions extends BlurhashOptions {
   format?: ImageFormat;
   quality?: number;
 }
 
-export default function useBlurhashImageURL(
-  {
-    hash,
-    width,
-    height,
-    punch,
-    format,
-    quality,
-  }: BlurhashImageOptions,
-): string {
+export function useBlurhashImageURL({
+  hash,
+  width,
+  height,
+  punch,
+  format,
+  quality,
+}: BlurhashImageOptions): string {
   const blurhash = useBlurhashData({
     hash,
     width,
@@ -35,10 +29,12 @@ export default function useBlurhashImageURL(
     punch,
   });
 
-  const [state, setState] = useState(getEmptyImageURL({
-    width,
-    height,
-  }));
+  const [state, setState] = useState(
+    getEmptyImageURL({
+      width,
+      height,
+    }),
+  );
 
   useEffect(() => {
     const canvas = document.createElement('canvas');

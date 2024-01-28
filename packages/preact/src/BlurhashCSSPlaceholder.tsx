@@ -1,8 +1,7 @@
-/** @jsx h */
-import { h, JSX } from 'preact';
+import type { JSX } from 'preact';
 import { useEffect } from 'preact/hooks';
-import { BlurhashOptions } from './types';
-import useBlurhashCSS from './useBlurhashCSS';
+import type { BlurhashOptions } from './types';
+import { useBlurhashCSS } from './useBlurhashCSS';
 import { CSS_PLACEHOLDER } from './utils';
 
 export interface BlurhashCSSPlaceholderProps extends BlurhashOptions {
@@ -11,15 +10,13 @@ export interface BlurhashCSSPlaceholderProps extends BlurhashOptions {
   visible: boolean;
 }
 
-export default function BlurhashCSSPlaceholder(
-  {
-    visible,
-    blur,
-    scale,
-    onLoad,
-    ...props
-  }: BlurhashCSSPlaceholderProps,
-): JSX.Element {
+export function BlurhashCSSPlaceholder({
+  visible,
+  blur,
+  scale,
+  onLoad,
+  ...props
+}: BlurhashCSSPlaceholderProps): JSX.Element {
   const result = useBlurhashCSS(props);
 
   useEffect(() => {

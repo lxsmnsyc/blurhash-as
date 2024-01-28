@@ -1,4 +1,5 @@
 {
+  "name": "unplugin-blurhash-as",
   "version": "0.10.1",
   "type": "module",
   "types": "./dist/types/index.d.ts",
@@ -15,41 +16,49 @@
       "types": "./dist/types/index.d.ts"
     }
   },
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "engines": {
     "node": ">=10"
   },
   "license": "MIT",
-  "keywords": ["pridepack", "preact", "blurhash", "blurhash-as"],
-  "name": "preact-blurhash-as",
-  "devDependencies": {
-    "@types/node": "^20.11.5",
-    "blurhash-as": "0.10.0",
-    "preact": "^10.19.3",
-    "pridepack": "2.6.0",
-    "tslib": "^2.6.2",
-    "typescript": "^5.3.3"
-  },
-  "peerDependencies": {
-    "blurhash-as": "^0.8",
-    "preact": "^10.0.0"
-  },
-  "dependencies": {
-    "blurhash-as-helper": "^0.10.1",
-    "preact-laze": "^0.5.0"
-  },
+  "keywords": [
+    "pridepack",
+    "babel"
+  ],
   "scripts": {
     "prepublish": "pridepack clean && pridepack build",
     "build": "pridepack build",
     "type-check": "pridepack check",
     "clean": "pridepack clean"
   },
-  "description": "Preact bindings for blurhash-as",
+  "devDependencies": {
+    "@types/node": "^20.11.3",
+    "pridepack": "2.6.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "vite": "^3 || ^4 || ^5"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "unplugin": "^1.6.0",
+    "blurhash-as": "^0.10.0",
+    "blurhash-as-helper": "^0.10.1"
+  },
+  "description": "Unplugin for generating static Blurhash output",
   "repository": {
     "url": "https://github.com/lxsmnsyc/blurhash-as.git",
     "type": "git"
   },
-  "homepage": "https://github.com/lxsmnsyc/blurhash-as/tree/main/packages/preact",
+  "homepage": "https://github.com/lxsmnsyc/blurhash-as/tree/main/packages/unplugin",
   "bugs": {
     "url": "https://github.com/lxsmnsyc/blurhash-as/issues"
   },

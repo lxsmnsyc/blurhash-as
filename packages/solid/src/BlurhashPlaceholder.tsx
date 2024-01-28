@@ -1,23 +1,31 @@
-import { JSX } from 'solid-js';
-import BlurhashBoundary from './BlurhashBoundary';
-import BlurhashCanvasPlaceholder, { BlurhashCanvasPlaceholderProps } from './BlurhashCanvasPlaceholder';
-import BlurhashCSSPlaceholder, { BlurhashCSSPlaceholderProps } from './BlurhashCSSPlaceholder';
-import BlurhashImagePlaceholder, { BlurhashImagePlaceholderProps } from './BlurhashImagePlaceholder';
-import BlurhashSVGPlaceholder, { BlurhashSVGPlaceholderProps } from './BlurhashSVGPlaceholder';
+import type { JSX } from 'solid-js';
+import { BlurhashBoundary } from './BlurhashBoundary';
+import type { BlurhashCSSPlaceholderProps } from './BlurhashCSSPlaceholder';
+import { BlurhashCSSPlaceholder } from './BlurhashCSSPlaceholder';
+import type { BlurhashCanvasPlaceholderProps } from './BlurhashCanvasPlaceholder';
+import { BlurhashCanvasPlaceholder } from './BlurhashCanvasPlaceholder';
+import type { BlurhashImagePlaceholderProps } from './BlurhashImagePlaceholder';
+import { BlurhashImagePlaceholder } from './BlurhashImagePlaceholder';
+import type { BlurhashSVGPlaceholderProps } from './BlurhashSVGPlaceholder';
+import { BlurhashSVGPlaceholder } from './BlurhashSVGPlaceholder';
 
-export interface BlurhashPlaceholderCSSMode extends BlurhashCSSPlaceholderProps {
+export interface BlurhashPlaceholderCSSMode
+  extends BlurhashCSSPlaceholderProps {
   mode: 'css';
 }
 
-export interface BlurhashPlaceholderSVGMode extends BlurhashSVGPlaceholderProps {
+export interface BlurhashPlaceholderSVGMode
+  extends BlurhashSVGPlaceholderProps {
   mode: 'svg';
 }
 
-export interface BlurhashPlaceholderCanvasMode extends BlurhashCanvasPlaceholderProps {
+export interface BlurhashPlaceholderCanvasMode
+  extends BlurhashCanvasPlaceholderProps {
   mode: 'canvas';
 }
 
-export interface BlurhashPlaceholderImageMode extends BlurhashImagePlaceholderProps {
+export interface BlurhashPlaceholderImageMode
+  extends BlurhashImagePlaceholderProps {
   mode: 'image';
 }
 
@@ -27,7 +35,9 @@ export type BlurhashPlaceholderProps =
   | BlurhashPlaceholderCanvasMode
   | BlurhashPlaceholderImageMode;
 
-function BlurhashPlaceholderInternal(props: BlurhashPlaceholderProps): JSX.Element {
+function BlurhashPlaceholderInternal(
+  props: BlurhashPlaceholderProps,
+): JSX.Element {
   switch (props.mode) {
     case 'canvas':
       return <BlurhashCanvasPlaceholder {...props} />;
@@ -42,14 +52,11 @@ function BlurhashPlaceholderInternal(props: BlurhashPlaceholderProps): JSX.Eleme
   }
 }
 
-export default function BlurhashPlaceholder(
+export function BlurhashPlaceholder(
   props: BlurhashPlaceholderProps,
 ): JSX.Element {
   return (
-    <BlurhashBoundary
-      width={props.width}
-      height={props.height}
-    >
+    <BlurhashBoundary width={props.width} height={props.height}>
       <BlurhashPlaceholderInternal {...props} />
     </BlurhashBoundary>
   );

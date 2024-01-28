@@ -1,10 +1,11 @@
-import React from 'react';
-import BlurhashStaticContainer from './BlurhashStaticContainer';
-import BlurhashStaticPlaceholder, {
+import type { JSX } from 'react';
+import { BlurhashStaticContainer } from './BlurhashStaticContainer';
+import type {
   BlurhashStaticPlaceholderCSSMode,
   BlurhashStaticPlaceholderImageMode,
   BlurhashStaticPlaceholderSVGMode,
 } from './BlurhashStaticPlaceholder';
+import { BlurhashStaticPlaceholder } from './BlurhashStaticPlaceholder';
 
 export interface BlurhashStaticCSSMode
   extends Omit<BlurhashStaticPlaceholderCSSMode, 'visible'> {
@@ -29,16 +30,14 @@ export type BlurhashStaticProps =
   | BlurhashStaticSVGMode
   | BlurhashStaticImageMode;
 
-function BlurhashStatic(
-  {
-    src,
-    alt,
-    width,
-    height,
-    onLoad,
-    ...props
-  }: BlurhashStaticProps,
-): JSX.Element {
+export function BlurhashStatic({
+  src,
+  alt,
+  width,
+  height,
+  onLoad,
+  ...props
+}: BlurhashStaticProps): JSX.Element {
   return (
     <BlurhashStaticContainer
       src={src}
@@ -59,5 +58,3 @@ function BlurhashStatic(
     </BlurhashStaticContainer>
   );
 }
-
-export default BlurhashStatic;

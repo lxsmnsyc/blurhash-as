@@ -1,4 +1,4 @@
-import { decode } from "./decode";
+import { decode } from './decode';
 
 export default function toSVG(
   blurhash: string,
@@ -31,6 +31,6 @@ export default function toSVG(
 
     return svg;
   }
-  
+
   return null;
 }

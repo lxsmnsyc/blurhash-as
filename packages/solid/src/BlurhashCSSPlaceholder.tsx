@@ -1,6 +1,7 @@
-import { createEffect, JSX } from 'solid-js';
-import { BlurhashOptions } from './types';
-import useBlurhashCSS from './useBlurhashCSS';
+import type { JSX } from 'solid-js';
+import { createEffect } from 'solid-js';
+import type { BlurhashOptions } from './types';
+import { useBlurhashCSS } from './useBlurhashCSS';
 import { CSS_PLACEHOLDER, shimStyle } from './utils';
 
 export interface BlurhashCSSPlaceholderProps extends BlurhashOptions {
@@ -9,7 +10,7 @@ export interface BlurhashCSSPlaceholderProps extends BlurhashOptions {
   visible: boolean;
 }
 
-export default function BlurhashCSSPlaceholder(
+export function BlurhashCSSPlaceholder(
   props: BlurhashCSSPlaceholderProps,
 ): JSX.Element {
   const result = useBlurhashCSS(props);

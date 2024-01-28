@@ -35,15 +35,12 @@ const HORIZONTAL_ASPECT_RATIO = [
   { width: 12, height: 3 }, // Polyvision
 ];
 
-const VERTICAL_ASPECT_RATIO = HORIZONTAL_ASPECT_RATIO.map((item) => ({
+const VERTICAL_ASPECT_RATIO = HORIZONTAL_ASPECT_RATIO.map(item => ({
   width: item.height,
   height: item.width,
 }));
 
-const ASPECT_RATIO = [
-  ...HORIZONTAL_ASPECT_RATIO,
-  ...VERTICAL_ASPECT_RATIO,
-];
+const ASPECT_RATIO = [...HORIZONTAL_ASPECT_RATIO, ...VERTICAL_ASPECT_RATIO];
 
 export function getAspectRatio({ width, height }: AspectRatio): AspectRatio {
   const denom = gcd(width, height);

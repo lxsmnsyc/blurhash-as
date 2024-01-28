@@ -1,4 +1,5 @@
-import React, { ReactNode, Suspense } from 'react';
+import type { JSX, ReactNode } from 'react';
+import { Suspense } from 'react';
 import { getEmptyImageURL } from './utils';
 
 export interface BlurhashBoundaryProps {
@@ -17,15 +18,13 @@ export function BlurhashEmpty(props: BlurhashBoundaryProps): JSX.Element {
   );
 }
 
-export default function BlurhashBoundary(
-  { width, height, children }: BlurhashBoundaryProps,
-): JSX.Element {
-  const placeholder = <BlurhashEmpty width={width} height={height} />;
-  if (typeof window === 'undefined') {
-    return placeholder;
-  }
+export function BlurhashBoundary({
+  width,
+  height,
+  children,
+}: BlurhashBoundaryProps): JSX.Element {
   return (
-    <Suspense fallback={placeholder}>
+    <Suspense fallback={<BlurhashEmpty width={width} height={height} />}>
       {children}
     </Suspense>
   );

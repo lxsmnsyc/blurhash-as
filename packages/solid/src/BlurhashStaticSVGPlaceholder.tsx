@@ -1,15 +1,16 @@
-import { JSX } from 'solid-js';
-import { BlurhashStaticOptions } from './types';
+import type { JSX } from 'solid-js';
+import type { BlurhashStaticOptions } from './types';
 import { CSS_PLACEHOLDER, getEncodedSVG } from './utils';
 
-export interface BlurhashStaticSVGPlaceholderProps extends BlurhashStaticOptions {
+export interface BlurhashStaticSVGPlaceholderProps
+  extends BlurhashStaticOptions {
   visible: boolean;
   blur?: string;
   scale?: number;
   placeholder: string;
 }
 
-export default function BlurhashStaticSVGPlaceholder(
+export function BlurhashStaticSVGPlaceholder(
   props: BlurhashStaticSVGPlaceholderProps,
 ): JSX.Element {
   return (

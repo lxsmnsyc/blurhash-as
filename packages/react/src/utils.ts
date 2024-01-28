@@ -1,5 +1,5 @@
-import { CSSProperties } from 'react';
-import { AspectRatio } from 'blurhash-as-helper/utils';
+import type { AspectRatio } from 'blurhash-as-helper/utils';
+import type { CSSProperties } from 'react';
 
 export function getAspectRatioBoxStyle(ratio: AspectRatio): CSSProperties {
   return {

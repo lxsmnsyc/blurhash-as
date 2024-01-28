@@ -1,8 +1,9 @@
-import { JSX } from 'solid-js';
-import { AspectRatio } from 'blurhash-as-helper/utils';
+import type { AspectRatio } from 'blurhash-as-helper/utils';
+import type { JSX } from 'solid-js';
 
 function kebabify(str: string): string {
-  return str.replace(/([A-Z])([A-Z])/g, '$1-$2')
+  return str
+    .replace(/([A-Z])([A-Z])/g, '$1-$2')
     .replace(/([a-z])([A-Z])/g, '$1-$2')
     .replace(/[\s_]+/g, '-')
     .toLowerCase();
@@ -63,7 +64,10 @@ export function getEncodedSVG(svg: string): string {
   return `data:image/svg+xml,${encodedSVG}`;
 }
 
-export function getEncodedOptionalSVG(ratio: AspectRatio, svg?: string): string {
+export function getEncodedOptionalSVG(
+  ratio: AspectRatio,
+  svg?: string,
+): string {
   return getEncodedSVG(svg || getEmptySVGPlaceholder(ratio));
 }
 

@@ -1,23 +1,22 @@
-import React from 'react';
-import { BlurhashStaticOptions } from './types';
+import type { JSX } from 'react';
+import type { BlurhashStaticOptions } from './types';
 import { CSS_PLACEHOLDER, getEncodedSVG } from './utils';
 
-export interface BlurhashStaticSVGPlaceholderProps extends BlurhashStaticOptions {
+export interface BlurhashStaticSVGPlaceholderProps
+  extends BlurhashStaticOptions {
   visible: boolean;
   blur?: string;
   scale?: number;
   placeholder: string;
 }
 
-export default function BlurhashStaticSVGPlaceholder(
-  {
-    visible,
-    blur,
-    scale,
-    onLoad,
-    placeholder,
-  }: BlurhashStaticSVGPlaceholderProps,
-): JSX.Element {
+export function BlurhashStaticSVGPlaceholder({
+  visible,
+  blur,
+  scale,
+  onLoad,
+  placeholder,
+}: BlurhashStaticSVGPlaceholderProps): JSX.Element {
   return (
     <img
       src={getEncodedSVG(placeholder)}

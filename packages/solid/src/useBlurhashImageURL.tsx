@@ -1,26 +1,27 @@
-import { getAspectRatio, getNearestAspectRatio } from 'blurhash-as-helper/utils';
+import {
+  getAspectRatio,
+  getNearestAspectRatio,
+} from 'blurhash-as-helper/utils';
 import { createEffect, createSignal, untrack } from 'solid-js';
-import { BlurhashOptions } from './types';
-import useBlurhashData from './useBlurhashData';
+import type { BlurhashOptions } from './types';
+import { useBlurhashData } from './useBlurhashData';
 import { getEmptyImageURL } from './utils';
 
-export type ImageFormat =
-  | 'image/png'
-  | 'image/jpeg'
-  | 'image/webp';
+export type ImageFormat = 'image/png' | 'image/jpeg' | 'image/webp';
 
 export interface BlurhashImageOptions extends BlurhashOptions {
   format?: ImageFormat;
   quality?: number;
 }
 
-export default function useBlurhashImageURL(
+export function useBlurhashImageURL(
   options: BlurhashImageOptions,
 ): () => string {
-  const placeholder = () => getEmptyImageURL({
-    width: options.width,
-    height: options.height,
-  });
+  const placeholder = () =>
+    getEmptyImageURL({
+      width: options.width,
+      height: options.height,
+    });
 
   const blurhash = useBlurhashData(options);
 

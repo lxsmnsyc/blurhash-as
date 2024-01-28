@@ -1,8 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import { encode83 } from './base83';
-import {
-  linearToSRGB, signPow, SRGBToLinear,
-} from './utils';
+import { SRGBToLinear, linearToSRGB, signPow } from './utils';
 
 function multiplyBasisFunction(
   pixels: Uint8ClampedArray,
@@ -15,12 +12,16 @@ function multiplyBasisFunction(
   let g: f32 = 0;
   let b: f32 = 0;
   const bytesPerRow = width * 4;
-  const normalization: f32 = (xComponent === 0 && yComponent === 0) ? 1 : 2;
+  const normalization: f32 = xComponent === 0 && yComponent === 0 ? 1 : 2;
 
   for (let x = 0; x < width; x += 1) {
-    const xBasis = NativeMathf.cos((NativeMathf.PI * <f32>(xComponent * x)) / <f32>width);
+    const xBasis = NativeMathf.cos(
+      (NativeMathf.PI * <f32>(xComponent * x)) / <f32>width,
+    );
     for (let y = 0; y < height; y += 1) {
-      const yBasis = NativeMathf.cos((NativeMathf.PI * <f32>(yComponent * y)) / <f32>height);
+      const yBasis = NativeMathf.cos(
+        (NativeMathf.PI * <f32>(yComponent * y)) / <f32>height,
+      );
       const basis = xBasis * yBasis;
       r += basis * SRGBToLinear(pixels[4 * x + 0 + y * bytesPerRow]);
       g += basis * SRGBToLinear(pixels[4 * x + 1 + y * bytesPerRow]);
@@ -30,11 +31,7 @@ function multiplyBasisFunction(
 
   const scale: f32 = normalization / <f32>(width * height);
 
-  return StaticArray.fromArray([
-    r * scale,
-    g * scale,
-    b * scale,
-  ]);
+  return StaticArray.fromArray([r * scale, g * scale, b * scale]);
 }
 
 function encodeDC(r: f32, g: f32, b: f32): i32 {
@@ -45,14 +42,13 @@ function encodeDC(r: f32, g: f32, b: f32): i32 {
 }
 
 function encodeACQuant(value: f32, maximumValue: f32): i32 {
-  return <i32>NativeMathf.floor(
-    NativeMathf.max(
-      0,
-      NativeMathf.min(
-        18.0,
-        signPow(value / maximumValue, 0.5) * 9.0 + 9.5,
+  return <i32>(
+    NativeMathf.floor(
+      NativeMathf.max(
+        0,
+        NativeMathf.min(18.0, signPow(value / maximumValue, 0.5) * 9.0 + 9.5),
       ),
-    ),
+    )
   );
 }
 
@@ -71,7 +67,9 @@ export default function encode(
   componentX: i32,
   componentY: i32,
 ): string {
-  const factors: StaticArray<StaticArray<f32>> = new StaticArray(componentX * componentY);
+  const factors: StaticArray<StaticArray<f32>> = new StaticArray(
+    componentX * componentY,
+  );
   for (let y = 0; y < componentY; y += 1) {
     for (let x = 0; x < componentX; x += 1) {
       factors[y * componentX + x] = multiplyBasisFunction(
@@ -99,14 +97,13 @@ export default function encode(
       actualMaximumValue = NativeMathf.max(ac[i][2], actualMaximumValue);
     }
 
-    const quantisedMaximumValue: i32 = <i32>NativeMathf.floor(
-      NativeMathf.max(
-        0,
-        NativeMathf.min(
-          82.0,
-          actualMaximumValue * 166.0 - 0.5,
+    const quantisedMaximumValue: i32 = <i32>(
+      NativeMathf.floor(
+        NativeMathf.max(
+          0,
+          NativeMathf.min(82.0, actualMaximumValue * 166.0 - 0.5),
         ),
-      ),
+      )
     );
     maximumValue = (<f32>quantisedMaximumValue + 1) / 166.0;
     hash += encode83(quantisedMaximumValue, 1);

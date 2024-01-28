@@ -1,23 +1,23 @@
-import React, { CSSProperties, useEffect } from 'react';
-import { BlurhashStaticOptions } from './types';
+import type { CSSProperties, JSX } from 'react';
+import { useEffect } from 'react';
+import type { BlurhashStaticOptions } from './types';
 import { CSS_PLACEHOLDER } from './utils';
 
-export interface BlurhashStaticCSSPlaceholderProps extends BlurhashStaticOptions {
+export interface BlurhashStaticCSSPlaceholderProps
+  extends BlurhashStaticOptions {
   blur?: string;
   scale?: number;
   visible: boolean;
   placeholder: CSSProperties;
 }
 
-export default function BlurhashStaticCSSPlaceholder(
-  {
-    visible,
-    blur,
-    scale,
-    onLoad,
-    placeholder,
-  }: BlurhashStaticCSSPlaceholderProps,
-): JSX.Element {
+export function BlurhashStaticCSSPlaceholder({
+  visible,
+  blur,
+  scale,
+  onLoad,
+  placeholder,
+}: BlurhashStaticCSSPlaceholderProps): JSX.Element {
   useEffect(() => {
     onLoad?.();
   }, [onLoad]);

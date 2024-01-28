@@ -1,6 +1,6 @@
 import * as blurhash from 'blurhash-as';
+import fs from 'node:fs';
 import sharp from 'sharp';
-import fs from 'fs';
 
 interface ImageData {
   width: number;
@@ -8,10 +8,13 @@ interface ImageData {
   data: Uint8ClampedArray;
 }
 
-export async function getImageDataFromFile(originalPath: string): Promise<ImageData> {
+export async function getImageDataFromFile(
+  originalPath: string,
+): Promise<ImageData> {
   const stream = fs.createReadStream(originalPath);
   if (originalPath.endsWith('.png')) {
-    const result = await stream.pipe(sharp().png())
+    const result = await stream
+      .pipe(sharp().png())
       .ensureAlpha()
       .raw()
       .toBuffer({ resolveWithObject: true });
@@ -22,7 +25,8 @@ export async function getImageDataFromFile(originalPath: string): Promise<ImageD
     };
   }
   if (originalPath.endsWith('.webp')) {
-    const result = await stream.pipe(sharp().webp())
+    const result = await stream
+      .pipe(sharp().webp())
       .ensureAlpha()
       .raw()
       .toBuffer({ resolveWithObject: true });
@@ -33,7 +37,8 @@ export async function getImageDataFromFile(originalPath: string): Promise<ImageD
     };
   }
   if (originalPath.endsWith('.jpg')) {
-    const result = await stream.pipe(sharp().jpeg())
+    const result = await stream
+      .pipe(sharp().jpeg())
       .ensureAlpha()
       .raw()
       .toBuffer({ resolveWithObject: true });

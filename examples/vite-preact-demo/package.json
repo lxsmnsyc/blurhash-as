@@ -1,6 +1,7 @@
 {
   "version": "0.10.1",
   "name": "vite-preact-demo",
+  "type": "module",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
@@ -9,14 +10,14 @@
   },
   "dependencies": {
     "blurhash-as": "0.10.0",
-    "preact": "^10.13.0",
+    "preact": "^10.19.3",
     "preact-blurhash-as": "0.10.1"
   },
   "devDependencies": {
-    "@preact/preset-vite": "^2.5.0",
-    "rollup-plugin-blurhash-as": "0.10.1",
-    "typescript": "^4.9.5",
-    "vite": "^4.1.4"
+    "@preact/preset-vite": "^2.8.1",
+    "unplugin-blurhash-as": "0.10.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12"
   },
   "private": true,
   "publishConfig": {

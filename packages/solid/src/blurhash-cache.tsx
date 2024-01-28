@@ -1,7 +1,10 @@
-import { getAspectRatio, getNearestAspectRatio } from 'blurhash-as-helper/utils';
-import { toSVG, toCSSObject, decode } from 'blurhash-as/browser';
-import { JSX } from 'solid-js';
-import { BlurhashOptions } from './types';
+import {
+  getAspectRatio,
+  getNearestAspectRatio,
+} from 'blurhash-as-helper/utils';
+import { decode, toCSSObject, toSVG } from 'blurhash-as/browser';
+import type { JSX } from 'solid-js';
+import type { BlurhashOptions } from './types';
 
 interface Resource<T> {
   read: () => Result<T>;
@@ -22,10 +25,7 @@ interface Failure {
   value: any;
 }
 
-type Result<T> =
-  | Pending<T>
-  | Failure
-  | Success<T>;
+type Result<T> = Pending<T> | Failure | Success<T>;
 
 const CACHE = new Map<string, Resource<any>>();
 
@@ -42,12 +42,7 @@ function getResult(
         options.punch,
       );
     case 'svg':
-      return toSVG(
-        options.hash,
-        options.width,
-        options.height,
-        options.punch,
-      );
+      return toSVG(options.hash, options.width, options.height, options.punch);
     case 'canvas':
       return decode(
         options.hash,
@@ -60,19 +55,19 @@ function getResult(
   }
 }
 
-function getBlurhashCache(
+export function getBlurhashCache(
   mode: 'css',
   options: BlurhashOptions,
 ): Resource<JSX.CSSProperties>;
-function getBlurhashCache(
+export function getBlurhashCache(
   mode: 'svg',
   options: BlurhashOptions,
 ): Resource<string>;
-function getBlurhashCache(
+export function getBlurhashCache(
   mode: 'canvas',
   options: BlurhashOptions,
 ): Resource<Uint8ClampedArray>;
-function getBlurhashCache(
+export function getBlurhashCache(
   mode: 'css' | 'svg' | 'canvas',
   options: BlurhashOptions,
 ): Resource<JSX.CSSProperties | string | Uint8ClampedArray> {
@@ -88,41 +83,40 @@ function getBlurhashCache(
 
   let state: Result<JSX.CSSProperties | string | Uint8ClampedArray>;
 
-  const newResource: Resource<JSX.CSSProperties | string | Uint8ClampedArray> = {
-    read() {
-      if (!state) {
-        const promise = getResult(mode, {
-          ...options,
-          width,
-          height,
-        });
-        promise.then(
-          (value) => {
-            state = {
-              status: 'success',
-              value,
-            };
-          },
-          (value: Error) => {
-            state = {
-              status: 'failure',
-              value,
-            };
-          },
-        );
-        state = {
-          status: 'pending',
-          value: promise,
-        };
-      }
+  const newResource: Resource<JSX.CSSProperties | string | Uint8ClampedArray> =
+    {
+      read() {
+        if (!state) {
+          const promise = getResult(mode, {
+            ...options,
+            width,
+            height,
+          });
+          promise.then(
+            value => {
+              state = {
+                status: 'success',
+                value,
+              };
+            },
+            (value: Error) => {
+              state = {
+                status: 'failure',
+                value,
+              };
+            },
+          );
+          state = {
+            status: 'pending',
+            value: promise,
+          };
+        }
 
-      return state;
-    },
-  };
+        return state;
+      },
+    };
 
   CACHE.set(key, newResource);
 
   return newResource;
 }
-
-export default getBlurhashCache;

@@ -1,13 +1,9 @@
-import {
-  useDebugValue,
-} from 'preact/hooks';
-import { h } from 'preact';
-import { BlurhashOptions } from './types';
-import getBlurhashCache from './blurhash-cache';
+import type { JSX } from 'preact';
+import { useDebugValue } from 'preact/hooks';
+import { getBlurhashCache } from './blurhash-cache';
+import type { BlurhashOptions } from './types';
 
-export default function useBlurhashCSS(
-  options: BlurhashOptions,
-): h.JSX.CSSProperties {
+export function useBlurhashCSS(options: BlurhashOptions): JSX.CSSProperties {
   const state = getBlurhashCache('css', options).read();
 
   useDebugValue(state);

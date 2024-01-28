@@ -1,28 +1,34 @@
-import { JSX } from 'solid-js';
-import BlurhashContainer from './BlurhashContainer';
-import BlurhashPlaceholder, {
-  BlurhashPlaceholderCanvasMode,
+import type { JSX } from 'solid-js';
+import { BlurhashContainer } from './BlurhashContainer';
+import { BlurhashPlaceholder } from './BlurhashPlaceholder';
+
+import type {
   BlurhashPlaceholderCSSMode,
+  BlurhashPlaceholderCanvasMode,
   BlurhashPlaceholderImageMode,
   BlurhashPlaceholderSVGMode,
 } from './BlurhashPlaceholder';
 
-export interface BlurhashCSSMode extends Omit<BlurhashPlaceholderCSSMode, 'visible'> {
+export interface BlurhashCSSMode
+  extends Omit<BlurhashPlaceholderCSSMode, 'visible'> {
   src: string;
   alt: string;
 }
 
-export interface BlurhashSVGMode extends Omit<BlurhashPlaceholderSVGMode, 'visible'> {
+export interface BlurhashSVGMode
+  extends Omit<BlurhashPlaceholderSVGMode, 'visible'> {
   src: string;
   alt: string;
 }
 
-export interface BlurhashImageMode extends Omit<BlurhashPlaceholderImageMode, 'visible'> {
+export interface BlurhashImageMode
+  extends Omit<BlurhashPlaceholderImageMode, 'visible'> {
   src: string;
   alt: string;
 }
 
-export interface BlurhashCanvasMode extends Omit<BlurhashPlaceholderCanvasMode, 'visible'> {
+export interface BlurhashCanvasMode
+  extends Omit<BlurhashPlaceholderCanvasMode, 'visible'> {
   src: string;
   alt: string;
 }
@@ -33,9 +39,7 @@ export type BlurhashProps =
   | BlurhashImageMode
   | BlurhashCanvasMode;
 
-function Blurhash(
-  props: BlurhashProps,
-): JSX.Element {
+export function Blurhash(props: BlurhashProps): JSX.Element {
   return (
     <BlurhashContainer
       src={props.src}
@@ -54,5 +58,3 @@ function Blurhash(
     </BlurhashContainer>
   );
 }
-
-export default Blurhash;
