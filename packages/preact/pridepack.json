@@ -1,8 +1,8 @@
 {
-  "jsxFactory": "h",
-  "jsxFragment": "Fragment",
   "jest": {
     "testEnvironment": "jsdom"
   },
-  "target": "es2017"
+  "target": "ES2018",
+  "jsx": "automatic",
+  "jsxImportSource": "preact"
 }

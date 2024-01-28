@@ -1,8 +1,9 @@
-import { createResource, Resource } from 'solid-js';
-import { BlurhashOptions } from './types';
-import getBlurhashCache from './blurhash-cache';
+import type { Resource } from 'solid-js';
+import { createResource } from 'solid-js';
+import { getBlurhashCache } from './blurhash-cache';
+import type { BlurhashOptions } from './types';
 
-export default function useBlurhashSVG(
+export function useBlurhashSVG(
   options: BlurhashOptions,
 ): Resource<string | undefined> {
   const [state] = createResource(
@@ -12,13 +13,13 @@ export default function useBlurhashSVG(
       height: options.height,
       punch: options.punch,
     }),
-    async (key) => {
+    async key => {
       const result = getBlurhashCache('svg', key);
       const data = result.read();
       if (data.status === 'failure') {
         throw data.value;
       }
-      return data.value;
+      return await data.value;
     },
   );
 

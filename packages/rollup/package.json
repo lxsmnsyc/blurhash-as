@@ -15,53 +15,38 @@
       "types": "./dist/types/index.d.ts"
     }
   },
-  "files": [
-    "dist",
-    "src",
-    "shim.d.ts"
-  ],
+  "files": ["dist", "src", "shim.d.ts"],
   "engines": {
     "node": ">=10"
   },
   "license": "MIT",
-  "keywords": [
-    "pridepack",
-    "rollup",
-    "blurhash-as"
-  ],
+  "keywords": ["pridepack", "rollup", "blurhash-as"],
   "name": "rollup-plugin-blurhash-as",
   "devDependencies": {
-    "@rollup/plugin-url": "^6.1.0",
-    "@types/node": "^18.14.5",
-    "eslint": "^8.35.0",
-    "eslint-config-lxsmnsyc": "^0.4.8",
-    "pridepack": "^2.4.1",
-    "rollup": "^2.52.7",
-    "tslib": "^2.5.0",
-    "typescript": "^4.9.5"
+    "@types/node": "^20.11.5",
+    "pridepack": "2.6.0",
+    "rollup": "^4.9.6",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
   },
   "peerDependencies": {
-    "rollup": "^2.52"
+    "rollup": "^2 || ^3 || ^4"
   },
   "scripts": {
     "prepublish": "pridepack clean && pridepack build",
     "build": "pridepack build",
     "type-check": "pridepack check",
-    "lint": "pridepack lint",
-    "test": "pridepack test --passWithNoTests",
-    "clean": "pridepack clean",
-    "watch": "pridepack watch"
+    "clean": "pridepack clean"
   },
   "dependencies": {
-    "blurhash-as": "0.10.0",
-    "blurhash-as-helper": "0.10.1"
+    "unplugin-blurhash-as": "^0.10.1"
   },
   "description": "Rollup plugin for generating static Blurhash output",
   "repository": {
     "url": "https://github.com/lxsmnsyc/blurhash-as.git",
     "type": "git"
   },
-  "homepage": "https://github.com/lxsmnsyc/blurhash-as/tree/main/packages/rollup-plugin-blurhash-as",
+  "homepage": "https://github.com/lxsmnsyc/blurhash-as/tree/main/packages/rollup",
   "bugs": {
     "url": "https://github.com/lxsmnsyc/blurhash-as/issues"
   },

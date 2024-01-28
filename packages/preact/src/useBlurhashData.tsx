@@ -1,12 +1,8 @@
-import {
-  useDebugValue,
-} from 'preact/hooks';
-import getBlurhashCache from './blurhash-cache';
-import { BlurhashOptions } from './types';
+import { useDebugValue } from 'preact/hooks';
+import { getBlurhashCache } from './blurhash-cache';
+import type { BlurhashOptions } from './types';
 
-export default function useBlurhashData(
-  options: BlurhashOptions,
-): Uint8ClampedArray {
+export function useBlurhashData(options: BlurhashOptions): Uint8ClampedArray {
   const state = getBlurhashCache('canvas', options).read();
 
   useDebugValue(state);

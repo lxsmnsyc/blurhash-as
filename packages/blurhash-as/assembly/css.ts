@@ -1,4 +1,4 @@
-import { decode } from "./decode";
+import { decode } from './decode';
 
 function getGradients(
   decodedData: Uint8ClampedArray,
@@ -17,20 +17,13 @@ function getGradients(
       const a = 255;
 
       const color = `rgba(${r}, ${g}, ${b}, ${a})`;
-      const start = x === 0
-        ? ''
-        : ` ${(<f32>x / <f32>width) * 100}%`;
-      const end = x === width - 1
-        ? ''
-        : ` ${(<f32>(x + 1) / <f32>width) * 100}%`;
-      const comma = x === width - 1
-        ? ''
-        : ', ';
+      const start = x === 0 ? '' : ` ${(<f32>x / <f32>width) * 100}%`;
+      const end =
+        x === width - 1 ? '' : ` ${(<f32>(x + 1) / <f32>width) * 100}%`;
+      const comma = x === width - 1 ? '' : ', ';
       gradient += `${color}${start}${end}${comma}`;
     }
-    const comma = y === height - 1
-      ? ''
-      : ', ';
+    const comma = y === height - 1 ? '' : ', ';
     gradients += `linear-gradient(90deg, ${gradient})${comma}`;
   }
 
@@ -41,12 +34,8 @@ function getPosition(height: i32): string {
   let position = '';
 
   for (let y = 0; y < height; y += 1) {
-    position += (y === 0)
-      ? '0 0'
-      : `0 ${(<f32>y / <f32>(height - 1)) * 100}%`
-    position += y === height - 1
-      ? ''
-      : ', ';
+    position += y === 0 ? '0 0' : `0 ${(<f32>y / <f32>(height - 1)) * 100}%`;
+    position += y === height - 1 ? '' : ', ';
   }
 
   return position;
@@ -71,7 +60,7 @@ background-size: 100% ${100.0 / <f32>height};
 background-repeat: no-repeat;
 `;
   }
-  
+
   return null;
 }
 
@@ -94,6 +83,6 @@ export function toCSSObject(
 "backgroundRepeat": "no-repeat"
 }`;
   }
-  
+
   return null;
 }

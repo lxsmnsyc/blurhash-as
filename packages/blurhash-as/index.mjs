@@ -1,5 +1,10 @@
-import fs from 'fs/promises';
 import loader from '@assemblyscript/loader';
+import fs from 'node:fs/promises';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 let BLURHASH;
 
@@ -8,7 +13,7 @@ export async function init() {
     return;
   }
   const wasmModule = await loader.instantiate(
-    fs.readFile(__dirname + '/build/optimized.wasm'),
+    await fs.readFile(__dirname + '/build/optimized.wasm'),
     {},
   );
   BLURHASH = wasmModule.exports;
@@ -17,10 +22,14 @@ export async function init() {
 export async function encode(pixels, width, height, x, y) {
   await init();
   if (x < 1 || x > 9 || y < 1 || y > 9) {
-    throw new Error(`The given component must have a value between 1 to 9. (Received: ${x}, ${y})`);
+    throw new Error(
+      `The given component must have a value between 1 to 9. (Received: ${x}, ${y})`,
+    );
   }
   if (width * height * 4 !== pixels.length) {
-    throw new Error('The image width and height does not match the pixel data.');
+    throw new Error(
+      'The image width and height does not match the pixel data.',
+    );
   }
   const pixelsData = BLURHASH.__newArray(BLURHASH.Uint8ClampedArrayID, pixels);
   const result = BLURHASH.encode(pixelsData, width, height, x, y);

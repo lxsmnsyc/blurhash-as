@@ -1,6 +1,6 @@
-import { JSX } from 'solid-js';
-import { BlurhashOptions } from './types';
-import useBlurhashSVG from './useBlurhashSVG';
+import type { JSX } from 'solid-js';
+import type { BlurhashOptions } from './types';
+import { useBlurhashSVG } from './useBlurhashSVG';
 import { CSS_PLACEHOLDER, getEncodedOptionalSVG } from './utils';
 
 export interface BlurhashSVGPlaceholderProps extends BlurhashOptions {
@@ -9,14 +9,17 @@ export interface BlurhashSVGPlaceholderProps extends BlurhashOptions {
   scale?: number;
 }
 
-export default function BlurhashSVGPlaceholder(
+export function BlurhashSVGPlaceholder(
   props: BlurhashSVGPlaceholderProps,
 ): JSX.Element {
   const result = useBlurhashSVG(props);
 
   return (
     <img
-      src={getEncodedOptionalSVG({ width: props.width, height: props.height }, result())}
+      src={getEncodedOptionalSVG(
+        { width: props.width, height: props.height },
+        result(),
+      )}
       alt="Blurhash Placeholder"
       class="blurhash-as__placeholder"
       style={{

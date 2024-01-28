@@ -1,14 +1,8 @@
-import { defineConfig } from 'vite'
-import reactRefresh from '@vitejs/plugin-react-refresh'
-import blurhash from 'rollup-plugin-blurhash-as';
+import react from '@vitejs/plugin-react';
+import { blurhashAS } from 'unplugin-blurhash-as';
+import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    {
-      ...blurhash(),
-      enforce: 'pre'
-    },
-    reactRefresh()
-  ]
-})
+  plugins: [blurhashAS.vite(), react()],
+});

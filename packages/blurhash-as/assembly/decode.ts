@@ -1,14 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import { decode83 } from './base83';
-import {
-  linearToSRGB,
-  signPow,
-  SRGBToLinear,
-} from './utils';
+import { SRGBToLinear, linearToSRGB, signPow } from './utils';
 
-export function isBlurhashValid(
-  blurhash: string,
-): boolean {
+export function isBlurhashValid(blurhash: string): boolean {
   if (blurhash.length < 6) {
     return false;
   }
@@ -18,9 +11,7 @@ export function isBlurhashValid(
   return blurhash.length !== 4 + 2 * numX + numY;
 }
 
-function decodeDC(
-  value: i32,
-): StaticArray<f32> {
+function decodeDC(value: i32): StaticArray<f32> {
   return StaticArray.fromArray([
     SRGBToLinear(value >> 16),
     SRGBToLinear((value >> 8) & 255),
@@ -28,10 +19,7 @@ function decodeDC(
   ]);
 }
 
-function decodeAC(
-  value: i32,
-  maximumValue: f32,
-): StaticArray<f32> {
+function decodeAC(value: i32, maximumValue: f32): StaticArray<f32> {
   const quantR: i32 = <i32>NativeMathf.floor(<f32>value / (19.0 * 19.0));
   const quantG: i32 = <i32>NativeMathf.floor(<f32>value / 19.0) % 19;
   const quantB: i32 = value % 19;
@@ -60,7 +48,8 @@ export function decode(
   const numX: i32 = (sizeFlag % 9) + 1;
 
   const quantisedMaximumValue = decode83(blurhash.charAt(1));
-  const maximumValue: f32 = (<f32>(quantisedMaximumValue + 1) / 166.0) * <f32>punch;
+  const maximumValue: f32 =
+    (<f32>(quantisedMaximumValue + 1) / 166.0) * <f32>punch;
 
   const colors = new StaticArray<StaticArray<f32>>(numX * numY);
 
@@ -82,9 +71,13 @@ export function decode(
       let b: f32 = 0.0;
 
       for (let j = 0; j < numY; j += 1) {
-        const yBasis = NativeMathf.cos((NativeMathf.PI * <f32>(y * j)) / <f32>height);
+        const yBasis = NativeMathf.cos(
+          (NativeMathf.PI * <f32>(y * j)) / <f32>height,
+        );
         for (let i = 0; i < numX; i += 1) {
-          const xBasis = NativeMathf.cos((NativeMathf.PI * <f32>(x * i)) / <f32>width);
+          const xBasis = NativeMathf.cos(
+            (NativeMathf.PI * <f32>(x * i)) / <f32>width,
+          );
           const basis = xBasis * yBasis;
           const color = colors[i + j * numX];
           r += color[0] * basis;

@@ -14,27 +14,24 @@
     "pridepack"
   ],
   "devDependencies": {
-    "@types/node": "^18.14.5",
-    "@types/sharp": "^0.31.1",
+    "@types/node": "^20.11.5",
     "blurhash-as": "0.10.0",
-    "eslint": "^8.35.0",
-    "eslint-config-lxsmnsyc": "^0.4.8",
-    "pridepack": "2.4.1",
-    "tslib": "^2.5.0",
-    "typescript": "^4.9.5"
+    "pridepack": "2.6.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
   },
   "peerDependencies": {
     "blurhash-as": "^0.9"
+  },
+  "dependencies": {
+    "sharp": "^0.33.2"
   },
   "scripts": {
     "prepublishOnly": "pridepack clean && pridepack build",
     "build": "pridepack build",
     "type-check": "pridepack check",
-    "lint": "pridepack lint",
     "clean": "pridepack clean",
     "watch": "pridepack watch",
-    "start": "pridepack start",
-    "dev": "pridepack dev",
     "test": "vitest"
   },
   "private": false,
@@ -50,9 +47,6 @@
   "author": "",
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "sharp": "^0.31.3"
   },
   "types": "./dist/types/index.d.ts",
   "main": "./dist/cjs/production/index.cjs",

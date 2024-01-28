@@ -1,7 +1,6 @@
-/** @jsx h */
-import { h, JSX } from 'preact';
-import { BlurhashOptions } from './types';
-import useBlurhashSVG from './useBlurhashSVG';
+import type { JSX } from 'preact';
+import type { BlurhashOptions } from './types';
+import { useBlurhashSVG } from './useBlurhashSVG';
 import { CSS_PLACEHOLDER, getEncodedSVG } from './utils';
 
 export interface BlurhashSVGPlaceholderProps extends BlurhashOptions {
@@ -10,15 +9,13 @@ export interface BlurhashSVGPlaceholderProps extends BlurhashOptions {
   scale?: number;
 }
 
-export default function BlurhashSVGPlaceholder(
-  {
-    visible,
-    blur,
-    scale,
-    onLoad,
-    ...props
-  }: BlurhashSVGPlaceholderProps,
-): JSX.Element {
+export function BlurhashSVGPlaceholder({
+  visible,
+  blur,
+  scale,
+  onLoad,
+  ...props
+}: BlurhashSVGPlaceholderProps): JSX.Element {
   const result = useBlurhashSVG(props);
 
   return (

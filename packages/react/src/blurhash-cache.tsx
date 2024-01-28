@@ -1,7 +1,10 @@
-import { toSVG, toCSSObject, decode } from 'blurhash-as/browser';
-import { CSSProperties } from 'react';
-import { getAspectRatio, getNearestAspectRatio } from 'blurhash-as-helper/utils';
-import { BlurhashOptions } from './types';
+import {
+  getAspectRatio,
+  getNearestAspectRatio,
+} from 'blurhash-as-helper/utils';
+import { decode, toCSSObject, toSVG } from 'blurhash-as/browser';
+import type { CSSProperties } from 'react';
+import type { BlurhashOptions } from './types';
 
 interface Resource<T> {
   read: () => T;
@@ -22,10 +25,7 @@ interface Failure {
   value: any;
 }
 
-type Result<T> =
-  | Pending
-  | Failure
-  | Success<T>;
+type Result<T> = Pending | Failure | Success<T>;
 
 const CACHE = new Map<string, Resource<any>>();
 
@@ -42,12 +42,7 @@ function getResult(
         options.punch,
       );
     case 'svg':
-      return toSVG(
-        options.hash,
-        options.width,
-        options.height,
-        options.punch,
-      );
+      return toSVG(options.hash, options.width, options.height, options.punch);
     case 'canvas':
       return decode(
         options.hash,
@@ -60,19 +55,19 @@ function getResult(
   }
 }
 
-function getBlurhashCache(
+export function getBlurhashCache(
   mode: 'css',
   options: BlurhashOptions,
 ): Resource<CSSProperties>;
-function getBlurhashCache(
+export function getBlurhashCache(
   mode: 'svg',
   options: BlurhashOptions,
 ): Resource<string>;
-function getBlurhashCache(
+export function getBlurhashCache(
   mode: 'canvas',
   options: BlurhashOptions,
 ): Resource<Uint8ClampedArray>;
-function getBlurhashCache(
+export function getBlurhashCache(
   mode: 'css' | 'svg' | 'canvas',
   options: BlurhashOptions,
 ): Resource<CSSProperties | string | Uint8ClampedArray> {
@@ -103,7 +98,7 @@ function getBlurhashCache(
           width,
           height,
         }).then(
-          (value) => {
+          value => {
             state = {
               status: 'success',
               value,
@@ -126,5 +121,3 @@ function getBlurhashCache(
 
   return newResource;
 }
-
-export default getBlurhashCache;

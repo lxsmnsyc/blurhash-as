@@ -1,20 +1,18 @@
-/** @jsx h */
-import { h, JSX } from 'preact';
-import { BlurhashStaticOptions } from './types';
+import type { JSX } from 'preact';
+import type { BlurhashStaticOptions } from './types';
 import { CSS_PLACEHOLDER } from './utils';
 
-export interface BlurhashStaticImagePlaceholderProps extends BlurhashStaticOptions {
+export interface BlurhashStaticImagePlaceholderProps
+  extends BlurhashStaticOptions {
   visible: boolean;
   placeholder: string;
 }
 
-export default function BlurhashStaticImagePlaceholder(
-  {
-    visible,
-    onLoad,
-    placeholder,
-  }: BlurhashStaticImagePlaceholderProps,
-): JSX.Element {
+export function BlurhashStaticImagePlaceholder({
+  visible,
+  onLoad,
+  placeholder,
+}: BlurhashStaticImagePlaceholderProps): JSX.Element {
   return (
     <img
       src={placeholder}

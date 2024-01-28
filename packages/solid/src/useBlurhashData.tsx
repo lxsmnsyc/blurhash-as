@@ -1,8 +1,9 @@
-import { createResource, Resource } from 'solid-js';
-import getBlurhashCache from './blurhash-cache';
-import { BlurhashOptions } from './types';
+import type { Resource } from 'solid-js';
+import { createResource } from 'solid-js';
+import { getBlurhashCache } from './blurhash-cache';
+import type { BlurhashOptions } from './types';
 
-export default function useBlurhashData(
+export function useBlurhashData(
   options: BlurhashOptions,
 ): Resource<Uint8ClampedArray | undefined> {
   const [state] = createResource(
@@ -12,13 +13,13 @@ export default function useBlurhashData(
       height: options.height,
       punch: options.punch,
     }),
-    async (key) => {
+    async key => {
       const result = getBlurhashCache('canvas', key);
       const data = result.read();
       if (data.status === 'failure') {
         throw data.value;
       }
-      return data.value;
+      return await data.value;
     },
   );
 

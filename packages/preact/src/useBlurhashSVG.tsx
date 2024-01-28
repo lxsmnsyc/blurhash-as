@@ -1,12 +1,8 @@
-import {
-  useDebugValue,
-} from 'preact/hooks';
-import { BlurhashOptions } from './types';
-import getBlurhashCache from './blurhash-cache';
+import { useDebugValue } from 'preact/hooks';
+import { getBlurhashCache } from './blurhash-cache';
+import type { BlurhashOptions } from './types';
 
-export default function useBlurhashSVG(
-  options: BlurhashOptions,
-): string {
+export function useBlurhashSVG(options: BlurhashOptions): string {
   const state = getBlurhashCache('svg', options).read();
 
   useDebugValue(state);

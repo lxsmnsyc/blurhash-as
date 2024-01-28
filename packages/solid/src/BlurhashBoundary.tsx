@@ -1,4 +1,5 @@
-import { Suspense, JSX } from 'solid-js';
+import type { JSX } from 'solid-js';
+import { Suspense } from 'solid-js';
 import { getEmptyImageURL } from './utils';
 
 export interface BlurhashBoundaryBaseProps {
@@ -22,10 +23,10 @@ export interface BlurhashBoundaryProps extends BlurhashBoundaryBaseProps {
 
 export function BlurhashBoundary(props: BlurhashBoundaryProps): JSX.Element {
   return (
-    <Suspense fallback={<BlurhashEmpty width={props.width} height={props.height} />}>
+    <Suspense
+      fallback={<BlurhashEmpty width={props.width} height={props.height} />}
+    >
       {props.children}
     </Suspense>
   );
 }
-
-export default BlurhashBoundary;

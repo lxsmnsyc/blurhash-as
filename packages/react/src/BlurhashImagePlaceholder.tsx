@@ -1,18 +1,17 @@
-import React from 'react';
-import useBlurhashImageURL, { BlurhashImageOptions } from './useBlurhashImageURL';
+import type { JSX } from 'react';
+import type { BlurhashImageOptions } from './useBlurhashImageURL';
+import { useBlurhashImageURL } from './useBlurhashImageURL';
 import { CSS_PLACEHOLDER } from './utils';
 
 export interface BlurhashImagePlaceholderProps extends BlurhashImageOptions {
   visible: boolean;
 }
 
-export default function BlurhashImagePlaceholder(
-  {
-    visible,
-    onLoad,
-    ...props
-  }: BlurhashImagePlaceholderProps,
-): JSX.Element {
+export function BlurhashImagePlaceholder({
+  visible,
+  onLoad,
+  ...props
+}: BlurhashImagePlaceholderProps): JSX.Element {
   const result = useBlurhashImageURL(props);
 
   return (

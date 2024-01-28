@@ -1,6 +1,6 @@
-/** @jsx h */
-import { h, JSX } from 'preact';
-import { FC, Suspense } from 'preact/compat';
+import type { JSX } from 'preact';
+import type { FC } from 'preact/compat';
+import { Suspense } from 'preact/compat';
 import { getEmptyImageURL } from './utils';
 
 export interface BlurhashBoundaryProps {
@@ -18,16 +18,14 @@ export function BlurhashEmpty(props: BlurhashBoundaryProps): JSX.Element {
   );
 }
 
-const BlurhashBoundary: FC<BlurhashBoundaryProps> = ({ width, height, children }) => {
+export const BlurhashBoundary: FC<BlurhashBoundaryProps> = ({
+  width,
+  height,
+  children,
+}) => {
   const placeholder = <BlurhashEmpty width={width} height={height} />;
   if (typeof window === 'undefined') {
     return placeholder;
   }
-  return (
-    <Suspense fallback={placeholder}>
-      {children}
-    </Suspense>
-  );
+  return <Suspense fallback={placeholder}>{children}</Suspense>;
 };
-
-export default BlurhashBoundary;

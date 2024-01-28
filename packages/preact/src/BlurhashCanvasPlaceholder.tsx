@@ -1,24 +1,24 @@
-/** @jsx h */
-import { getAspectRatio, getNearestAspectRatio } from 'blurhash-as-helper/utils';
-import { h, JSX } from 'preact';
-import { useRef, useEffect, useMemo } from 'preact/hooks';
-import { BlurhashOptions } from './types';
-import useBlurhashData from './useBlurhashData';
+import {
+  getAspectRatio,
+  getNearestAspectRatio,
+} from 'blurhash-as-helper/utils';
+import type { JSX } from 'preact';
+import { useEffect, useMemo, useRef } from 'preact/hooks';
+import type { BlurhashOptions } from './types';
+import { useBlurhashData } from './useBlurhashData';
 import { CSS_PLACEHOLDER } from './utils';
 
 export interface BlurhashCanvasPlaceholderProps extends BlurhashOptions {
   visible: boolean;
 }
 
-export default function BlurhashCanvasPlaceholder(
-  {
-    visible,
-    width,
-    height,
-    onLoad,
-    ...props
-  }: BlurhashCanvasPlaceholderProps,
-): JSX.Element {
+export function BlurhashCanvasPlaceholder({
+  visible,
+  width,
+  height,
+  onLoad,
+  ...props
+}: BlurhashCanvasPlaceholderProps): JSX.Element {
   const result = useBlurhashData({
     ...props,
     width,
@@ -51,10 +51,7 @@ export default function BlurhashCanvasPlaceholder(
       current.height = ratio.height;
 
       ctx.clearRect(0, 0, ratio.width, ratio.height);
-      const imageData = ctx.createImageData(
-        ratio.width,
-        ratio.height,
-      );
+      const imageData = ctx.createImageData(ratio.width, ratio.height);
 
       imageData.data.set(result);
       ctx.putImageData(imageData, 0, 0);

@@ -1,14 +1,18 @@
-import { getAspectRatio, getNearestAspectRatio } from 'blurhash-as-helper/utils';
-import { createEffect, createMemo, JSX } from 'solid-js';
-import { BlurhashOptions } from './types';
-import useBlurhashData from './useBlurhashData';
+import {
+  getAspectRatio,
+  getNearestAspectRatio,
+} from 'blurhash-as-helper/utils';
+import type { JSX } from 'solid-js';
+import { createEffect, createMemo } from 'solid-js';
+import type { BlurhashOptions } from './types';
+import { useBlurhashData } from './useBlurhashData';
 import { CSS_PLACEHOLDER } from './utils';
 
 export interface BlurhashCanvasPlaceholderProps extends BlurhashOptions {
   visible: boolean;
 }
 
-export default function BlurhashCanvasPlaceholder(
+export function BlurhashCanvasPlaceholder(
   props: BlurhashCanvasPlaceholderProps,
 ): JSX.Element {
   const result = useBlurhashData(props);
@@ -40,10 +44,7 @@ export default function BlurhashCanvasPlaceholder(
       canvasRef.height = ratio.height;
 
       ctx.clearRect(0, 0, ratio.width, ratio.height);
-      const imageData = ctx.createImageData(
-        ratio.width,
-        ratio.height,
-      );
+      const imageData = ctx.createImageData(ratio.width, ratio.height);
 
       const data = result();
       if (data) {

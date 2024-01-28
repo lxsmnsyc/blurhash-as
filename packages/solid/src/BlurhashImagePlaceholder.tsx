@@ -1,12 +1,13 @@
-import { JSX } from 'solid-js';
-import useBlurhashImageURL, { BlurhashImageOptions } from './useBlurhashImageURL';
+import type { JSX } from 'solid-js';
+import type { BlurhashImageOptions } from './useBlurhashImageURL';
+import { useBlurhashImageURL } from './useBlurhashImageURL';
 import { CSS_PLACEHOLDER } from './utils';
 
 export interface BlurhashImagePlaceholderProps extends BlurhashImageOptions {
   visible: boolean;
 }
 
-export default function BlurhashImagePlaceholder(
+export function BlurhashImagePlaceholder(
   props: BlurhashImagePlaceholderProps,
 ): JSX.Element {
   const result = useBlurhashImageURL(props);
